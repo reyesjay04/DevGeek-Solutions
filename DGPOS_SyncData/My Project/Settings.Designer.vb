@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.SyncData.My.MySettings
+        Friend ReadOnly Property Settings() As Global.DGPOS_SYNC.My.MySettings
             Get
-                Return Global.SyncData.My.MySettings.Default
+                Return Global.DGPOS_SYNC.My.MySettings.Default
             End Get
         End Property
     End Module

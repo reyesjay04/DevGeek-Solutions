@@ -8,8 +8,8 @@
     <OutputType>Library</OutputType>
     <StartupObject>
     </StartupObject>
-    <RootNamespace>SyncData</RootNamespace>
-    <AssemblyName>SyncData</AssemblyName>
+    <RootNamespace>DGPOS_SYNC</RootNamespace>
+    <AssemblyName>DGPOS_SYNC</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
@@ -22,7 +22,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>SyncData.xml</DocumentationFile>
+    <DocumentationFile>DGPOS_SYNC.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -32,7 +32,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>SyncData.xml</DocumentationFile>
+    <DocumentationFile>DGPOS_SYNC.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -50,9 +50,6 @@
   <ItemGroup>
     <Reference Include="MySql.Data">
       <HintPath>D:\repos\POS-05-21-2022\POS\bin\Debug\MySql.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="POSCommon">
-      <HintPath>..\POSCommon\bin\Debug\POSCommon.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -85,11 +82,11 @@
     <Compile Include="Class\SalesCls.vb" />
     <Compile Include="Class\SyslogsCls.vb" />
     <Compile Include="Class\tblCls.vb" />
-    <Compile Include="SyncData.vb">
+    <Compile Include="DGPOS_SYNC.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SyncData.Designer.vb">
-      <DependentUpon>SyncData.vb</DependentUpon>
+    <Compile Include="DGPOS_SYNC.Designer.vb">
+      <DependentUpon>DGPOS_SYNC.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -109,8 +106,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="SyncData.resx">
-      <DependentUpon>SyncData.vb</DependentUpon>
+    <EmbeddedResource Include="DGPOS_SYNC.resx">
+      <DependentUpon>DGPOS_SYNC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -131,6 +128,12 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DGPOS_Common\DGPOS_Common.vbproj">
+      <Project>{95518019-e954-47a7-82c6-2a25a6774c0b}</Project>
+      <Name>DGPOS_Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -8,7 +8,7 @@ Public Class SyslogsCls
     Property SysDesc As String
     Property SysInfo As String
     Property SysStoreID As String
-    Property parentFrm As SyncData
+    Property parentFrm As DGPOS_SYNC
 
     Public Function FillSysLogs(ByVal ConnLocal As String) As List(Of SyslogsCls)
         Dim sysLogs As New List(Of SyslogsCls)

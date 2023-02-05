@@ -692,6 +692,10 @@
       <Project>{95518019-e954-47a7-82c6-2a25a6774c0b}</Project>
       <Name>DGPOS_Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DGPOS_DGMGW\DGPOS_DGMGW.vbproj">
+      <Project>{61c729c6-64a0-4cb4-a0da-e266d2df46f0}</Project>
+      <Name>DGPOS_DGMGW</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DGPOS_EJournalPDF\DGPOS_EJOURNALPDF.vbproj">
       <Project>{50fc700d-7fd1-4d31-a17d-919984754ae0}</Project>
       <Name>DGPOS_EJOURNALPDF</Name>

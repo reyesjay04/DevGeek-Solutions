@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class SyncData
+Partial Class DGPOS_SYNC
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class SyncData
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SyncData))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DGPOS_SYNC))
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.BgwFetchData = New System.ComponentModel.BackgroundWorker()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
@@ -95,7 +95,7 @@ Partial Class SyncData
         Me.lbSyslog.TabIndex = 4
         Me.lbSyslog.Text = "System Logs"
         '
-        'SyncData
+        'DGPOS_SYNC
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -105,9 +105,9 @@ Partial Class SyncData
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.ToolStrip1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Name = "SyncData"
+        Me.Name = "DGPOS_SYNC"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Form1"
+        Me.Text = "DGPOS_SYNC"
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
         Me.ResumeLayout(False)

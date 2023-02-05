@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports DGPOS_COMMON
 
-Public Class DG_DGMGW
+Public Class DGPOS_DGMGW
 
     'The value of dtp2 and dtp3 depends on the MALL BUSINESS HOURS -- DEFAULT VALUE "12:00 AM" to "02:00 AM" the NEXT DAY
     'Save the settings file in config.ini

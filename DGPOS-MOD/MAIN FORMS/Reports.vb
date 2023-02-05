@@ -3074,11 +3074,11 @@ Public Class Reports
     Private Sub ButtonMGW_Click(sender As Object, e As EventArgs) Handles ButtonMGW.Click
         Try
             Dim ins As System.Reflection.Assembly
-            ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DG_DGMGW.dll")
+            ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DGPOS_DGMGW.dll")
 
             Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath
 
-            Dim obj As Object = ins.CreateInstance("DG_DGMGW.DG_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
+            Dim obj As Object = ins.CreateInstance("DGPOS_DGMGW.DGPOS_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
             Dim frm As Form = CType(obj, Form)
             frm.ShowDialog()
         Catch ex As Exception

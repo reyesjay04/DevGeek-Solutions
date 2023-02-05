@@ -1,7 +1,7 @@
 ﻿Imports System.Threading
-Imports SyncData
-Imports POSCommon
-Public Class SyncData
+Imports DGPOS_SYNC
+Imports DGPOS_COMMON
+Public Class DGPOS_SYNC
     Public Event GetCatchLog(ByVal str As String)
     Public Event GetPrgbarVal(ByVal prgVal As Integer)
 
@@ -24,7 +24,7 @@ Public Class SyncData
         Try
             CheckForIllegalCrossThreadCalls = False
             listOfDefaultVal = ModPosCommon.ReadTextCategories("# Default Value")
-            DefaultSyncVal = ModPosCommon.GetItemValue("sync_column_val", listOfDefaultVal)
+            'DefaultSyncVal = ModPosCommon.GetItemValue("sync_column_val", listOfDefaultVal)
         Catch ex As Exception
             RaiseEvent GetCatchLog(ex.Message)
         End Try

@@ -3076,6 +3076,7 @@ Public Class Reports
             Dim ins As System.Reflection.Assembly
             ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DGPOS_DGMGW.dll")
 
+
             Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath
 
             Dim obj As Object = ins.CreateInstance("DGPOS_DGMGW.DGPOS_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)

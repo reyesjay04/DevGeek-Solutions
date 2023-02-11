@@ -1228,7 +1228,7 @@ Module publicfunctions
                     Da.Fill(Dt)
 
                     For i As Integer = 0 To Dt.Rows.Count - 1 Step +1
-                        Dim price = Dt(i)(6)
+                        Dim price = NUMBERFORMAT(Dt(i)(6))
                         If Dt(i)(14).ToString = "Add-Ons" Then
                             If Dt(i)(18).ToString = "Classic" Then
                                 RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Dt(i)(3) & "@", FontDefault, 0, 82 + BodySpacing)
@@ -1290,53 +1290,53 @@ Module publicfunctions
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Sales: ", NUMBERFORMAT(NETSALES), FontDefault, 11, 0)
                                 FillEJournalContent("Total Sales:      " & NUMBERFORMAT(NETSALES), {"Total Sales: ", NUMBERFORMAT(NETSALES)}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Net of VAT: ", reader("vatablesales"), FontDefault, 11, 0)
-                                FillEJournalContent("Amount Net of VAT:      " & reader("vatablesales"), {"Amount Net of VAT: ", reader("vatablesales")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Net of VAT: ", NUMBERFORMAT(reader("vatablesales")), FontDefault, 11, 0)
+                                FillEJournalContent("Amount Net of VAT:      " & NUMBERFORMAT(reader("vatablesales")), {"Amount Net of VAT: ", NUMBERFORMAT(reader("vatablesales"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
 
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: ", reader("totaldiscount"), FontDefault, 11, 0)
-                                FillEJournalContent("Less Discount: " & reader("totaldiscount"), {"Less Discount: ", reader("totaldiscount")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: ", NUMBERFORMAT(reader("totaldiscount")), FontDefault, 11, 0)
+                                FillEJournalContent("Less Discount: " & NUMBERFORMAT(reader("totaldiscount")), {"Less Discount: ", NUMBERFORMAT(reader("totaldiscount"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
 
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less VAT: ", reader("lessvat"), FontDefault, 11, 0)
-                                FillEJournalContent("Less VAT: :      " & reader("lessvat"), {"Less VAT: ", reader("lessvat")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less VAT: ", NUMBERFORMAT(reader("lessvat")), FontDefault, 11, 0)
+                                FillEJournalContent("Less VAT: :      " & NUMBERFORMAT(reader("lessvat")), {"Less VAT: ", NUMBERFORMAT(reader("lessvat"))}, "LR", False, False)
 
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Due: ", reader("amountdue"), FontDefaultBold, 11, 0)
-                                FillEJournalContent("Amount Due:      " & reader("amountdue"), {"Amount Due: ", reader("amountdue")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Due: ", NUMBERFORMAT(reader("amountdue")), FontDefault, 11, 0)
+                                FillEJournalContent("Amount Due:      " & NUMBERFORMAT(reader("amountdue")), {"Amount Due: ", NUMBERFORMAT(reader("amountdue"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Add VAT: ", reader("vatpercentage"), FontDefaultBold, 11, 0)
-                                FillEJournalContent("Add VAT:      " & reader("vatpercentage"), {"Add VAT: ", reader("vatpercentage")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Add VAT: ", NUMBERFORMAT(reader("vatpercentage")), FontDefault, 11, 0)
+                                FillEJournalContent("Add VAT:      " & NUMBERFORMAT(reader("vatpercentage")), {"Add VAT: ", NUMBERFORMAT(reader("vatpercentage"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Amount Due: ", reader("amountdue"), FontDefaultBold, 11, 0)
-                                FillEJournalContent("Total Amount Due:      " & reader("amountdue"), {"Total Amount Due: ", reader("amountdue")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Amount Due: ", NUMBERFORMAT(reader("amountdue")), FontDefaultBold, 11, 0)
+                                FillEJournalContent("Total Amount Due:      " & NUMBERFORMAT(reader("amountdue")), {"Total Amount Due: ", NUMBERFORMAT(reader("amountdue"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Credit Sale: ", reader("amounttendered"), FontDefault, 11, 0)
-                                FillEJournalContent("Credit Sale:      " & reader("amounttendered"), {"Credit Sale: ", reader("amounttendered")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Credit Sale: ", NUMBERFORMAT(reader("amounttendered")), FontDefault, 11, 0)
+                                FillEJournalContent("Credit Sale:      " & NUMBERFORMAT(reader("amounttendered")), {"Credit Sale: ", NUMBERFORMAT(reader("amounttendered"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Change: ", reader("change"), FontDefault, 11, 0)
-                                FillEJournalContent("Change:      " & reader("change"), {"Change: ", reader("change")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Change: ", NUMBERFORMAT(reader("change")), FontDefault, 11, 0)
+                                FillEJournalContent("Change:      " & NUMBERFORMAT(reader("change")), {"Change: ", NUMBERFORMAT(reader("change"))}, "LR", False, False)
                                 PrintCenterStars(sender, e, FontDefault, RECEIPTLINECOUNT + 15)
                                 FillEJournalContent("*************************************", {}, "C", True, True)
                                 PrintSmallLine(sender, e, FontDefaultLine, RECEIPTLINECOUNT)
                                 FillEJournalContent("------------------------------------------------------------", {}, "C", True, True)
                                 RECEIPTLINECOUNT += 30
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Vatable Sales: ", reader("vatablesales"), FontDefault, 11, 0)
-                                FillEJournalContent("Vatable Sales:      " & reader("vatablesales"), {"Vatable Sales: ", reader("vatablesales")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Vatable Sales: ", NUMBERFORMAT(reader("vatablesales")), FontDefault, 11, 0)
+                                FillEJournalContent("Vatable Sales:      " & NUMBERFORMAT(reader("vatablesales")), {"Vatable Sales: ", NUMBERFORMAT(reader("vatablesales"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Vat Amount: ", reader("vatpercentage"), FontDefault, 11, 0)
-                                FillEJournalContent("Vat Amount:      " & reader("vatpercentage"), {"Vat Amount: ", reader("vatpercentage")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Vat Amount: ", NUMBERFORMAT(reader("vatpercentage")), FontDefault, 11, 0)
+                                FillEJournalContent("Vat Amount:      " & NUMBERFORMAT(reader("vatpercentage")), {"Vat Amount: ", NUMBERFORMAT(reader("vatpercentage"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Vat Exempt Sales: ", reader("vatexemptsales"), FontDefault, 11, 0)
-                                FillEJournalContent("Vat Exempt Sales:      " & reader("vatexemptsales"), {"Vat Exempt Sales: ", reader("vatexemptsales")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Vat Exempt Sales: ", NUMBERFORMAT(reader("vatexemptsales")), FontDefault, 11, 0)
+                                FillEJournalContent("Vat Exempt Sales:      " & NUMBERFORMAT(reader("vatexemptsales")), {"Vat Exempt Sales: ", NUMBERFORMAT(reader("vatexemptsales"))}, "LR", False, False)
                                 RECEIPTLINECOUNT += 10
 
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Vat: ", reader("lessvat"), FontDefault, 11, 0)
-                                FillEJournalContent("Less Vat: :      " & reader("lessvat"), {"Less Vat: ", reader("lessvat")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Vat: ", NUMBERFORMAT(reader("lessvat")), FontDefault, 11, 0)
+                                FillEJournalContent("Less Vat: :      " & NUMBERFORMAT(reader("lessvat")), {"Less Vat: ", NUMBERFORMAT(reader("lessvat"))}, "LR", False, False)
 
                                 RECEIPTLINECOUNT += 10
-                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Zero Rated Sales: ", reader("zeroratedsales"), FontDefault, 11, 0)
-                                FillEJournalContent("Zero Rated Sales:     " & reader("zeroratedsales"), {"Zero Rated Sales: ", reader("zeroratedsales")}, "LR", False, False)
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Zero Rated Sales: ", NUMBERFORMAT(reader("zeroratedsales")), FontDefault, 11, 0)
+                                FillEJournalContent("Zero Rated Sales:     " & NUMBERFORMAT(reader("zeroratedsales")), {"Zero Rated Sales: ", NUMBERFORMAT(reader("zeroratedsales"))}, "LR", False, False)
                                 PrintCenterStars(sender, e, FontDefault, RECEIPTLINECOUNT + 15)
                                 FillEJournalContent("*************************************", {}, "C", True, True)
                                 PrintSmallLine(sender, e, FontDefaultLine, RECEIPTLINECOUNT)
@@ -1714,12 +1714,12 @@ Module publicfunctions
             Dim FontDefaultLine As Font
             If My.Settings.PrintSize = "57mm" Then
                 FontDefaultLine = New Font("Tahoma", 6)
-                BrandFont = New Font("Tahoma", 7, FontStyle.Bold)
+                BrandFont = New Font("Tahoma", 6, FontStyle.Bold)
                 FontDefault = New Font("Tahoma", 5)
                 FontDefaultBold = New Font("Tahoma", 5, FontStyle.Bold)
             Else
                 FontDefaultLine = New Font("Tahoma", 7)
-                BrandFont = New Font("Tahoma", 8, FontStyle.Bold)
+                BrandFont = New Font("Tahoma", 7, FontStyle.Bold)
                 FontDefault = New Font("Tahoma", 6)
                 FontDefaultBold = New Font("Tahoma", 6, FontStyle.Bold)
                 BodySpacing = 32
@@ -1730,12 +1730,15 @@ Module publicfunctions
             Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
             Dim dt As DataTable = New DataTable
             da.Fill(dt)
-            CenterTextDisplay(sender, e, S_Dev_Comp_Name.ToUpper, BrandFont, RECEIPTLINECOUNT)
-            FillEJournalContent(S_Dev_Comp_Name.ToUpper, {}, "C", True, True)
-            RECEIPTLINECOUNT += 10
+
             For i As Integer = 0 To dt.Rows.Count - 1 Step +1
-                CenterTextDisplay(sender, e, dt(i)(2).ToUpper, FontDefault, RECEIPTLINECOUNT)
-                FillEJournalContent(dt(i)(2).ToUpper, {}, "C", False, True)
+                If i = 0 Then
+                    CenterTextDisplay(sender, e, dt(i)(2).ToUpper, BrandFont, RECEIPTLINECOUNT)
+                    FillEJournalContent(dt(i)(2).ToUpper, {}, "C", False, True)
+                Else
+                    CenterTextDisplay(sender, e, dt(i)(2).ToUpper, FontDefault, RECEIPTLINECOUNT)
+                    FillEJournalContent(dt(i)(2).ToUpper, {}, "C", False, True)
+                End If
                 RECEIPTLINECOUNT += 10
             Next
 

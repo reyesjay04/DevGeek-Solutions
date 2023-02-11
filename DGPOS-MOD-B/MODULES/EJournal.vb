@@ -100,7 +100,7 @@ Module EJournal
             Dim Command As MySqlCommand
             Dim DataAdapter As MySqlDataAdapter
             Dim Query As String = ""
-            Query = "SELECT description FROM loc_receipt WHERE type = 'VALIDITY' AND status = 1"
+            Query = "SELECT description FROM loc_receipt WHERE type = 'VALIDITY' AND status = 'Y'"
             Command = New MySqlCommand(Query, ConnectionLocal)
             DataAdapter = New MySqlDataAdapter(Command)
             DataAdapter.Fill(ValidityString)
@@ -118,7 +118,7 @@ Module EJournal
                 Dim Command As MySqlCommand
                 Dim DataAdapter As MySqlDataAdapter
                 Dim Query As String = ""
-                Query = "SELECT * FROM loc_receipt WHERE type = 'REFUND-FOOTER' AND status = 1"
+                Query = "SELECT * FROM loc_receipt WHERE type = 'REFUND-FOOTER' AND status = 'Y'"
                 Command = New MySqlCommand(Query, ConnectionLocal)
                 DataAdapter = New MySqlDataAdapter(Command)
                 DataAdapter.Fill(RefundFooterString)

@@ -687,13 +687,13 @@
     <Content Include="posicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Documents\Visual Studio 2015\Projects\DGPOSCommon\POSCommon\POSCommon.vbproj">
+    <ProjectReference Include="..\DGPOS_Common\DGPOS_Common.vbproj">
       <Project>{95518019-e954-47a7-82c6-2a25a6774c0b}</Project>
-      <Name>POSCommon</Name>
+      <Name>DGPOS_Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\DG_DGMGW\DG_DGMGW.vbproj">
+    <ProjectReference Include="..\DGPOS_DGMGW\DGPOS_DGMGW.vbproj">
       <Project>{61c729c6-64a0-4cb4-a0da-e266d2df46f0}</Project>
-      <Name>DG_DGMGW</Name>
+      <Name>DGPOS_DGMGW</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

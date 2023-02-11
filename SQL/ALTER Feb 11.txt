@@ -1,0 +1,3 @@
+ALTER TABLE `loc_daily_transaction_details` CHANGE `seniorqty` `seniorqty` INT(11) NOT NULL, CHANGE `pwdqty` `pwdqty` INT(11) NOT NULL, CHANGE `athleteqty` `athleteqty` INT(11) NOT NULL, CHANGE `spqty` `spqty` INT(11) NOT NULL;
+ALTER TABLE `loc_settings` ADD `Dev_Brgy` VARCHAR(100) NOT NULL AFTER `Dev_Address`, ADD `Dev_Municipality` VARCHAR(100) NOT NULL AFTER `Dev_Brgy`, ADD `Dev_Province` VARCHAR(100) NOT NULL AFTER `Dev_Municipality`, ADD `Dev_Postal` VARCHAR(100) NOT NULL AFTER `Dev_Province`;
+ALTER TABLE `loc_settings` ADD `Dev_Alias` VARCHAR(100) NOT NULL AFTER `Dev_Company_Name`;

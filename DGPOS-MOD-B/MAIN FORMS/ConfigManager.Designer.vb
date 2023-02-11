@@ -22,8 +22,6 @@ Partial Class ConfigManager
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ConfigManager))
         Me.Panel2 = New System.Windows.Forms.Panel()
         Me.Panel40 = New System.Windows.Forms.Panel()
@@ -126,29 +124,6 @@ Partial Class ConfigManager
         Me.GroupBox11 = New System.Windows.Forms.GroupBox()
         Me.ButtonEditDevSet = New System.Windows.Forms.Button()
         Me.ButtonSaveDevSettings = New System.Windows.Forms.Button()
-        Me.Label79 = New System.Windows.Forms.Label()
-        Me.Label78 = New System.Windows.Forms.Label()
-        Me.Label77 = New System.Windows.Forms.Label()
-        Me.Label76 = New System.Windows.Forms.Label()
-        Me.Label75 = New System.Windows.Forms.Label()
-        Me.Label74 = New System.Windows.Forms.Label()
-        Me.Label73 = New System.Windows.Forms.Label()
-        Me.Label72 = New System.Windows.Forms.Label()
-        Me.Label71 = New System.Windows.Forms.Label()
-        Me.DateTimePickerPTUVU = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker4PTUDI = New System.Windows.Forms.DateTimePicker()
-        Me.TextBoxDEVPTU = New System.Windows.Forms.TextBox()
-        Me.DateTimePicker2ACCRVU = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker1ACCRDI = New System.Windows.Forms.DateTimePicker()
-        Me.TextBoxDevAccr = New System.Windows.Forms.TextBox()
-        Me.TextBoxDevTIN = New System.Windows.Forms.TextBox()
-        Me.TextBoxDevAdd = New System.Windows.Forms.TextBox()
-        Me.TextBoxDevname = New System.Windows.Forms.TextBox()
-        Me.Label46 = New System.Windows.Forms.Label()
-        Me.Label45 = New System.Windows.Forms.Label()
-        Me.Label44 = New System.Windows.Forms.Label()
-        Me.Label43 = New System.Windows.Forms.Label()
-        Me.Label42 = New System.Windows.Forms.Label()
         Me.TableLayoutPanel9 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox10 = New System.Windows.Forms.GroupBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -414,6 +389,41 @@ Partial Class ConfigManager
         Me.ColorDialog1 = New System.Windows.Forms.ColorDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.BackgroundWorkerValidateSerial = New System.ComponentModel.BackgroundWorker()
+        Me.Label46 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1ACCRDI = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePicker2ACCRVU = New System.Windows.Forms.DateTimePicker()
+        Me.TextBoxDEVPTU = New System.Windows.Forms.TextBox()
+        Me.DateTimePicker4PTUDI = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimePickerPTUVU = New System.Windows.Forms.DateTimePicker()
+        Me.Label75 = New System.Windows.Forms.Label()
+        Me.Label76 = New System.Windows.Forms.Label()
+        Me.Label77 = New System.Windows.Forms.Label()
+        Me.Label78 = New System.Windows.Forms.Label()
+        Me.Label79 = New System.Windows.Forms.Label()
+        Me.Label104 = New System.Windows.Forms.Label()
+        Me.TextBoxDevPostal = New System.Windows.Forms.TextBox()
+        Me.Label105 = New System.Windows.Forms.Label()
+        Me.TextBoxDevProvince = New System.Windows.Forms.TextBox()
+        Me.Label102 = New System.Windows.Forms.Label()
+        Me.Label101 = New System.Windows.Forms.Label()
+        Me.TextBoxDevMunicipality = New System.Windows.Forms.TextBox()
+        Me.Label100 = New System.Windows.Forms.Label()
+        Me.Label99 = New System.Windows.Forms.Label()
+        Me.TextBoxDevBarangay = New System.Windows.Forms.TextBox()
+        Me.Label97 = New System.Windows.Forms.Label()
+        Me.Label74 = New System.Windows.Forms.Label()
+        Me.Label73 = New System.Windows.Forms.Label()
+        Me.Label72 = New System.Windows.Forms.Label()
+        Me.Label71 = New System.Windows.Forms.Label()
+        Me.TextBoxDevAccr = New System.Windows.Forms.TextBox()
+        Me.TextBoxDevTIN = New System.Windows.Forms.TextBox()
+        Me.TextBoxDevAdd = New System.Windows.Forms.TextBox()
+        Me.TextBoxDevname = New System.Windows.Forms.TextBox()
+        Me.Label44 = New System.Windows.Forms.Label()
+        Me.Label42 = New System.Windows.Forms.Label()
+        Me.Label98 = New System.Windows.Forms.Label()
+        Me.Label43 = New System.Windows.Forms.Label()
+        Me.Label103 = New System.Windows.Forms.Label()
         Me.Panel2.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
@@ -1672,37 +1682,49 @@ Partial Class ConfigManager
         Me.TableLayoutPanel8.Name = "TableLayoutPanel8"
         Me.TableLayoutPanel8.RowCount = 1
         Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 462.0!))
+        Me.TableLayoutPanel8.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 477.0!))
         Me.TableLayoutPanel8.Size = New System.Drawing.Size(954, 477)
         Me.TableLayoutPanel8.TabIndex = 295
         '
         'GroupBox11
         '
+        Me.GroupBox11.Controls.Add(Me.Label104)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevPostal)
+        Me.GroupBox11.Controls.Add(Me.Label105)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevProvince)
+        Me.GroupBox11.Controls.Add(Me.Label102)
+        Me.GroupBox11.Controls.Add(Me.Label101)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevMunicipality)
+        Me.GroupBox11.Controls.Add(Me.Label100)
+        Me.GroupBox11.Controls.Add(Me.Label99)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevBarangay)
+        Me.GroupBox11.Controls.Add(Me.Label97)
+        Me.GroupBox11.Controls.Add(Me.Label74)
+        Me.GroupBox11.Controls.Add(Me.Label73)
+        Me.GroupBox11.Controls.Add(Me.Label72)
+        Me.GroupBox11.Controls.Add(Me.Label71)
         Me.GroupBox11.Controls.Add(Me.ButtonEditDevSet)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevAccr)
         Me.GroupBox11.Controls.Add(Me.ButtonSaveDevSettings)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevTIN)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevAdd)
+        Me.GroupBox11.Controls.Add(Me.TextBoxDevname)
+        Me.GroupBox11.Controls.Add(Me.Label44)
+        Me.GroupBox11.Controls.Add(Me.Label42)
+        Me.GroupBox11.Controls.Add(Me.Label98)
+        Me.GroupBox11.Controls.Add(Me.Label43)
+        Me.GroupBox11.Controls.Add(Me.Label103)
         Me.GroupBox11.Controls.Add(Me.Label79)
         Me.GroupBox11.Controls.Add(Me.Label78)
         Me.GroupBox11.Controls.Add(Me.Label77)
         Me.GroupBox11.Controls.Add(Me.Label76)
         Me.GroupBox11.Controls.Add(Me.Label75)
-        Me.GroupBox11.Controls.Add(Me.Label74)
-        Me.GroupBox11.Controls.Add(Me.Label73)
-        Me.GroupBox11.Controls.Add(Me.Label72)
-        Me.GroupBox11.Controls.Add(Me.Label71)
         Me.GroupBox11.Controls.Add(Me.DateTimePickerPTUVU)
         Me.GroupBox11.Controls.Add(Me.DateTimePicker4PTUDI)
         Me.GroupBox11.Controls.Add(Me.TextBoxDEVPTU)
         Me.GroupBox11.Controls.Add(Me.DateTimePicker2ACCRVU)
         Me.GroupBox11.Controls.Add(Me.DateTimePicker1ACCRDI)
-        Me.GroupBox11.Controls.Add(Me.TextBoxDevAccr)
-        Me.GroupBox11.Controls.Add(Me.TextBoxDevTIN)
-        Me.GroupBox11.Controls.Add(Me.TextBoxDevAdd)
-        Me.GroupBox11.Controls.Add(Me.TextBoxDevname)
         Me.GroupBox11.Controls.Add(Me.Label46)
-        Me.GroupBox11.Controls.Add(Me.Label45)
-        Me.GroupBox11.Controls.Add(Me.Label44)
-        Me.GroupBox11.Controls.Add(Me.Label43)
-        Me.GroupBox11.Controls.Add(Me.Label42)
         Me.GroupBox11.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox11.Font = New System.Drawing.Font("Tahoma", 9.75!)
         Me.GroupBox11.Location = New System.Drawing.Point(3, 3)
@@ -1719,7 +1741,7 @@ Partial Class ConfigManager
         Me.ButtonEditDevSet.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEditDevSet.Font = New System.Drawing.Font("Tahoma", 8.25!)
         Me.ButtonEditDevSet.ForeColor = System.Drawing.Color.White
-        Me.ButtonEditDevSet.Location = New System.Drawing.Point(213, 401)
+        Me.ButtonEditDevSet.Location = New System.Drawing.Point(222, 371)
         Me.ButtonEditDevSet.Name = "ButtonEditDevSet"
         Me.ButtonEditDevSet.Size = New System.Drawing.Size(65, 23)
         Me.ButtonEditDevSet.TabIndex = 273
@@ -1733,229 +1755,12 @@ Partial Class ConfigManager
         Me.ButtonSaveDevSettings.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonSaveDevSettings.Font = New System.Drawing.Font("Tahoma", 8.25!)
         Me.ButtonSaveDevSettings.ForeColor = System.Drawing.Color.White
-        Me.ButtonSaveDevSettings.Location = New System.Drawing.Point(33, 401)
+        Me.ButtonSaveDevSettings.Location = New System.Drawing.Point(19, 371)
         Me.ButtonSaveDevSettings.Name = "ButtonSaveDevSettings"
-        Me.ButtonSaveDevSettings.Size = New System.Drawing.Size(174, 23)
+        Me.ButtonSaveDevSettings.Size = New System.Drawing.Size(197, 23)
         Me.ButtonSaveDevSettings.TabIndex = 272
         Me.ButtonSaveDevSettings.Text = "Save"
         Me.ButtonSaveDevSettings.UseVisualStyleBackColor = False
-        '
-        'Label79
-        '
-        Me.Label79.AutoSize = True
-        Me.Label79.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label79.Location = New System.Drawing.Point(30, 356)
-        Me.Label79.Name = "Label79"
-        Me.Label79.Size = New System.Drawing.Size(57, 13)
-        Me.Label79.TabIndex = 271
-        Me.Label79.Text = "Valid Until:"
-        '
-        'Label78
-        '
-        Me.Label78.AutoSize = True
-        Me.Label78.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label78.Location = New System.Drawing.Point(30, 314)
-        Me.Label78.Name = "Label78"
-        Me.Label78.Size = New System.Drawing.Size(69, 13)
-        Me.Label78.TabIndex = 270
-        Me.Label78.Text = "Date Issued:"
-        '
-        'Label77
-        '
-        Me.Label77.AutoSize = True
-        Me.Label77.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label77.Location = New System.Drawing.Point(30, 272)
-        Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(50, 13)
-        Me.Label77.TabIndex = 269
-        Me.Label77.Text = "PTU No.:"
-        '
-        'Label76
-        '
-        Me.Label76.AutoSize = True
-        Me.Label76.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label76.Location = New System.Drawing.Point(30, 230)
-        Me.Label76.Name = "Label76"
-        Me.Label76.Size = New System.Drawing.Size(57, 13)
-        Me.Label76.TabIndex = 268
-        Me.Label76.Text = "Valid Until:"
-        '
-        'Label75
-        '
-        Me.Label75.AutoSize = True
-        Me.Label75.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label75.Location = New System.Drawing.Point(30, 188)
-        Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(69, 13)
-        Me.Label75.TabIndex = 267
-        Me.Label75.Text = "Date Issued:"
-        '
-        'Label74
-        '
-        Me.Label74.AutoSize = True
-        Me.Label74.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label74.Location = New System.Drawing.Point(30, 149)
-        Me.Label74.Name = "Label74"
-        Me.Label74.Size = New System.Drawing.Size(50, 13)
-        Me.Label74.TabIndex = 266
-        Me.Label74.Text = "ACCR #:"
-        '
-        'Label73
-        '
-        Me.Label73.AutoSize = True
-        Me.Label73.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label73.Location = New System.Drawing.Point(30, 107)
-        Me.Label73.Name = "Label73"
-        Me.Label73.Size = New System.Drawing.Size(66, 13)
-        Me.Label73.TabIndex = 265
-        Me.Label73.Text = "Vat Reg Tin:"
-        '
-        'Label72
-        '
-        Me.Label72.AutoSize = True
-        Me.Label72.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label72.Location = New System.Drawing.Point(30, 65)
-        Me.Label72.Name = "Label72"
-        Me.Label72.Size = New System.Drawing.Size(50, 13)
-        Me.Label72.TabIndex = 264
-        Me.Label72.Text = "Address:"
-        '
-        'Label71
-        '
-        Me.Label71.AutoSize = True
-        Me.Label71.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label71.Location = New System.Drawing.Point(30, 23)
-        Me.Label71.Name = "Label71"
-        Me.Label71.Size = New System.Drawing.Size(86, 13)
-        Me.Label71.TabIndex = 263
-        Me.Label71.Text = "Company Name:"
-        '
-        'DateTimePickerPTUVU
-        '
-        Me.DateTimePickerPTUVU.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.DateTimePickerPTUVU.Location = New System.Drawing.Point(33, 373)
-        Me.DateTimePickerPTUVU.Name = "DateTimePickerPTUVU"
-        Me.DateTimePickerPTUVU.Size = New System.Drawing.Size(245, 21)
-        Me.DateTimePickerPTUVU.TabIndex = 262
-        '
-        'DateTimePicker4PTUDI
-        '
-        Me.DateTimePicker4PTUDI.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.DateTimePicker4PTUDI.Location = New System.Drawing.Point(33, 331)
-        Me.DateTimePicker4PTUDI.Name = "DateTimePicker4PTUDI"
-        Me.DateTimePicker4PTUDI.Size = New System.Drawing.Size(245, 21)
-        Me.DateTimePicker4PTUDI.TabIndex = 261
-        '
-        'TextBoxDEVPTU
-        '
-        Me.TextBoxDEVPTU.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxDEVPTU.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.TextBoxDEVPTU.Location = New System.Drawing.Point(33, 284)
-        Me.TextBoxDEVPTU.Name = "TextBoxDEVPTU"
-        Me.TextBoxDEVPTU.Size = New System.Drawing.Size(245, 14)
-        Me.TextBoxDEVPTU.TabIndex = 260
-        '
-        'DateTimePicker2ACCRVU
-        '
-        Me.DateTimePicker2ACCRVU.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.DateTimePicker2ACCRVU.Location = New System.Drawing.Point(33, 247)
-        Me.DateTimePicker2ACCRVU.Name = "DateTimePicker2ACCRVU"
-        Me.DateTimePicker2ACCRVU.Size = New System.Drawing.Size(245, 21)
-        Me.DateTimePicker2ACCRVU.TabIndex = 259
-        '
-        'DateTimePicker1ACCRDI
-        '
-        Me.DateTimePicker1ACCRDI.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.DateTimePicker1ACCRDI.Location = New System.Drawing.Point(33, 205)
-        Me.DateTimePicker1ACCRDI.Name = "DateTimePicker1ACCRDI"
-        Me.DateTimePicker1ACCRDI.Size = New System.Drawing.Size(245, 21)
-        Me.DateTimePicker1ACCRDI.TabIndex = 258
-        '
-        'TextBoxDevAccr
-        '
-        Me.TextBoxDevAccr.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxDevAccr.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.TextBoxDevAccr.Location = New System.Drawing.Point(33, 159)
-        Me.TextBoxDevAccr.Name = "TextBoxDevAccr"
-        Me.TextBoxDevAccr.Size = New System.Drawing.Size(245, 14)
-        Me.TextBoxDevAccr.TabIndex = 257
-        '
-        'TextBoxDevTIN
-        '
-        Me.TextBoxDevTIN.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxDevTIN.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.TextBoxDevTIN.Location = New System.Drawing.Point(33, 120)
-        Me.TextBoxDevTIN.Name = "TextBoxDevTIN"
-        Me.TextBoxDevTIN.Size = New System.Drawing.Size(245, 14)
-        Me.TextBoxDevTIN.TabIndex = 256
-        '
-        'TextBoxDevAdd
-        '
-        Me.TextBoxDevAdd.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxDevAdd.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.TextBoxDevAdd.Location = New System.Drawing.Point(33, 78)
-        Me.TextBoxDevAdd.Name = "TextBoxDevAdd"
-        Me.TextBoxDevAdd.Size = New System.Drawing.Size(245, 14)
-        Me.TextBoxDevAdd.TabIndex = 255
-        '
-        'TextBoxDevname
-        '
-        Me.TextBoxDevname.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.TextBoxDevname.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.TextBoxDevname.Location = New System.Drawing.Point(33, 36)
-        Me.TextBoxDevname.Name = "TextBoxDevname"
-        Me.TextBoxDevname.Size = New System.Drawing.Size(245, 14)
-        Me.TextBoxDevname.TabIndex = 254
-        '
-        'Label46
-        '
-        Me.Label46.AutoSize = True
-        Me.Label46.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label46.Location = New System.Drawing.Point(29, 286)
-        Me.Label46.Name = "Label46"
-        Me.Label46.Size = New System.Drawing.Size(247, 13)
-        Me.Label46.TabIndex = 279
-        Me.Label46.Text = "________________________________________"
-        '
-        'Label45
-        '
-        Me.Label45.AutoSize = True
-        Me.Label45.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label45.Location = New System.Drawing.Point(29, 161)
-        Me.Label45.Name = "Label45"
-        Me.Label45.Size = New System.Drawing.Size(247, 13)
-        Me.Label45.TabIndex = 278
-        Me.Label45.Text = "________________________________________"
-        '
-        'Label44
-        '
-        Me.Label44.AutoSize = True
-        Me.Label44.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label44.Location = New System.Drawing.Point(29, 122)
-        Me.Label44.Name = "Label44"
-        Me.Label44.Size = New System.Drawing.Size(247, 13)
-        Me.Label44.TabIndex = 277
-        Me.Label44.Text = "________________________________________"
-        '
-        'Label43
-        '
-        Me.Label43.AutoSize = True
-        Me.Label43.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label43.Location = New System.Drawing.Point(29, 80)
-        Me.Label43.Name = "Label43"
-        Me.Label43.Size = New System.Drawing.Size(247, 13)
-        Me.Label43.TabIndex = 276
-        Me.Label43.Text = "________________________________________"
-        '
-        'Label42
-        '
-        Me.Label42.AutoSize = True
-        Me.Label42.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.Label42.Location = New System.Drawing.Point(29, 38)
-        Me.Label42.Name = "Label42"
-        Me.Label42.Size = New System.Drawing.Size(247, 13)
-        Me.Label42.TabIndex = 275
-        Me.Label42.Text = "________________________________________"
         '
         'TableLayoutPanel9
         '
@@ -2783,7 +2588,7 @@ Partial Class ConfigManager
         Me.TableLayoutPanel4.Name = "TableLayoutPanel4"
         Me.TableLayoutPanel4.RowCount = 1
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 462.0!))
+        Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 477.0!))
         Me.TableLayoutPanel4.Size = New System.Drawing.Size(954, 477)
         Me.TableLayoutPanel4.TabIndex = 0
         '
@@ -3411,14 +3216,6 @@ Partial Class ConfigManager
         Me.DataGridViewOutlets.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewOutlets.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewOutlets.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle1.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewOutlets.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewOutlets.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewOutlets.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colStoreID, Me.colBrandID, Me.colStoreName, Me.colUserID, Me.colLocation, Me.colPostal, Me.colAddress, Me.colBrgy, Me.colMuni, Me.colProv, Me.colTin, Me.colTel, Me.colMin, Me.colMsn, Me.colPTUN})
         Me.DataGridViewOutlets.Dock = System.Windows.Forms.DockStyle.Fill
@@ -3426,14 +3223,6 @@ Partial Class ConfigManager
         Me.DataGridViewOutlets.Location = New System.Drawing.Point(0, 0)
         Me.DataGridViewOutlets.Name = "DataGridViewOutlets"
         Me.DataGridViewOutlets.ReadOnly = True
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        DataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewOutlets.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewOutlets.RowHeadersVisible = False
         Me.DataGridViewOutlets.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewOutlets.Size = New System.Drawing.Size(459, 165)
@@ -4494,6 +4283,339 @@ Partial Class ConfigManager
         'BackgroundWorkerValidateSerial
         '
         '
+        'Label46
+        '
+        Me.Label46.AutoSize = True
+        Me.Label46.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label46.Location = New System.Drawing.Point(96, 292)
+        Me.Label46.Name = "Label46"
+        Me.Label46.Size = New System.Drawing.Size(192, 17)
+        Me.Label46.TabIndex = 279
+        Me.Label46.Text = "_______________________"
+        '
+        'DateTimePicker1ACCRDI
+        '
+        Me.DateTimePicker1ACCRDI.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.DateTimePicker1ACCRDI.Location = New System.Drawing.Point(98, 238)
+        Me.DateTimePicker1ACCRDI.Name = "DateTimePicker1ACCRDI"
+        Me.DateTimePicker1ACCRDI.Size = New System.Drawing.Size(189, 21)
+        Me.DateTimePicker1ACCRDI.TabIndex = 258
+        '
+        'DateTimePicker2ACCRVU
+        '
+        Me.DateTimePicker2ACCRVU.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.DateTimePicker2ACCRVU.Location = New System.Drawing.Point(98, 265)
+        Me.DateTimePicker2ACCRVU.Name = "DateTimePicker2ACCRVU"
+        Me.DateTimePicker2ACCRVU.Size = New System.Drawing.Size(189, 21)
+        Me.DateTimePicker2ACCRVU.TabIndex = 259
+        '
+        'TextBoxDEVPTU
+        '
+        Me.TextBoxDEVPTU.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDEVPTU.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.TextBoxDEVPTU.Location = New System.Drawing.Point(97, 292)
+        Me.TextBoxDEVPTU.Name = "TextBoxDEVPTU"
+        Me.TextBoxDEVPTU.Size = New System.Drawing.Size(200, 14)
+        Me.TextBoxDEVPTU.TabIndex = 260
+        '
+        'DateTimePicker4PTUDI
+        '
+        Me.DateTimePicker4PTUDI.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.DateTimePicker4PTUDI.Location = New System.Drawing.Point(98, 315)
+        Me.DateTimePicker4PTUDI.Name = "DateTimePicker4PTUDI"
+        Me.DateTimePicker4PTUDI.Size = New System.Drawing.Size(189, 21)
+        Me.DateTimePicker4PTUDI.TabIndex = 261
+        '
+        'DateTimePickerPTUVU
+        '
+        Me.DateTimePickerPTUVU.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.DateTimePickerPTUVU.Location = New System.Drawing.Point(98, 344)
+        Me.DateTimePickerPTUVU.Name = "DateTimePickerPTUVU"
+        Me.DateTimePickerPTUVU.Size = New System.Drawing.Size(189, 21)
+        Me.DateTimePickerPTUVU.TabIndex = 262
+        '
+        'Label75
+        '
+        Me.Label75.AutoSize = True
+        Me.Label75.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label75.Location = New System.Drawing.Point(17, 238)
+        Me.Label75.Name = "Label75"
+        Me.Label75.Size = New System.Drawing.Size(69, 13)
+        Me.Label75.TabIndex = 267
+        Me.Label75.Text = "Date Issued:"
+        '
+        'Label76
+        '
+        Me.Label76.AutoSize = True
+        Me.Label76.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label76.Location = New System.Drawing.Point(17, 266)
+        Me.Label76.Name = "Label76"
+        Me.Label76.Size = New System.Drawing.Size(57, 13)
+        Me.Label76.TabIndex = 268
+        Me.Label76.Text = "Valid Until:"
+        '
+        'Label77
+        '
+        Me.Label77.AutoSize = True
+        Me.Label77.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label77.Location = New System.Drawing.Point(17, 294)
+        Me.Label77.Name = "Label77"
+        Me.Label77.Size = New System.Drawing.Size(50, 13)
+        Me.Label77.TabIndex = 269
+        Me.Label77.Text = "PTU No.:"
+        '
+        'Label78
+        '
+        Me.Label78.AutoSize = True
+        Me.Label78.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label78.Location = New System.Drawing.Point(17, 321)
+        Me.Label78.Name = "Label78"
+        Me.Label78.Size = New System.Drawing.Size(69, 13)
+        Me.Label78.TabIndex = 270
+        Me.Label78.Text = "Date Issued:"
+        '
+        'Label79
+        '
+        Me.Label79.AutoSize = True
+        Me.Label79.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label79.Location = New System.Drawing.Point(19, 352)
+        Me.Label79.Name = "Label79"
+        Me.Label79.Size = New System.Drawing.Size(57, 13)
+        Me.Label79.TabIndex = 271
+        Me.Label79.Text = "Valid Until:"
+        '
+        'Label104
+        '
+        Me.Label104.AutoSize = True
+        Me.Label104.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label104.Location = New System.Drawing.Point(17, 155)
+        Me.Label104.Name = "Label104"
+        Me.Label104.Size = New System.Drawing.Size(68, 13)
+        Me.Label104.TabIndex = 315
+        Me.Label104.Text = "Postal Code:"
+        '
+        'TextBoxDevPostal
+        '
+        Me.TextBoxDevPostal.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevPostal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevPostal.Location = New System.Drawing.Point(99, 151)
+        Me.TextBoxDevPostal.Name = "TextBoxDevPostal"
+        Me.TextBoxDevPostal.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevPostal.TabIndex = 314
+        '
+        'Label105
+        '
+        Me.Label105.AutoSize = True
+        Me.Label105.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label105.Location = New System.Drawing.Point(95, 157)
+        Me.Label105.Name = "Label105"
+        Me.Label105.Size = New System.Drawing.Size(192, 17)
+        Me.Label105.TabIndex = 316
+        Me.Label105.Text = "_______________________"
+        '
+        'TextBoxDevProvince
+        '
+        Me.TextBoxDevProvince.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevProvince.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevProvince.Location = New System.Drawing.Point(99, 125)
+        Me.TextBoxDevProvince.Name = "TextBoxDevProvince"
+        Me.TextBoxDevProvince.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevProvince.TabIndex = 311
+        '
+        'Label102
+        '
+        Me.Label102.AutoSize = True
+        Me.Label102.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label102.Location = New System.Drawing.Point(95, 131)
+        Me.Label102.Name = "Label102"
+        Me.Label102.Size = New System.Drawing.Size(192, 17)
+        Me.Label102.TabIndex = 312
+        Me.Label102.Text = "_______________________"
+        '
+        'Label101
+        '
+        Me.Label101.AutoSize = True
+        Me.Label101.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label101.Location = New System.Drawing.Point(17, 128)
+        Me.Label101.Name = "Label101"
+        Me.Label101.Size = New System.Drawing.Size(52, 13)
+        Me.Label101.TabIndex = 310
+        Me.Label101.Text = "Province:"
+        '
+        'TextBoxDevMunicipality
+        '
+        Me.TextBoxDevMunicipality.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevMunicipality.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevMunicipality.Location = New System.Drawing.Point(99, 98)
+        Me.TextBoxDevMunicipality.Name = "TextBoxDevMunicipality"
+        Me.TextBoxDevMunicipality.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevMunicipality.TabIndex = 308
+        '
+        'Label100
+        '
+        Me.Label100.AutoSize = True
+        Me.Label100.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label100.Location = New System.Drawing.Point(95, 104)
+        Me.Label100.Name = "Label100"
+        Me.Label100.Size = New System.Drawing.Size(192, 17)
+        Me.Label100.TabIndex = 309
+        Me.Label100.Text = "_______________________"
+        '
+        'Label99
+        '
+        Me.Label99.AutoSize = True
+        Me.Label99.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label99.Location = New System.Drawing.Point(16, 100)
+        Me.Label99.Name = "Label99"
+        Me.Label99.Size = New System.Drawing.Size(66, 13)
+        Me.Label99.TabIndex = 307
+        Me.Label99.Text = "Municipality:"
+        '
+        'TextBoxDevBarangay
+        '
+        Me.TextBoxDevBarangay.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevBarangay.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevBarangay.Location = New System.Drawing.Point(99, 71)
+        Me.TextBoxDevBarangay.Name = "TextBoxDevBarangay"
+        Me.TextBoxDevBarangay.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevBarangay.TabIndex = 305
+        '
+        'Label97
+        '
+        Me.Label97.AutoSize = True
+        Me.Label97.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label97.Location = New System.Drawing.Point(16, 75)
+        Me.Label97.Name = "Label97"
+        Me.Label97.Size = New System.Drawing.Size(57, 13)
+        Me.Label97.TabIndex = 304
+        Me.Label97.Text = "Barangay:"
+        '
+        'Label74
+        '
+        Me.Label74.AutoSize = True
+        Me.Label74.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label74.Location = New System.Drawing.Point(19, 211)
+        Me.Label74.Name = "Label74"
+        Me.Label74.Size = New System.Drawing.Size(50, 13)
+        Me.Label74.TabIndex = 300
+        Me.Label74.Text = "ACCR #:"
+        '
+        'Label73
+        '
+        Me.Label73.AutoSize = True
+        Me.Label73.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label73.Location = New System.Drawing.Point(17, 181)
+        Me.Label73.Name = "Label73"
+        Me.Label73.Size = New System.Drawing.Size(66, 13)
+        Me.Label73.TabIndex = 299
+        Me.Label73.Text = "Vat Reg Tin:"
+        '
+        'Label72
+        '
+        Me.Label72.AutoSize = True
+        Me.Label72.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label72.Location = New System.Drawing.Point(16, 48)
+        Me.Label72.Name = "Label72"
+        Me.Label72.Size = New System.Drawing.Size(50, 13)
+        Me.Label72.TabIndex = 298
+        Me.Label72.Text = "Address:"
+        '
+        'Label71
+        '
+        Me.Label71.AutoSize = True
+        Me.Label71.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.Label71.Location = New System.Drawing.Point(17, 22)
+        Me.Label71.Name = "Label71"
+        Me.Label71.Size = New System.Drawing.Size(38, 13)
+        Me.Label71.TabIndex = 297
+        Me.Label71.Text = "Name:"
+        '
+        'TextBoxDevAccr
+        '
+        Me.TextBoxDevAccr.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevAccr.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevAccr.Location = New System.Drawing.Point(101, 206)
+        Me.TextBoxDevAccr.Name = "TextBoxDevAccr"
+        Me.TextBoxDevAccr.Size = New System.Drawing.Size(206, 14)
+        Me.TextBoxDevAccr.TabIndex = 296
+        '
+        'TextBoxDevTIN
+        '
+        Me.TextBoxDevTIN.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevTIN.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevTIN.Location = New System.Drawing.Point(99, 177)
+        Me.TextBoxDevTIN.Name = "TextBoxDevTIN"
+        Me.TextBoxDevTIN.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevTIN.TabIndex = 295
+        '
+        'TextBoxDevAdd
+        '
+        Me.TextBoxDevAdd.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevAdd.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevAdd.Location = New System.Drawing.Point(99, 45)
+        Me.TextBoxDevAdd.Name = "TextBoxDevAdd"
+        Me.TextBoxDevAdd.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevAdd.TabIndex = 294
+        '
+        'TextBoxDevname
+        '
+        Me.TextBoxDevname.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TextBoxDevname.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxDevname.Location = New System.Drawing.Point(99, 19)
+        Me.TextBoxDevname.Name = "TextBoxDevname"
+        Me.TextBoxDevname.Size = New System.Drawing.Size(208, 14)
+        Me.TextBoxDevname.TabIndex = 293
+        '
+        'Label44
+        '
+        Me.Label44.AutoSize = True
+        Me.Label44.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label44.Location = New System.Drawing.Point(95, 183)
+        Me.Label44.Name = "Label44"
+        Me.Label44.Size = New System.Drawing.Size(192, 17)
+        Me.Label44.TabIndex = 303
+        Me.Label44.Text = "_______________________"
+        '
+        'Label42
+        '
+        Me.Label42.AutoSize = True
+        Me.Label42.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label42.Location = New System.Drawing.Point(95, 24)
+        Me.Label42.Name = "Label42"
+        Me.Label42.Size = New System.Drawing.Size(192, 17)
+        Me.Label42.TabIndex = 301
+        Me.Label42.Text = "_______________________"
+        '
+        'Label98
+        '
+        Me.Label98.AutoSize = True
+        Me.Label98.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label98.Location = New System.Drawing.Point(95, 77)
+        Me.Label98.Name = "Label98"
+        Me.Label98.Size = New System.Drawing.Size(192, 17)
+        Me.Label98.TabIndex = 306
+        Me.Label98.Text = "_______________________"
+        '
+        'Label43
+        '
+        Me.Label43.AutoSize = True
+        Me.Label43.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label43.Location = New System.Drawing.Point(95, 50)
+        Me.Label43.Name = "Label43"
+        Me.Label43.Size = New System.Drawing.Size(192, 17)
+        Me.Label43.TabIndex = 302
+        Me.Label43.Text = "_______________________"
+        '
+        'Label103
+        '
+        Me.Label103.AutoSize = True
+        Me.Label103.Font = New System.Drawing.Font("Tahoma", 10.0!)
+        Me.Label103.Location = New System.Drawing.Point(95, 212)
+        Me.Label103.Name = "Label103"
+        Me.Label103.Size = New System.Drawing.Size(192, 17)
+        Me.Label103.TabIndex = 313
+        Me.Label103.Text = "_______________________"
+        '
         'ConfigManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -4777,24 +4899,6 @@ Partial Class ConfigManager
     Friend WithEvents ProgressBar4 As ProgressBar
     Friend WithEvents GroupBox11 As GroupBox
     Friend WithEvents ButtonSaveDevSettings As Button
-    Friend WithEvents Label79 As Label
-    Friend WithEvents Label78 As Label
-    Friend WithEvents Label77 As Label
-    Friend WithEvents Label76 As Label
-    Friend WithEvents Label75 As Label
-    Friend WithEvents Label74 As Label
-    Friend WithEvents Label73 As Label
-    Friend WithEvents Label72 As Label
-    Friend WithEvents Label71 As Label
-    Friend WithEvents DateTimePickerPTUVU As DateTimePicker
-    Friend WithEvents DateTimePicker4PTUDI As DateTimePicker
-    Friend WithEvents TextBoxDEVPTU As TextBox
-    Friend WithEvents DateTimePicker2ACCRVU As DateTimePicker
-    Friend WithEvents DateTimePicker1ACCRDI As DateTimePicker
-    Friend WithEvents TextBoxDevAccr As TextBox
-    Friend WithEvents TextBoxDevTIN As TextBox
-    Friend WithEvents TextBoxDevAdd As TextBox
-    Friend WithEvents TextBoxDevname As TextBox
     Friend WithEvents TableLayoutPanel8 As TableLayoutPanel
     Friend WithEvents TableLayoutPanel9 As TableLayoutPanel
     Friend WithEvents GroupBox12 As GroupBox
@@ -4911,11 +5015,6 @@ Partial Class ConfigManager
     Friend WithEvents Label32 As Label
     Friend WithEvents Label40 As Label
     Friend WithEvents Label41 As Label
-    Friend WithEvents Label46 As Label
-    Friend WithEvents Label45 As Label
-    Friend WithEvents Label44 As Label
-    Friend WithEvents Label43 As Label
-    Friend WithEvents Label42 As Label
     Friend WithEvents Label59 As Label
     Friend WithEvents Label58 As Label
     Friend WithEvents Label57 As Label
@@ -5012,4 +5111,39 @@ Partial Class ConfigManager
     Friend WithEvents colMsn As DataGridViewTextBoxColumn
     Friend WithEvents colPTUN As DataGridViewTextBoxColumn
     Friend WithEvents rtbLogStats As RichTextBox
+    Friend WithEvents Label104 As Label
+    Friend WithEvents TextBoxDevPostal As TextBox
+    Friend WithEvents Label105 As Label
+    Friend WithEvents TextBoxDevProvince As TextBox
+    Friend WithEvents Label102 As Label
+    Friend WithEvents Label101 As Label
+    Friend WithEvents TextBoxDevMunicipality As TextBox
+    Friend WithEvents Label100 As Label
+    Friend WithEvents Label99 As Label
+    Friend WithEvents TextBoxDevBarangay As TextBox
+    Friend WithEvents Label97 As Label
+    Friend WithEvents Label74 As Label
+    Friend WithEvents Label73 As Label
+    Friend WithEvents Label72 As Label
+    Friend WithEvents Label71 As Label
+    Friend WithEvents TextBoxDevAccr As TextBox
+    Friend WithEvents TextBoxDevTIN As TextBox
+    Friend WithEvents TextBoxDevAdd As TextBox
+    Friend WithEvents TextBoxDevname As TextBox
+    Friend WithEvents Label44 As Label
+    Friend WithEvents Label42 As Label
+    Friend WithEvents Label98 As Label
+    Friend WithEvents Label43 As Label
+    Friend WithEvents Label103 As Label
+    Friend WithEvents Label79 As Label
+    Friend WithEvents Label78 As Label
+    Friend WithEvents Label77 As Label
+    Friend WithEvents Label76 As Label
+    Friend WithEvents Label75 As Label
+    Friend WithEvents DateTimePickerPTUVU As DateTimePicker
+    Friend WithEvents DateTimePicker4PTUDI As DateTimePicker
+    Friend WithEvents TextBoxDEVPTU As TextBox
+    Friend WithEvents DateTimePicker2ACCRVU As DateTimePicker
+    Friend WithEvents DateTimePicker1ACCRDI As DateTimePicker
+    Friend WithEvents Label46 As Label
 End Class

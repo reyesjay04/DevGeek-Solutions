@@ -29,6 +29,7 @@ Public Class ConfigManager
     Property MasterOutletInfo As New MasterlistOutletCls
     Property AccountExist As Boolean
     Property ValidProductKey As Boolean
+    Property DevInfo As DevInfoCls
     Property SyncFrom As DateTime
     Property SyncTo As DateTime
     Private Sub ConfigManager_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -429,27 +430,52 @@ Public Class ConfigManager
     End Sub
     Private Sub LoadDefaultSettingsDev()
         Try
-            If ValidCloudConnection = True And ValidLocalConnection = True Then
+            If ValidCloudConnection And ValidLocalConnection Then
                 Dim ConnectionCloud As MySqlConnection = TestCloudConnection()
-                Dim sql = "SELECT `Dev_Company_Name`, `Dev_Address`, `Dev_Tin`, `Dev_Accr_No`, `Dev_Accr_Date_Issued`, `Dev_Accr_Valid_Until`, `Dev_PTU_No`, `Dev_PTU_Date_Issued`, `Dev_PTU_Valid_Until` FROM admin_settings_org WHERE settings_id = 1"
+                Dim sql = "SELECT `Dev_Company_Name`, `Dev_Alias`, `Dev_Address`, `Dev_Brgy`, `Dev_Municipality`, `Dev_Province`, `Dev_Postal`, `Dev_Tin`, `Dev_Accr_No`, `Dev_Accr_Date_Issued`, `Dev_Accr_Valid_Until`, `Dev_PTU_No`, `Dev_PTU_Date_Issued`, `Dev_PTU_Valid_Until` FROM admin_settings_org WHERE settings_id = 1"
                 Dim cmd As MySqlCommand = New MySqlCommand(sql, ConnectionCloud)
-                Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-                Dim dt As DataTable = New DataTable
-                da.Fill(dt)
-                If dt.Rows.Count > 0 Then
-                    TextBoxDevname.Text = dt(0)(0)
-                    TextBoxDevAdd.Text = dt(0)(1)
-                    TextBoxDevTIN.Text = dt(0)(2)
-                    TextBoxDevAccr.Text = dt(0)(3)
-                    DateTimePicker1ACCRDI.Text = dt(0)(4)
-                    DateTimePicker2ACCRVU.Text = dt(0)(5)
-                    TextBoxDEVPTU.Text = dt(0)(6)
-                    DateTimePicker4PTUDI.Text = dt(0)(7)
-                    DateTimePickerPTUVU.Text = dt(0)(8)
-                    ConfirmDevInfoSettings = True
-                Else
-                    ConfirmDevInfoSettings = False
-                End If
+                Using reader = cmd.ExecuteReader
+                    If reader.HasRows Then
+                        While reader.Read
+                            With DevInfo
+                                .Dev_Company_Name = reader("Dev_Company_Name").ToString
+                                .Dev_Alias = reader("Dev_Alias").ToString
+                                .Dev_Address = reader("Dev_Address").ToString
+                                .Dev_Brgy = reader("Dev_Brgy").ToString
+                                .Dev_Municipality = reader("Dev_Municipality").ToString
+                                .Dev_Province = reader("Dev_Province").ToString
+                                .Dev_Postal = reader("Dev_Postal").ToString
+                                .Dev_Tin = reader("Dev_Tin").ToString
+                                .Dev_Accr_No = reader("Dev_Accr_No").ToString
+                                .Dev_Accr_Date_Issued = reader("Dev_Accr_Date_Issued").ToString
+                                .Dev_Accr_Valid_Until = reader("Dev_Accr_Valid_Until").ToString
+                                .Dev_PTU_No = reader("Dev_PTU_No").ToString
+                                .Dev_PTU_Date_Issued = reader("Dev_PTU_Date_Issued").ToString
+                                .Dev_PTU_Valid_Until = reader("Dev_PTU_Valid_Until").ToString
+                            End With
+                            ConfirmDevInfoSettings = True
+                        End While
+                    Else
+                        ConfirmDevInfoSettings = False
+                    End If
+                End Using
+
+                With DevInfo
+                    TextBoxDevname.Text = .Dev_Company_Name
+                    TextBoxDevAdd.Text = .Dev_Address
+                    TextBoxDevBarangay.Text = .Dev_Brgy
+                    TextBoxDevMunicipality.Text = .Dev_Municipality
+                    TextBoxDevProvince.Text = .Dev_Province
+                    TextBoxDevPostal.Text = .Dev_Postal
+                    TextBoxDevTIN.Text = .Dev_Tin
+                    TextBoxDevAccr.Text = .Dev_Accr_No
+                    DateTimePicker1ACCRDI.Text = .Dev_Accr_Date_Issued
+                    DateTimePicker2ACCRVU.Text = .Dev_Accr_Valid_Until
+                    TextBoxDEVPTU.Text = .Dev_PTU_No
+                    DateTimePicker4PTUDI.Text = .Dev_PTU_Date_Issued
+                    DateTimePickerPTUVU.Text = .Dev_PTU_Valid_Until
+                End With
+
                 ConnectionCloud.Close()
             End If
         Catch ex As Exception
@@ -615,25 +641,30 @@ Public Class ConfigManager
         End Try
     End Sub
     Private Function LoadDevInfo() As DevInfoCls
-        Dim DevInfo As New DevInfoCls
+        Dim DevInf As New DevInfoCls
         Try
             If ValidLocalConnection Then
                 Dim ConnectionLocal As MySqlConnection = TestLocalConnection()
-                Dim sql = "SELECT Dev_Company_Name, Dev_Address, Dev_Tin, Dev_Accr_No, Dev_Accr_Date_Issued, Dev_Accr_Valid_Until, Dev_PTU_No, Dev_PTU_Date_Issued, Dev_PTU_Valid_Until FROM loc_settings WHERE settings_id = 1"
+                Dim sql = "SELECT Dev_Company_Name, Dev_Alias, Dev_Address, Dev_Brgy, Dev_Municipality, Dev_Province, Dev_Postal, Dev_Tin, Dev_Accr_No, Dev_Accr_Date_Issued, Dev_Accr_Valid_Until, Dev_PTU_No, Dev_PTU_Date_Issued, Dev_PTU_Valid_Until FROM loc_settings WHERE settings_id = 1"
                 Using cmd As New MySqlCommand(sql, ConnectionLocal)
                     Dim reader = cmd.ExecuteReader
                     If reader.HasRows Then
                         While reader.Read
-                            With DevInfo
-                                .Dev_Company_Name = reader("Dev_PTU_Valid_Until")
-                                .Dev_Address = reader("Dev_PTU_Valid_Until")
-                                .Dev_Tin = reader("Dev_PTU_Valid_Until")
-                                .Dev_Accr_No = reader("Dev_PTU_Valid_Until")
-                                .Dev_Accr_Date_Issued = reader("Dev_PTU_Valid_Until")
-                                .Dev_Accr_Valid_Until = reader("Dev_PTU_Valid_Until")
-                                .Dev_PTU_No = reader("Dev_PTU_Valid_Until")
-                                .Dev_PTU_Date_Issued = reader("Dev_PTU_Valid_Until")
-                                .Dev_PTU_Valid_Until = reader("Dev_PTU_Valid_Until")
+                            With DevInf
+                                .Dev_Company_Name = reader("Dev_Company_Name").ToString
+                                .Dev_Alias = reader("Dev_Alias").ToString
+                                .Dev_Address = reader("Dev_Address").ToString
+                                .Dev_Brgy = reader("Dev_Brgy").ToString
+                                .Dev_Municipality = reader("Dev_Municipality").ToString
+                                .Dev_Province = reader("Dev_Province").ToString
+                                .Dev_Postal = reader("Dev_Postal").ToString
+                                .Dev_Tin = reader("Dev_Tin").ToString
+                                .Dev_Accr_No = reader("Dev_Accr_No").ToString
+                                .Dev_Accr_Date_Issued = reader("Dev_Accr_Date_Issued").ToString
+                                .Dev_Accr_Valid_Until = reader("Dev_Accr_Valid_Until").ToString
+                                .Dev_PTU_No = reader("Dev_PTU_No").ToString
+                                .Dev_PTU_Date_Issued = reader("Dev_PTU_Date_Issued").ToString
+                                .Dev_PTU_Valid_Until = reader("Dev_PTU_Valid_Until").ToString
                                 ConfirmDevInfoSettings = True
                             End With
                         End While
@@ -642,11 +673,28 @@ Public Class ConfigManager
                     End If
                 End Using
             End If
+
+            With DevInf
+                TextBoxDevname.Text = .Dev_Company_Name
+                TextBoxDevAdd.Text = .Dev_Address
+                TextBoxDevBarangay.Text = .Dev_Brgy
+                TextBoxDevMunicipality.Text = .Dev_Municipality
+                TextBoxDevProvince.Text = .Dev_Province
+                TextBoxDevPostal.Text = .Dev_Postal
+                TextBoxDevTIN.Text = .Dev_Tin
+                TextBoxDevAccr.Text = .Dev_Accr_No
+                DateTimePicker1ACCRDI.Text = .Dev_Accr_Date_Issued
+                DateTimePicker2ACCRVU.Text = .Dev_Accr_Valid_Until
+                TextBoxDEVPTU.Text = .Dev_PTU_No
+                DateTimePicker4PTUDI.Text = .Dev_PTU_Date_Issued
+                DateTimePickerPTUVU.Text = .Dev_PTU_Valid_Until
+            End With
+
         Catch ex As Exception
             ConfirmDevInfoSettings = False
             MsgBox(ex.Message, MsgBoxStyle.Critical, "DEV INFO FETCH")
         End Try
-        Return DevInfo
+        Return DevInf
     End Function
 
     Private Function LoadOutlets() As List(Of OutletsCls)
@@ -1070,7 +1118,7 @@ Public Class ConfigManager
                     thread1 = New Thread(AddressOf LoadAdditionalSettings)
                     thread1.Start()
                     threadList.Add(thread1)
-                    thread1 = New Thread(AddressOf LoadDevInfo)
+                    thread1 = New Thread(Sub() DevInfo = LoadDevInfo())
                     thread1.Start()
                     threadList.Add(thread1)
                 End If
@@ -1117,59 +1165,99 @@ Public Class ConfigManager
     End Sub
     Private Sub SaveDevInfo()
         Try
-            Dim table = "loc_settings"
-            Dim where = "settings_id = 1"
+
             If Not TextboxIsEmpty(GroupBox11) Then
-                If ValidLocalConnection = True Then
+                If ValidLocalConnection Then
                     Dim ConnectionLocal As MySqlConnection = TestLocalConnection()
-                    Dim fields = "Dev_Company_Name, Dev_Address, Dev_Tin, Dev_Accr_No, Dev_Accr_Date_Issued, Dev_Accr_Valid_Until, Dev_PTU_No, Dev_PTU_Date_Issued, Dev_PTU_Valid_Until, S_DB_Version"
-                    Dim sql = "Select " & fields & " FROM " & table & " WHERE " & where
-                    Dim cmd As MySqlCommand = New MySqlCommand(sql, ConnectionLocal)
-                    Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-                    Dim dt As DataTable = New DataTable
-                    da.Fill(dt)
-                    If dt.Rows.Count > 0 Then
-                        Dim fields1 = "`Dev_Company_Name`= '" & Trim(TextBoxDevname.Text) & "',
-                `Dev_Address`= '" & Trim(TextBoxDevAdd.Text) & "',
-                `Dev_Tin`= '" & Trim(TextBoxDevTIN.Text) & "',
-                `Dev_Accr_No`= '" & Trim(TextBoxDevAccr.Text) & "' ,
-                `Dev_Accr_Date_Issued`= '" & Format(DateTimePicker1ACCRDI.Value, "yyy-MM-dd") & "',
-                `Dev_Accr_Valid_Until`= '" & Format(DateTimePicker2ACCRVU.Value, "yyyy-MM-dd") & "',
-                `Dev_PTU_No`= '" & Trim(TextBoxDEVPTU.Text) & "',
-                `Dev_PTU_Date_Issued`= '" & Format(DateTimePickerPTUVU.Value, "yyyy-MM-dd") & "',
-                `Dev_PTU_Valid_Until`= '" & Format(DateTimePicker4PTUDI.Value, "yyyy-MM-dd") & "',
-                `S_DB_Version` = 'v.1.0.0 POS-MOD-2022-10-31'"
-                        sql = "UPDATE " & table & " SET " & fields1 & " WHERE " & where
-                        cmd = New MySqlCommand(sql, ConnectionLocal)
-                        cmd.ExecuteNonQuery()
-                        ConfirmDevInfoSettings = True
-                        If FillUp = True Then
-                        Else
-                            MsgBox("Saved!")
-                        End If
 
+                    Dim isExist As Boolean = False
+
+                    Using cmd = New MySqlCommand("", ConnectionLocal)
+                        cmd.Parameters.Clear()
+                        cmd.CommandText = "Select * FROM loc_settings WHERE settings_id = 1"
+                        cmd.Prepare()
+
+                        Using reader = cmd.ExecuteReader
+                            If reader.HasRows Then
+                                isExist = True
+                            End If
+                            reader.Close()
+                        End Using
+                        cmd.Dispose()
+                    End Using
+
+                    If isExist Then
+                        Using cmd = New MySqlCommand("", ConnectionLocal)
+                            cmd.Parameters.Clear()
+                            cmd.CommandText = "UPDATE loc_settings SET Dev_Company_Name = @Dev_Company_Name, Dev_Alias = @Dev_Alias, Dev_Address = @Dev_Address, Dev_Tin = @Dev_Tin, Dev_Accr_No = @Dev_Accr_No, Dev_Accr_Date_Issued = @Dev_Accr_Date_Issued,
+                                               Dev_Accr_Valid_Until = @Dev_Accr_Valid_Until, Dev_PTU_No = @Dev_PTU_No, Dev_PTU_Date_Issued = @Dev_PTU_Date_Issued, Dev_PTU_Valid_Until = @Dev_PTU_Valid_Until,
+                                               S_DB_Version = @S_DB_Version, Dev_Brgy = @Dev_Brgy, Dev_Municipality = @Dev_Municipality, Dev_Province = @Dev_Province, Dev_Postal = @Dev_Postal WHERE settings_id = 1"
+
+                            cmd.Prepare()
+                            With DevInfo
+                                cmd.Parameters.AddWithValue("@Dev_Company_Name", .Dev_Company_Name)
+                                cmd.Parameters.AddWithValue("@Dev_Alias", .Dev_Alias)
+                                cmd.Parameters.AddWithValue("@Dev_Address", .Dev_Address)
+                                cmd.Parameters.AddWithValue("@Dev_Tin", .Dev_Tin)
+                                cmd.Parameters.AddWithValue("@Dev_Accr_No", .Dev_Accr_No)
+                                cmd.Parameters.AddWithValue("@Dev_Accr_Date_Issued", .Dev_Accr_Date_Issued)
+                                cmd.Parameters.AddWithValue("@Dev_Accr_Valid_Until", .Dev_Accr_Valid_Until)
+                                cmd.Parameters.AddWithValue("@Dev_PTU_No", .Dev_PTU_No)
+                                cmd.Parameters.AddWithValue("@Dev_PTU_Date_Issued", .Dev_PTU_Date_Issued)
+                                cmd.Parameters.AddWithValue("@Dev_PTU_Valid_Until", .Dev_PTU_Valid_Until)
+                                cmd.Parameters.AddWithValue("@S_DB_Version", "v.1.0.0 POS-MOD-2022-10-31")
+                                cmd.Parameters.AddWithValue("@Dev_Brgy", .Dev_Brgy)
+                                cmd.Parameters.AddWithValue("@Dev_Municipality", .Dev_Municipality)
+                                cmd.Parameters.AddWithValue("@Dev_Province", .Dev_Province)
+                                cmd.Parameters.AddWithValue("@Dev_Postal", .Dev_Postal)
+
+                            End With
+
+                            cmd.ExecuteNonQuery()
+                            cmd.Dispose()
+                            ConfirmDevInfoSettings = True
+
+                            If Not FillUp Then
+                                MsgBox("Saved!")
+                            End If
+
+                        End Using
                     Else
-                        Dim fields2 = "(Dev_Company_Name, Dev_Address, Dev_Tin, Dev_Accr_No, Dev_Accr_Date_Issued, Dev_Accr_Valid_Until, Dev_PTU_No, Dev_PTU_Date_Issued, Dev_PTU_Valid_Until, S_DB_Version)"
-                        Dim value = "('" & Trim(TextBoxDevname.Text) & "'
-                ,'" & Trim(TextBoxDevAdd.Text) & "'
-                ,'" & Trim(TextBoxDevTIN.Text) & "'
-                ,'" & Trim(TextBoxDevAccr.Text) & "'
-                ,'" & Format(DateTimePicker1ACCRDI.Value, "yyyy-MM-dd") & "'
-                ,'" & Format(DateTimePicker2ACCRVU.Value, "yyyy-MM-dd") & "'
-                ,'" & Trim(TextBoxDEVPTU.Text) & "'
-                ,'" & Format(DateTimePickerPTUVU.Value, "yyyy-MM-dd") & "'
-                ,'" & Format(DateTimePicker4PTUDI.Value, "yyyy-MM-dd") & "'
-                ,'v.1.0.0 POS-MOD-2022-10-31')"
-                        sql = "INSERT INTO " & table & " " & fields2 & " VALUES " & value
-                        cmd = New MySqlCommand(sql, ConnectionLocal)
-                        cmd.ExecuteNonQuery()
-                        ConfirmDevInfoSettings = True
-                        If FillUp = True Then
-                        Else
-                            MsgBox("Saved!")
-                        End If
+                        Using cmd = New MySqlCommand("", ConnectionLocal)
+                            cmd.Parameters.Clear()
+                            cmd.CommandText = "INSERT INTO loc_settings 
+                                                    (Dev_Company_Name, Dev_Alias, Dev_Address, Dev_Tin, Dev_Accr_No, Dev_Accr_Date_Issued, Dev_Accr_Valid_Until, Dev_PTU_No, Dev_PTU_Date_Issued, Dev_PTU_Valid_Until, S_DB_Version, Dev_Brgy, Dev_Municipality, Dev_Province, Dev_Postal)
+                                                    VALUES
+                                                    (@Dev_Company_Name, @Dev_Alias, @Dev_Address, @Dev_Tin, @Dev_Accr_No, @Dev_Accr_Date_Issued, @Dev_Accr_Valid_Until, @Dev_PTU_No, @Dev_PTU_Date_Issued, @Dev_PTU_Valid_Until, @S_DB_Version, @Dev_Brgy, @Dev_Municipality, @Dev_Province, @Dev_Postal)"
+                            cmd.Prepare()
+                            With DevInfo
+                                cmd.Parameters.AddWithValue("@Dev_Company_Name", .Dev_Company_Name)
+                                cmd.Parameters.AddWithValue("@Dev_Alias", .Dev_Alias)
+                                cmd.Parameters.AddWithValue("@Dev_Address", .Dev_Address)
+                                cmd.Parameters.AddWithValue("@Dev_Tin", .Dev_Tin)
+                                cmd.Parameters.AddWithValue("@Dev_Accr_No", .Dev_Accr_No)
+                                cmd.Parameters.AddWithValue("@Dev_Accr_Date_Issued", .Dev_Accr_Date_Issued)
+                                cmd.Parameters.AddWithValue("@Dev_Accr_Valid_Until", .Dev_Accr_Valid_Until)
+                                cmd.Parameters.AddWithValue("@Dev_PTU_No", .Dev_PTU_No)
+                                cmd.Parameters.AddWithValue("@Dev_PTU_Date_Issued", .Dev_PTU_Date_Issued)
+                                cmd.Parameters.AddWithValue("@Dev_PTU_Valid_Until", .Dev_PTU_Valid_Until)
+                                cmd.Parameters.AddWithValue("@S_DB_Version", "v.1.0.0 POS-MOD-2022-10-31")
+                                cmd.Parameters.AddWithValue("@Dev_Brgy", .Dev_Brgy)
+                                cmd.Parameters.AddWithValue("@Dev_Municipality", .Dev_Municipality)
+                                cmd.Parameters.AddWithValue("@Dev_Province", .Dev_Province)
+                                cmd.Parameters.AddWithValue("@Dev_Postal", .Dev_Postal)
+                            End With
 
+                            cmd.ExecuteNonQuery()
+                            cmd.Dispose()
+                            ConfirmDevInfoSettings = True
+
+                            If Not FillUp Then
+                                MsgBox("Saved!")
+                            End If
+                        End Using
                     End If
+
                     TextboxEnableability(GroupBox11, False)
                     DatePickerState(False)
                     ConnectionLocal.Close()
@@ -1625,6 +1713,7 @@ Public Class ConfigManager
     Property SetReceiptInfoLastIndex As New SyncCls.ReceiptInfoSync
     Public Function GetReceiptInfo() As List(Of ReceiptInfoCls)
         Dim listofReceiptcls As New List(Of ReceiptInfoCls)
+
         Try
             Dim SqlCount As String = ""
 
@@ -1634,7 +1723,7 @@ Public Class ConfigManager
                 Cond = $"WHERE id > {SetReceiptInfoLastIndex.lastFetchID}"
             End If
 
-            SqlCount = $"SELECT * FROM admin_receipt_info_org {Cond}"
+            SqlCount = $"Select * FROM admin_receipt_info_org {Cond}"
 
             SetReceiptInfoStats = SyncCls.ProductsSync.Stats.isFetching
 
@@ -1655,6 +1744,30 @@ Public Class ConfigManager
                     End While
                 End Using
             End Using
+
+
+            Dim ReceiptHeader As MasterlistOutletCls = MasterOutletInfo
+
+            With ReceiptHeader ' Header
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = MasterOutletInfo.location_name, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = MasterOutletInfo.address & ", " & MasterOutletInfo.Barangay, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = MasterOutletInfo.province_name & ", PHILIPPINES " & MasterOutletInfo.postal_code, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = "VAT REG TIN: " & MasterOutletInfo.tin_no, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = "SERIAL NO: ", .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = "MIN: " & MasterOutletInfo.MIN, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Header", .Description = "TEL NO.:" & MasterOutletInfo.tel_no, .SeqNo = 0, .Status = "Y"})
+            End With
+
+            With ReceiptHeader 'Footer
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = DevInfo.Dev_Alias, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = DevInfo.Dev_Company_Name, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = DevInfo.Dev_Address & ", " & DevInfo.Dev_Brgy, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = DevInfo.Dev_Province & ", PHILIPPINES " & DevInfo.Dev_Postal, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = "VAT REG TIN: " & DevInfo.Dev_Tin, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = "PTU NO.: " & DevInfo.Dev_PTU_No, .SeqNo = 0, .Status = "Y"})
+            End With
+
+            'MasterOutletInfo.store_id
 
             SetReceiptInfoStats = SyncCls.CategorySync.Stats.isFetchComplete
             rtbLogStats.Text += FullDate24HR() & " :    Complete(Fetching of categories data)" & vbNewLine
@@ -2494,7 +2607,7 @@ Public Class ConfigManager
 
         End Try
     End Sub
-    Private Sub TextBoxDEVPTU_TextChanged(sender As Object, e As EventArgs) Handles TextBoxDevTIN.TextChanged, TextBoxDEVPTU.TextChanged, TextBoxDevname.TextChanged, TextBoxDevAdd.TextChanged, TextBoxDevAccr.TextChanged
+    Private Sub TextBoxDEVPTU_TextChanged(sender As Object, e As EventArgs) Handles TextBoxDevTIN.TextChanged, TextBoxDEVPTU.TextChanged, TextBoxDevname.TextChanged, TextBoxDevAdd.TextChanged, TextBoxDevAccr.TextChanged, TextBoxDevProvince.TextChanged, TextBoxDevPostal.TextChanged, TextBoxDevMunicipality.TextChanged, TextBoxDevBarangay.TextChanged
         Try
             ConfirmDevInfoSettings = False
             My.Settings.Save()

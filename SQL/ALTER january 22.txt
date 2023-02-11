@@ -1,1 +1,0 @@
-ALTER TABLE `loc_coupon_data` ADD `reference_id` INT(11) NOT NULL AFTER `transaction_number`;

@@ -466,12 +466,14 @@ Public Class SettingsForm
     End Sub
     Private Sub LoadTrainingMode()
         Try
-            If ClientRole <> "Admin" Then
-                RadioButtonTrainingOFF.Enabled = False
-                RadioButtonTraningON.Enabled = False
-                RadioButtonInvResetOff.Enabled = False
-                RadioButtonInvResetOn.Enabled = False
-            End If
+            Select Case ClientRole
+                Case "Crew", "Head Crew"
+                    RadioButtonTrainingOFF.Enabled = False
+                    RadioButtonTraningON.Enabled = False
+                    RadioButtonInvResetOff.Enabled = False
+                    RadioButtonInvResetOn.Enabled = False
+            End Select
+
             If S_TrainingMode Then
                 RadioButtonTraningON.Checked = True
             Else

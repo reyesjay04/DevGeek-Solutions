@@ -1154,19 +1154,21 @@ Public Class POS
 
                 Using Command As New MySqlCommand(sql, ConnectionLocal)
                     For i As Integer = 0 To .Rows.Count - 1 Step +1
-                        Dim totalcostofgoods = 0
+                        Dim totalcostofgoods As Double = 0
                         For a As Integer = 0 To DataGridViewInv.Rows.Count - 1 Step +1
                             If DataGridViewInv.Rows(a).Cells(4).Value = .Rows(i).Cells(0).Value Then
-                                totalcostofgoods += DataGridViewInv.Rows(a).Cells(6).Value
+                                totalcostofgoods += CType(DataGridViewInv.Rows(a).Cells(6).Value, Double)
                             End If
                         Next
+
+                        Console.WriteLine(.Rows(i).Cells(3).Value)
                         Command.Parameters.Clear()
                         Command.Parameters.AddWithValue("@1", .Rows(i).Cells(5).Value)
                         Command.Parameters.AddWithValue("@2", .Rows(i).Cells(6).Value)
                         Command.Parameters.AddWithValue("@3", .Rows(i).Cells(0).Value)
                         Command.Parameters.AddWithValue("@4", .Rows(i).Cells(1).Value)
-                        Command.Parameters.AddWithValue("@5", .Rows(i).Cells(2).Value)
-                        Command.Parameters.AddWithValue("@6", .Rows(i).Cells(3).Value)
+                        Command.Parameters.AddWithValue("@5", CType(.Rows(i).Cells(2).Value, Double))
+                        Command.Parameters.AddWithValue("@6", CType(.Rows(i).Cells(3).Value, Double))
                         Command.Parameters.AddWithValue("@7", ClientCrewID)
                         Command.Parameters.AddWithValue("@8", S_TRANSACTION_NUMBER)
                         Command.Parameters.AddWithValue("@9", ACTIVE)
@@ -1180,13 +1182,13 @@ Public Class POS
                         Command.Parameters.AddWithValue("@17", TRANSACTIONMODE)
                         Command.Parameters.AddWithValue("@18", .Rows(i).Cells(11).Value)
                         Command.Parameters.AddWithValue("@19", .Rows(i).Cells(13).Value)
-                        Command.Parameters.AddWithValue("@20", If(.Rows(i).Cells(15).Value > 0, .Rows(i).Cells(15).Value, 0))
+                        Command.Parameters.AddWithValue("@20", If(.Rows(i).Cells(15).Value > 0, CType(.Rows(i).Cells(15).Value, Double), 0))
                         Command.Parameters.AddWithValue("@21", If(.Rows(i).Cells(16).Value > 0, .Rows(i).Cells(16).Value, 0))
-                        Command.Parameters.AddWithValue("@22", If(.Rows(i).Cells(17).Value > 0, .Rows(i).Cells(17).Value, 0))
+                        Command.Parameters.AddWithValue("@22", If(.Rows(i).Cells(17).Value > 0, CType(.Rows(i).Cells(17).Value, Double), 0))
                         Command.Parameters.AddWithValue("@23", If(.Rows(i).Cells(18).Value > 0, .Rows(i).Cells(18).Value, 0))
-                        Command.Parameters.AddWithValue("@24", If(.Rows(i).Cells(19).Value > 0, .Rows(i).Cells(19).Value, 0))
+                        Command.Parameters.AddWithValue("@24", If(.Rows(i).Cells(19).Value > 0, CType(.Rows(i).Cells(19).Value, Double), 0))
                         Command.Parameters.AddWithValue("@25", If(.Rows(i).Cells(20).Value > 0, .Rows(i).Cells(20).Value, 0))
-                        Command.Parameters.AddWithValue("@26", If(.Rows(i).Cells(21).Value > 0, .Rows(i).Cells(21).Value, 0))
+                        Command.Parameters.AddWithValue("@26", If(.Rows(i).Cells(21).Value > 0, CType(.Rows(i).Cells(21).Value, Double), 0))
                         Command.Parameters.AddWithValue("@27", If(.Rows(i).Cells(22).Value > 0, .Rows(i).Cells(22).Value, 0))
                         Command.ExecuteNonQuery()
                     Next
@@ -1552,9 +1554,9 @@ Public Class POS
                 Else
                     BodyLine = 540
                 End If
-                Dim CountHeaderLine As Integer = count("id", "loc_receipt WHERE type = 'Header' AND status = 1")
+                Dim CountHeaderLine As Integer = count("id", "loc_receipt WHERE type = 'Header' AND status = 'Y'")
                 Dim ProductLine As Integer = 0
-                Dim CountFooterLine As Integer = count("id", "loc_receipt WHERE type = 'Footer' AND status = 1")
+                Dim CountFooterLine As Integer = count("id", "loc_receipt WHERE type = 'Footer' AND status = 'Y'")
                 CountHeaderLine *= 10
                 CountFooterLine *= 10
                 Dim DiscountLine As Integer = 0

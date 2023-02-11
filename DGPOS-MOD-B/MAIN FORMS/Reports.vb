@@ -1183,8 +1183,6 @@ Public Class Reports
             AuditTrail.LogToAuditTrail("System", "Reports/MainInventorySub(): " & ex.ToString, "Critical")
         End Try
     End Sub
-
-
     Dim PrintSalesDatatable As DataTable
 
     Private Sub ToolStripButton8_Click(sender As Object, e As EventArgs) Handles ToolStripButtonPrintSales.Click
@@ -1301,9 +1299,8 @@ Public Class Reports
                     Percentage = Percentage * DataGridViewSales.Rows(i).Cells(2).Value
                     SimplyPerfectPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
-                    SimplyPerfectQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    SimplyPerfectTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    SimplyPerfectTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
             Next
@@ -1341,8 +1338,8 @@ Public Class Reports
                     PerfectCombinationPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
                     PerfectCombinationQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    PerfectCombinationTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    PerfectCombinationTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 
@@ -1381,8 +1378,8 @@ Public Class Reports
                     PremiumPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
                     PremiumQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    PremiumTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    PremiumTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 
@@ -1424,8 +1421,8 @@ Public Class Reports
                     ComboPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
                     ComboQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    ComboTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    ComboTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 
@@ -1466,8 +1463,8 @@ Public Class Reports
                     SavoryPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
                     SavoryQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    SavoryTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    SavoryTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 
@@ -1508,8 +1505,8 @@ Public Class Reports
                     FamousBlendsPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
                     FamousBlendsQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    FamousBlendsTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    FamousBlendsTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 
@@ -1550,8 +1547,8 @@ Public Class Reports
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
 
                     AddOnsQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    AddOnsTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    AddOnsTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 
@@ -1593,8 +1590,8 @@ Public Class Reports
                     OthersPercentage += Percentage
                     RightDisplay1(sender, e, RECEIPTLINECOUNT, DataGridViewSales.Rows(i).Cells(2).Value, Math.Round(Percentage, 2) & "%", FontDefault, 60, 77 + IfPrintQty)
                     OthersQty += DataGridViewSales.Rows(i).Cells(2).Value
-                    OthersTotalSales += DataGridViewSales.Rows(i).Cells(4).Value
-                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2), FontDefault, 60, 145 + IfPrintSmall)
+                    OthersTotalSales += NUMBERFORMAT(DataGridViewSales.Rows(i).Cells(4).Value)
+                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", NUMBERFORMAT(Math.Round(DataGridViewSales.Rows(i).Cells(4).Value, 2)), FontDefault, 60, 145 + IfPrintSmall)
                     RECEIPTLINECOUNT += 10
                 End If
 

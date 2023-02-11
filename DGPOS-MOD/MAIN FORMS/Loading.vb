@@ -644,19 +644,26 @@ Public Class Loading
                     End Using
 
                     For Each row As DataRow In dt.Rows
-                        Using lmCmd = New MySqlCommand("", ConnectionLocal)
-                            lmCmd.CommandText = row("script_command").ToString
-                            lmCmd.ExecuteNonQuery()
-                            If row("truncatescript").ToString = "NO" Then
-                                lmCmd.CommandText = "INSERT INTO loc_script_runner (script_command, created_at, active) VALUES (@script_command, @createdAt, @active)"
-                                lmCmd.Parameters.Clear()
-                                lmCmd.Parameters.AddWithValue("@script_command", row("script_command"))
-                                lmCmd.Parameters.AddWithValue("@createdAt", row("created_at"))
-                                lmCmd.Parameters.AddWithValue("@active", row("active"))
-                                lmCmd.ExecuteNonQuery()
-                            End If
-                            lmCmd.Dispose()
-                        End Using
+
+                        Try
+                            Using lmCmd = New MySqlCommand("", ConnectionLocal)
+                                Try
+                                    lmCmd.CommandText = row("script_command").ToString
+                                    lmCmd.ExecuteNonQuery()
+                                Catch ex As Exception
+                                End Try
+                                If row("truncatescript").ToString = "NO" Then
+                                    lmCmd.CommandText = "INSERT INTO loc_script_runner (script_command, created_at, active) VALUES (@script_command, @createdAt, @active)"
+                                    lmCmd.Parameters.Clear()
+                                    lmCmd.Parameters.AddWithValue("@script_command", row("script_command"))
+                                    lmCmd.Parameters.AddWithValue("@createdAt", row("created_at"))
+                                    lmCmd.Parameters.AddWithValue("@active", row("active"))
+                                    lmCmd.ExecuteNonQuery()
+                                End If
+                                lmCmd.Dispose()
+                            End Using
+                        Catch ex As Exception
+                        End Try
 
                         AuditTrail.LogToAuditTrail("Script", "Script: " & row("script_command").ToString, "Normal")
                     Next
@@ -678,19 +685,28 @@ Public Class Loading
                     End Using
 
                     For Each row As DataRow In dt.Rows
-                        Using lmCmd = New MySqlCommand("", ConnectionLocal)
-                            lmCmd.CommandText = row("script_command").ToString
-                            lmCmd.ExecuteNonQuery()
-                            If row("truncatescript").ToString = "NO" Then
-                                lmCmd.CommandText = "INSERT INTO loc_script_runner (script_command, created_at, active) VALUES (@script_command, @createdAt, @active)"
-                                lmCmd.Parameters.Clear()
-                                lmCmd.Parameters.AddWithValue("@script_command", row("script_command"))
-                                lmCmd.Parameters.AddWithValue("@createdAt", row("created_at"))
-                                lmCmd.Parameters.AddWithValue("@active", row("active"))
-                                lmCmd.ExecuteNonQuery()
-                            End If
-                            lmCmd.Dispose()
-                        End Using
+
+                        Try
+                            Using lmCmd = New MySqlCommand("", ConnectionLocal)
+
+                                Try
+                                    lmCmd.CommandText = row("script_command").ToString
+                                    lmCmd.ExecuteNonQuery()
+                                Catch ex As Exception
+                                End Try
+
+                                If row("truncatescript").ToString = "NO" Then
+                                    lmCmd.CommandText = "INSERT INTO loc_script_runner (script_command, created_at, active) VALUES (@script_command, @createdAt, @active)"
+                                    lmCmd.Parameters.Clear()
+                                    lmCmd.Parameters.AddWithValue("@script_command", row("script_command"))
+                                    lmCmd.Parameters.AddWithValue("@createdAt", row("created_at"))
+                                    lmCmd.Parameters.AddWithValue("@active", row("active"))
+                                    lmCmd.ExecuteNonQuery()
+                                End If
+                                lmCmd.Dispose()
+                            End Using
+                        Catch ex As Exception
+                        End Try
 
                         AuditTrail.LogToAuditTrail("Script", "Script: " & row("script_command").ToString, "Normal")
                     Next

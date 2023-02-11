@@ -1,6 +1,11 @@
 ﻿Public Class DevInfoCls
     Property Dev_Company_Name As String
+    Property Dev_Alias As String
     Property Dev_Address As String
+    Property Dev_Brgy As String
+    Property Dev_Municipality As String
+    Property Dev_Province As String
+    Property Dev_Postal As String
     Property Dev_Tin As String
     Property Dev_Accr_No As String
     Property Dev_Accr_Date_Issued As String

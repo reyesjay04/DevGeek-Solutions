@@ -58,8 +58,8 @@ Partial Class DGPOS_SYNC
         Me.tsbExit.Image = CType(resources.GetObject("tsbExit.Image"), System.Drawing.Image)
         Me.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.tsbExit.Name = "tsbExit"
-        Me.tsbExit.Size = New System.Drawing.Size(30, 63)
-        Me.tsbExit.Text = "Exit"
+        Me.tsbExit.Size = New System.Drawing.Size(46, 63)
+        Me.tsbExit.Text = "Return"
         '
         'ToolStripButton2
         '
@@ -81,7 +81,7 @@ Partial Class DGPOS_SYNC
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(104, 192)
+        Me.ProgressBar1.Location = New System.Drawing.Point(41, 109)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(356, 19)
         Me.ProgressBar1.TabIndex = 3
@@ -89,7 +89,7 @@ Partial Class DGPOS_SYNC
         'lbSyslog
         '
         Me.lbSyslog.AutoSize = True
-        Me.lbSyslog.Location = New System.Drawing.Point(101, 176)
+        Me.lbSyslog.Location = New System.Drawing.Point(38, 93)
         Me.lbSyslog.Name = "lbSyslog"
         Me.lbSyslog.Size = New System.Drawing.Size(67, 13)
         Me.lbSyslog.TabIndex = 4

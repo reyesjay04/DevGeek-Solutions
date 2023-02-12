@@ -462,6 +462,7 @@ Public Class ConfigManager
 
                 With DevInfo
                     TextBoxDevname.Text = .Dev_Company_Name
+                    TextBoxDevAlias.Text = .Dev_Alias
                     TextBoxDevAdd.Text = .Dev_Address
                     TextBoxDevBarangay.Text = .Dev_Brgy
                     TextBoxDevMunicipality.Text = .Dev_Municipality
@@ -676,6 +677,7 @@ Public Class ConfigManager
 
             With DevInf
                 TextBoxDevname.Text = .Dev_Company_Name
+                TextBoxDevAlias.Text = .Dev_Alias
                 TextBoxDevAdd.Text = .Dev_Address
                 TextBoxDevBarangay.Text = .Dev_Brgy
                 TextBoxDevMunicipality.Text = .Dev_Municipality
@@ -1745,7 +1747,6 @@ Public Class ConfigManager
                 End Using
             End Using
 
-
             Dim ReceiptHeader As MasterlistOutletCls = MasterOutletInfo
 
             With ReceiptHeader ' Header
@@ -1764,10 +1765,9 @@ Public Class ConfigManager
                 listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = DevInfo.Dev_Address & ", " & DevInfo.Dev_Brgy, .SeqNo = 0, .Status = "Y"})
                 listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = DevInfo.Dev_Province & ", PHILIPPINES " & DevInfo.Dev_Postal, .SeqNo = 0, .Status = "Y"})
                 listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = "VAT REG TIN: " & DevInfo.Dev_Tin, .SeqNo = 0, .Status = "Y"})
-                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = "PTU NO.: " & DevInfo.Dev_PTU_No, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = "ACCR: " & DevInfo.Dev_Accr_No, .SeqNo = 0, .Status = "Y"})
+                listofReceiptcls.Add(New ReceiptInfoCls With {.Code = "Footer", .Description = "PTU NO.: " & MasterOutletInfo.PTUN, .SeqNo = 0, .Status = "Y"})
             End With
-
-            'MasterOutletInfo.store_id
 
             SetReceiptInfoStats = SyncCls.CategorySync.Stats.isFetchComplete
             rtbLogStats.Text += FullDate24HR() & " :    Complete(Fetching of categories data)" & vbNewLine
@@ -2607,7 +2607,7 @@ Public Class ConfigManager
 
         End Try
     End Sub
-    Private Sub TextBoxDEVPTU_TextChanged(sender As Object, e As EventArgs) Handles TextBoxDevTIN.TextChanged, TextBoxDEVPTU.TextChanged, TextBoxDevname.TextChanged, TextBoxDevAdd.TextChanged, TextBoxDevAccr.TextChanged, TextBoxDevProvince.TextChanged, TextBoxDevPostal.TextChanged, TextBoxDevMunicipality.TextChanged, TextBoxDevBarangay.TextChanged
+    Private Sub TextBoxDEVPTU_TextChanged(sender As Object, e As EventArgs) Handles TextBoxDevTIN.TextChanged, TextBoxDEVPTU.TextChanged, TextBoxDevname.TextChanged, TextBoxDevAdd.TextChanged, TextBoxDevAccr.TextChanged, TextBoxDevProvince.TextChanged, TextBoxDevPostal.TextChanged, TextBoxDevMunicipality.TextChanged, TextBoxDevBarangay.TextChanged, TextBoxDevAlias.TextChanged
         Try
             ConfirmDevInfoSettings = False
             My.Settings.Save()

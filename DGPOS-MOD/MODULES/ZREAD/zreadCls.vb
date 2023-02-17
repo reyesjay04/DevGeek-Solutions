@@ -166,14 +166,14 @@ Public Class zreadCls
 
             zrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1") - zrGCUsed
 
-            zrDailySales = zrGrossSales - zrLessVatVE - zrLessDiscVE
+            zrDailySales = zrGrossSales - zrLessVatVE - zrTotalDisc
 
             zrNetSales = sum("netsales", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1")
 
             If zrCompBegBalance = "" Then zrCompBegBalance = 0
             zrCashinDrawer = zrGrossSales - zrCashless - zrTotalDisc - zrLessVatVE - zrTotalExpenses + Double.Parse(zrCompBegBalance)
 
-            zrCashTotal = zrCashinDrawer
+            zrCashTotal = zrCashinDrawer + zrTotalExpenses + zrCashless
 
             zrSeniorDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Senior Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
             zrPWDDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'PWD Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")

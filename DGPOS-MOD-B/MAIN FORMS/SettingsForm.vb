@@ -2906,7 +2906,7 @@ Public Class SettingsForm
             Dim Query As String = ""
             Dim array() As String = {"loc_coupon_data", "loc_daily_transaction", "loc_daily_transaction_details", "loc_deposit", "loc_expense_details", "loc_expense_list",
             "loc_fm_stock", "loc_hold_inventory", "loc_inv_temp_data", "loc_pending_orders", "loc_refund_return_details", "loc_senior_details",
-            "loc_system_logs", "loc_send_bug_report", "loc_transaction_mode_details", "loc_transfer_data", "loc_zread_inventory", "loc_admin_category", "loc_admin_products",
+            "loc_system_logs", "loc_send_bug_report", "loc_transaction_mode_details", "loc_transfer_data", "loc_zread_inventory", "loc_zread_table", "loc_admin_category", "loc_admin_products",
             "loc_partners_transaction", "loc_pos_inventory", "loc_product_formula", "tbcoupon", "loc_cash_breakdown", "loc_customer_info"}
 
             With DataGridViewReset
@@ -2969,6 +2969,7 @@ Public Class SettingsForm
                 End If
                 If .Rows(17).Cells(1).Selected Then
                     TruncateTableAll("loc_zread_inventory")
+                    TruncateTableAll("loc_zread_table")
                 End If
                 If .Rows(18).Cells(1).Selected Then
                     TruncateTableAll("tbcoupon")

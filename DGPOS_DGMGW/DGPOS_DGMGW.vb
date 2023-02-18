@@ -17,7 +17,9 @@ Public Class DGPOS_DGMGW
 
         ModDGMGW.UserType = "Admin"
         ModDGMGW.ConnectionString = "server=localhost;user id=posuser;password=posuser;database=pos;port=3306"
-        ModDGMGW.ExportPath = ""
+        ModDGMGW.ExportPath = "C:\Users\jjrey\Documents\Innovention"
+        ModDGMGW.ShowDialogBox = True
+        CreateDirectories()
     End Sub
     Public Sub New(ByRef params As String)
 
@@ -31,39 +33,48 @@ Public Class DGPOS_DGMGW
             Select Case strSplit(0)
                 Case "user_type"
                     ModDGMGW.UserType = strSplit(1)
-                Case = "connection"
+                Case "connection"
                     ModDGMGW.ConnectionString = strSplit(1)
-                Case = "export_path"
+                Case "export_path"
                     ModDGMGW.ExportPath = If(strSplit(1).EndsWith("\"), strSplit(1), strSplit(1) & "\")
+                Case "from_reporting_date"
+                    ModDGMGW.FromReportingDate = CType(strSplit(1), Date)
+                Case "to_reporting_date"
+                    ModDGMGW.ToReportingDate = CType(strSplit(1), Date)
+                Case "show_dialog_box"
+                    ModDGMGW.ShowDialogBox = strSplit(1).Equals("Y")
             End Select
 
         Next
 
         ' Add any initialization after the InitializeComponent() call.
-
+        CreateDirectories()
     End Sub
 
     Property FileNameGenerated As String
 
     Private Sub DG_DGMW_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Try
 
-            LoadSettings()
+            LoadMGWSettings()
+
+            txtDateFormat.Text = Settings.BDFormat
+            txtRetailCode.Text = Settings.RetailCode
+            nudRetaillength.Value = Settings.RetailLength
+            txtTerminalNumber.Text = Settings.TerminalNo
+
+            Try
+                dtpBDStart.Value = Settings.BDStart
+            Catch ex As Exception
+            End Try
+
+            Try
+                dtpBDEnd.Value = Settings.BDEnd
+            Catch ex As Exception
+            End Try
 
             If ModDGMGW.UserType <> "Admin" Then
                 TabControl1.TabPages.Remove(TabControl1.TabPages(1))
-            End If
-
-            If CheckYearDirectory() Then
-                If Not CheckDayDirectory() Then
-                    ModDGMGW.ExportPath = CreateDayDir() & "\"
-                End If
-            Else
-                ModDGMGW.ExportPath = CreateYearDir() & "\"
-                If Not CheckDayDirectory() Then
-                    ModDGMGW.ExportPath = CreateDayDir() & "\"
-                End If
             End If
 
         Catch ex As Exception
@@ -71,31 +82,72 @@ Public Class DGPOS_DGMGW
     End Sub
 
     Private Sub btnDaily_Click(sender As Object, e As EventArgs) Handles btnDaily.Click
+        ModDGMGW.FromReportingDate = dtpFromReportingDate.Value
+        ModDGMGW.ToReportingDate = dtpToReportingDate.Value
+        GenerateDailySales()
+    End Sub
+
+    Private Sub btnHourly_Click(sender As Object, e As EventArgs) Handles btnHourly.Click
+        ModDGMGW.FromReportingDate = dtpFromReportingDate.Value
+        ModDGMGW.ToReportingDate = dtpToReportingDate.Value
+        GenerateHourlyData()
+    End Sub
+
+    Private Sub btnDiscount_Click(sender As Object, e As EventArgs) Handles btnDiscount.Click
+        ModDGMGW.FromReportingDate = dtpFromReportingDate.Value
+        ModDGMGW.ToReportingDate = dtpToReportingDate.Value
+        GenerateDiscountData()
+    End Sub
+    Private Sub btnGenerateAll_Click(sender As Object, e As EventArgs) Handles btnGenerateAll.Click
+        GenerateAll()
+    End Sub
+#Region "Generate Files"
+    Public Shared Sub GenerateAll()
+
+        If Not ShowDialogBox Then
+            LoadMGWSettings()
+        End If
+
+        If ZreadDateExist() Then
+            GenerateDailySales()
+            GenerateHourlyData()
+            GenerateDiscountData()
+        Else
+            If ShowDialogBox Then
+                MsgBox("Sales data is not yet available. Please select other reporting date")
+            End If
+        End If
+
+    End Sub
+    Public Shared Sub GenerateDailySales()
         Try
 
             SalesFileName = New SalesFileTypeCls
             Dim DailySales As New DailySalesCls
 
+            Dim SStartDate As Date = ModDGMGW.FromReportingDate
+            Dim SEndDate As Date = ModDGMGW.ToReportingDate
+
             With SalesFileName
                 .SalesFileType = SalesFileTypeCls.SalesFormat.DailySales
 
-                Dim setBtNum = GetBatchNumber(dtpReportingDate.Value)
-                Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
+                For Each Day As DateTime In DateRange(SStartDate, SEndDate)
+                    Dim setBtNum = GetBatchNumber(SStartDate)
+                    Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
 
-                ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
+                    ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
 
-                BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
+                    BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
 
-                With BatchNumberSettings
-                    .BusinessDate = dtpReportingDate.Value
-                    .FieldType = "S"
-                    .NewBatchNumber = ModDGMGW.BatchNumber
-                End With
+                    With BatchNumberSettings
+                        .BusinessDate = SStartDate
+                        .FieldType = "S"
+                        .NewBatchNumber = ModDGMGW.BatchNumber
+                    End With
 
-                Dim GeneratedDailySales = GenerateDailySales(dtpReportingDate.Value, DailySales)
+                    Dim GeneratedDailySales = GetDailySales(SStartDate, DailySales)
 
-                If GeneratedDailySales.Count > 0 Then
-                    Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName & ".txt")
+                    Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName)
                         For Each str As String In GeneratedDailySales
                             addInfo.WriteLine(str)
                         Next
@@ -107,11 +159,10 @@ Public Class DGPOS_DGMGW
                         InsertBatchNumber(BatchNumberSettings)
                     End If
 
-                    Dim userMsg As String = InputBox(.GenerateFileName & ".txt", "File Location", ModDGMGW.ExportPath & .GenerateFileName & ".txt")
-                Else
-                    MsgBox("Sales data is not yet available. Please select other reporting date")
-                End If
-
+                    If ShowDialogBox Then
+                        Dim userMsg As String = InputBox(.GenerateFileName, "File Location", ModDGMGW.ExportPath & .GenerateFileName)
+                    End If
+                Next
 
             End With
 
@@ -119,100 +170,113 @@ Public Class DGPOS_DGMGW
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-    Private Sub btnHourly_Click(sender As Object, e As EventArgs) Handles btnHourly.Click
+    Public Shared Sub GenerateHourlyData()
         Try
 
             SalesFileName = New SalesFileTypeCls
             Dim HourlySales As New HourlySalesCls
 
+            Dim HStartDate As DateTime = ModDGMGW.FromReportingDate
+            Dim HEndDate As DateTime = ModDGMGW.ToReportingDate
+
             With SalesFileName
                 .SalesFileType = SalesFileTypeCls.SalesFormat.HourlySales
 
-                Dim setBtNum = GetBatchNumber(dtpReportingDate.Value)
-                Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
+                For Each Day As DateTime In DateRange(HStartDate, HEndDate)
+                    Dim setBtNum = GetBatchNumber(HStartDate)
+                    Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
 
-                ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
+                    ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
 
-                BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
+                    BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
 
-                With BatchNumberSettings
-                    .BusinessDate = dtpReportingDate.Value
-                    .FieldType = "H"
-                    .NewBatchNumber = ModDGMGW.BatchNumber
-                End With
+                    With BatchNumberSettings
+                        .BusinessDate = HStartDate
+                        .FieldType = "H"
+                        .NewBatchNumber = ModDGMGW.BatchNumber
+                    End With
 
-                Dim GeneratedHourlySales = GenerateHourlySales(dtpReportingDate.Value, HourlySales)
+                    Dim GeneratedHourlySales = GetHourlySales(HStartDate, HourlySales)
 
-                Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName & ".txt")
-                    For Each str As String In GeneratedHourlySales
-                        addInfo.WriteLine(str)
-                    Next
-                End Using
+                    Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName)
+                        For Each str As String In GeneratedHourlySales
+                            addInfo.WriteLine(str)
+                        Next
+                    End Using
 
-                If btNumExist Then
-                    UpdateBatchNumber(BatchNumberSettings)
-                Else
-                    InsertBatchNumber(BatchNumberSettings)
-                End If
+                    If btNumExist Then
+                        UpdateBatchNumber(BatchNumberSettings)
+                    Else
+                        InsertBatchNumber(BatchNumberSettings)
+                    End If
 
-                Dim userMsg As String = InputBox(.GenerateFileName & ".txt", "File Location", ModDGMGW.ExportPath & .GenerateFileName & ".txt")
-
+                    If ShowDialogBox Then
+                        Dim userMsg As String = InputBox(.GenerateFileName, "File Location", ModDGMGW.ExportPath & .GenerateFileName)
+                    End If
+                Next
             End With
-
-
 
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
 
-    Private Sub btnDiscount_Click(sender As Object, e As EventArgs) Handles btnDiscount.Click
+    Public Shared Function DateRange(Start As DateTime, Thru As DateTime) As IEnumerable(Of Date)
+        Return Enumerable.Range(0, (Thru.Date - Start.Date).Days + 1).Select(Function(i) Start.AddDays(i))
+    End Function
+    Public Shared Sub GenerateDiscountData()
         Try
 
             SalesFileName = New SalesFileTypeCls
             Dim HourlySales As New List(Of DiscountDataCls)
 
+            Dim DStartDate As Date = ModDGMGW.FromReportingDate
+            Dim DEndDate As Date = ModDGMGW.ToReportingDate
+
             With SalesFileName
                 .SalesFileType = SalesFileTypeCls.SalesFormat.DiscountData
 
-                Dim setBtNum = GetBatchNumber(dtpReportingDate.Value)
-                Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
+                For Each Day As DateTime In DateRange(DStartDate, DEndDate)
+                    Dim setBtNum = GetBatchNumber(DStartDate)
+                    Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
 
-                ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
+                    ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
 
-                BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
+                    BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
 
-                With BatchNumberSettings
-                    .BusinessDate = dtpReportingDate.Value
-                    .FieldType = "D"
-                    .NewBatchNumber = ModDGMGW.BatchNumber
-                End With
+                    With BatchNumberSettings
+                        .BusinessDate = DStartDate
+                        .FieldType = "D"
+                        .NewBatchNumber = ModDGMGW.BatchNumber
+                    End With
 
-                Dim GeneratedDiscountData = GenerateDailyDiscountData(dtpReportingDate.Value, HourlySales)
+                    Dim GeneratedDiscountData = GetDailyDiscountData(DStartDate, HourlySales)
 
-                Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName & ".txt")
-                    For Each str As String In GeneratedDiscountData
-                        addInfo.WriteLine(str)
-                    Next
-                End Using
+                    If GeneratedDiscountData.Count > 0 Then
+                        Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName)
+                            For Each str As String In GeneratedDiscountData
+                                addInfo.WriteLine(str)
+                            Next
+                        End Using
 
-                If btNumExist Then
-                    UpdateBatchNumber(BatchNumberSettings)
-                Else
-                    InsertBatchNumber(BatchNumberSettings)
-                End If
+                        If btNumExist Then
+                            UpdateBatchNumber(BatchNumberSettings)
+                        Else
+                            InsertBatchNumber(BatchNumberSettings)
+                        End If
 
-                Dim userMsg As String = InputBox(.GenerateFileName & ".txt", "File Location", ModDGMGW.ExportPath & .GenerateFileName & ".txt")
+                        If ShowDialogBox Then
+                            Dim userMsg As String = InputBox(.GenerateFileName, "File Location", ModDGMGW.ExportPath & .GenerateFileName)
+                        End If
+                    End If
+                Next
             End With
-
 
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
     End Sub
-
-
+#End Region
 
 #Region "Settings"
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -222,46 +286,43 @@ Public Class DGPOS_DGMGW
             Return
         End If
 
-        SetItemValue("business_hour_start", Format(dtpBDStart.Value, "HH:01"))
-        SetItemValue("business_hour_end", Format(dtpBDEnd.Value, "HH:00"))
+        SetItemValue("business_hour_start", Format(dtpBDStart.Value, "HH:00"))
+        SetItemValue("business_hour_end", Format(dtpBDEnd.Value, "HH:59"))
         SetItemValue("retail_partner_code", Trim(txtRetailCode.Text))
         SetItemValue("terminal_number", Trim(txtTerminalNumber.Text))
         SetItemValue("business_date_format", Trim(txtDateFormat.Text))
         SetItemValue("retail_partnercode_length", Trim(nudRetaillength.Value))
 
-        LoadSettings()
+        LoadMGWSettings()
 
         MessageBox.Show("Complete!", "NOTICE", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub LoadSettings()
+    Public Shared Sub LoadMGWSettings()
         Try
             Settings = New SettingsCls
-
-            txtDateFormat.Text = Settings.BDFormat
-            txtRetailCode.Text = Settings.RetailCode
-            nudRetaillength.Value = Settings.RetailLength
-            txtTerminalNumber.Text = Settings.TerminalNo
 
             ModDGMGW.RetailPartnerCode = Settings.RetailCode
             ModDGMGW.TerminalNumber = Settings.TerminalNo
             ModDGMGW.RetailPartnerCodeLength = Settings.RetailLength
 
             Try
-                dtpBDStart.Value = Settings.BDStart
                 ModDGMGW.StartDate = Settings.BDStart
             Catch ex As Exception
             End Try
 
             Try
-                dtpBDEnd.Value = Settings.BDEnd
                 ModDGMGW.EndDate = Settings.BDEnd
             Catch ex As Exception
             End Try
+
+
 
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
     End Sub
+
+
 #End Region
 End Class

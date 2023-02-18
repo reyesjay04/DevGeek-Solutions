@@ -26,11 +26,15 @@ Partial Class DGPOS_DGMGW
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.dtpReportingDate = New System.Windows.Forms.DateTimePicker()
+        Me.dtpFromReportingDate = New System.Windows.Forms.DateTimePicker()
         Me.btnDiscount = New System.Windows.Forms.Button()
         Me.btnHourly = New System.Windows.Forms.Button()
         Me.btnDaily = New System.Windows.Forms.Button()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.txtTerminalNumber = New System.Windows.Forms.TextBox()
+        Me.txtRetailCode = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.txtDateFormat = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
@@ -40,10 +44,10 @@ Partial Class DGPOS_DGMGW
         Me.Label3 = New System.Windows.Forms.Label()
         Me.dtpBDEnd = New System.Windows.Forms.DateTimePicker()
         Me.dtpBDStart = New System.Windows.Forms.DateTimePicker()
-        Me.txtRetailCode = New System.Windows.Forms.TextBox()
-        Me.txtTerminalNumber = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.btnGenerateAll = New System.Windows.Forms.Button()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.dtpToReportingDate = New System.Windows.Forms.DateTimePicker()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -60,14 +64,18 @@ Partial Class DGPOS_DGMGW
         Me.TabControl1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.TabControl1.Name = "TabControl1"
         Me.TabControl1.SelectedIndex = 0
-        Me.TabControl1.Size = New System.Drawing.Size(383, 297)
+        Me.TabControl1.Size = New System.Drawing.Size(383, 355)
         Me.TabControl1.TabIndex = 0
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.dtpToReportingDate)
+        Me.TabPage1.Controls.Add(Me.Label10)
+        Me.TabPage1.Controls.Add(Me.Label9)
+        Me.TabPage1.Controls.Add(Me.btnGenerateAll)
         Me.TabPage1.Controls.Add(Me.Label2)
         Me.TabPage1.Controls.Add(Me.Label1)
-        Me.TabPage1.Controls.Add(Me.dtpReportingDate)
+        Me.TabPage1.Controls.Add(Me.dtpFromReportingDate)
         Me.TabPage1.Controls.Add(Me.btnDiscount)
         Me.TabPage1.Controls.Add(Me.btnHourly)
         Me.TabPage1.Controls.Add(Me.btnDaily)
@@ -76,7 +84,7 @@ Partial Class DGPOS_DGMGW
         Me.TabPage1.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.TabPage1.Size = New System.Drawing.Size(375, 269)
+        Me.TabPage1.Size = New System.Drawing.Size(375, 327)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Generate"
         Me.TabPage1.UseVisualStyleBackColor = True
@@ -85,7 +93,7 @@ Partial Class DGPOS_DGMGW
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(96, 97)
+        Me.Label2.Location = New System.Drawing.Point(96, 111)
         Me.Label2.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(179, 15)
@@ -103,21 +111,21 @@ Partial Class DGPOS_DGMGW
         Me.Label1.TabIndex = 2
         Me.Label1.Text = "SELECT REPORTING DATE"
         '
-        'dtpReportingDate
+        'dtpFromReportingDate
         '
-        Me.dtpReportingDate.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
-        Me.dtpReportingDate.CustomFormat = ""
-        Me.dtpReportingDate.ImeMode = System.Windows.Forms.ImeMode.NoControl
-        Me.dtpReportingDate.Location = New System.Drawing.Point(30, 50)
-        Me.dtpReportingDate.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.dtpReportingDate.Name = "dtpReportingDate"
-        Me.dtpReportingDate.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.dtpReportingDate.Size = New System.Drawing.Size(310, 21)
-        Me.dtpReportingDate.TabIndex = 1
+        Me.dtpFromReportingDate.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.dtpFromReportingDate.CustomFormat = ""
+        Me.dtpFromReportingDate.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.dtpFromReportingDate.Location = New System.Drawing.Point(73, 48)
+        Me.dtpFromReportingDate.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.dtpFromReportingDate.Name = "dtpFromReportingDate"
+        Me.dtpFromReportingDate.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.dtpFromReportingDate.Size = New System.Drawing.Size(267, 21)
+        Me.dtpFromReportingDate.TabIndex = 1
         '
         'btnDiscount
         '
-        Me.btnDiscount.Location = New System.Drawing.Point(30, 212)
+        Me.btnDiscount.Location = New System.Drawing.Point(30, 226)
         Me.btnDiscount.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnDiscount.Name = "btnDiscount"
         Me.btnDiscount.Size = New System.Drawing.Size(310, 36)
@@ -127,7 +135,7 @@ Partial Class DGPOS_DGMGW
         '
         'btnHourly
         '
-        Me.btnHourly.Location = New System.Drawing.Point(30, 170)
+        Me.btnHourly.Location = New System.Drawing.Point(30, 184)
         Me.btnHourly.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnHourly.Name = "btnHourly"
         Me.btnHourly.Size = New System.Drawing.Size(310, 36)
@@ -137,7 +145,7 @@ Partial Class DGPOS_DGMGW
         '
         'btnDaily
         '
-        Me.btnDaily.Location = New System.Drawing.Point(30, 127)
+        Me.btnDaily.Location = New System.Drawing.Point(30, 141)
         Me.btnDaily.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.btnDaily.Name = "btnDaily"
         Me.btnDaily.Size = New System.Drawing.Size(310, 36)
@@ -165,10 +173,46 @@ Partial Class DGPOS_DGMGW
         Me.TabPage2.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(2, 3, 2, 3)
-        Me.TabPage2.Size = New System.Drawing.Size(375, 269)
+        Me.TabPage2.Size = New System.Drawing.Size(375, 327)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Options"
         Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label8.Location = New System.Drawing.Point(28, 118)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(90, 15)
+        Me.Label8.TabIndex = 12
+        Me.Label8.Text = "Terminal No."
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label7.Location = New System.Drawing.Point(28, 91)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(82, 15)
+        Me.Label7.TabIndex = 11
+        Me.Label7.Text = "Retail Code"
+        '
+        'txtTerminalNumber
+        '
+        Me.txtTerminalNumber.Location = New System.Drawing.Point(147, 115)
+        Me.txtTerminalNumber.Name = "txtTerminalNumber"
+        Me.txtTerminalNumber.Size = New System.Drawing.Size(199, 21)
+        Me.txtTerminalNumber.TabIndex = 10
+        '
+        'txtRetailCode
+        '
+        Me.txtRetailCode.Location = New System.Drawing.Point(147, 88)
+        Me.txtRetailCode.Name = "txtRetailCode"
+        Me.txtRetailCode.Size = New System.Drawing.Size(199, 21)
+        Me.txtRetailCode.TabIndex = 9
         '
         'Label6
         '
@@ -241,7 +285,7 @@ Partial Class DGPOS_DGMGW
         'dtpBDEnd
         '
         Me.dtpBDEnd.CalendarFont = New System.Drawing.Font("Candara", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpBDEnd.CustomFormat = "hh:00 tt"
+        Me.dtpBDEnd.CustomFormat = "hh:59 tt"
         Me.dtpBDEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpBDEnd.Location = New System.Drawing.Point(266, 34)
         Me.dtpBDEnd.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
@@ -253,7 +297,7 @@ Partial Class DGPOS_DGMGW
         'dtpBDStart
         '
         Me.dtpBDStart.CalendarFont = New System.Drawing.Font("Candara", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.dtpBDStart.CustomFormat = "hh:01 tt"
+        Me.dtpBDStart.CustomFormat = "hh:00 tt"
         Me.dtpBDStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom
         Me.dtpBDStart.Location = New System.Drawing.Point(147, 34)
         Me.dtpBDStart.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
@@ -262,47 +306,51 @@ Partial Class DGPOS_DGMGW
         Me.dtpBDStart.Size = New System.Drawing.Size(80, 21)
         Me.dtpBDStart.TabIndex = 0
         '
-        'txtRetailCode
+        'btnGenerateAll
         '
-        Me.txtRetailCode.Location = New System.Drawing.Point(147, 88)
-        Me.txtRetailCode.Name = "txtRetailCode"
-        Me.txtRetailCode.Size = New System.Drawing.Size(199, 21)
-        Me.txtRetailCode.TabIndex = 9
+        Me.btnGenerateAll.Location = New System.Drawing.Point(30, 268)
+        Me.btnGenerateAll.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.btnGenerateAll.Name = "btnGenerateAll"
+        Me.btnGenerateAll.Size = New System.Drawing.Size(310, 36)
+        Me.btnGenerateAll.TabIndex = 3
+        Me.btnGenerateAll.Text = "Generate All"
+        Me.btnGenerateAll.UseVisualStyleBackColor = True
         '
-        'txtTerminalNumber
+        'Label9
         '
-        Me.txtTerminalNumber.Location = New System.Drawing.Point(147, 115)
-        Me.txtTerminalNumber.Name = "txtTerminalNumber"
-        Me.txtTerminalNumber.Size = New System.Drawing.Size(199, 21)
-        Me.txtTerminalNumber.TabIndex = 10
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(27, 53)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(39, 15)
+        Me.Label9.TabIndex = 4
+        Me.Label9.Text = "From:"
         '
-        'Label7
+        'Label10
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(28, 91)
-        Me.Label7.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(82, 15)
-        Me.Label7.TabIndex = 11
-        Me.Label7.Text = "Retail Code"
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(27, 80)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(24, 15)
+        Me.Label10.TabIndex = 5
+        Me.Label10.Text = "To:"
         '
-        'Label8
+        'dtpToReportingDate
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(28, 118)
-        Me.Label8.Margin = New System.Windows.Forms.Padding(2, 0, 2, 0)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(90, 15)
-        Me.Label8.TabIndex = 12
-        Me.Label8.Text = "Terminal No."
+        Me.dtpToReportingDate.CalendarFont = New System.Drawing.Font("Microsoft Sans Serif", 9.0!)
+        Me.dtpToReportingDate.CustomFormat = ""
+        Me.dtpToReportingDate.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.dtpToReportingDate.Location = New System.Drawing.Point(73, 75)
+        Me.dtpToReportingDate.Margin = New System.Windows.Forms.Padding(2, 3, 2, 3)
+        Me.dtpToReportingDate.Name = "dtpToReportingDate"
+        Me.dtpToReportingDate.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.dtpToReportingDate.Size = New System.Drawing.Size(267, 21)
+        Me.dtpToReportingDate.TabIndex = 6
         '
         'DGPOS_DGMGW
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(383, 297)
+        Me.ClientSize = New System.Drawing.Size(383, 355)
         Me.Controls.Add(Me.TabControl1)
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -325,7 +373,7 @@ Partial Class DGPOS_DGMGW
 
     Friend WithEvents TabControl1 As TabControl
     Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents dtpReportingDate As DateTimePicker
+    Friend WithEvents dtpFromReportingDate As DateTimePicker
     Friend WithEvents btnDiscount As Button
     Friend WithEvents btnHourly As Button
     Friend WithEvents btnDaily As Button
@@ -345,4 +393,8 @@ Partial Class DGPOS_DGMGW
     Friend WithEvents Label7 As Label
     Friend WithEvents txtTerminalNumber As TextBox
     Friend WithEvents txtRetailCode As TextBox
+    Friend WithEvents btnGenerateAll As Button
+    Friend WithEvents dtpToReportingDate As DateTimePicker
+    Friend WithEvents Label10 As Label
+    Friend WithEvents Label9 As Label
 End Class

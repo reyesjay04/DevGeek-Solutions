@@ -151,7 +151,7 @@ Public Class zreadCls
             zrCompBegBalance = returnselect("log_description", $"loc_system_logs WHERE log_type IN ('BG-1','BG-2','BG-3','BG-4') AND zreading = '{ZReadDate}' ORDER by log_date_time DESC LIMIT 1")
             zrDeposit = sum("amount", $"loc_deposit WHERE date(transaction_date) = '{ZReadDate}'")
 
-            zrCashless = sum("amountdue", $"loc_daily_transaction WHERE active IN (1,3) AND zreading = '{ZReadDate}' AND transaction_type NOT IN ('Walk-in' , 'Complimentary Expenses')")
+            zrCashless = sum("amountdue", $"loc_daily_transaction WHERE active IN (1,3) AND zreading = '{ZReadDate}' AND transaction_type NOT IN ('Walk-in' , 'Complimentary Expenses')") + zrGCUsed
             zrGcash = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Gcash' ")
             zrPaymaya = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Paymaya' ")
             zrGrab = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Grab' ")
@@ -371,12 +371,6 @@ Public Class zreadCls
             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "MISC/CHEQUES", NUMBERFORMAT(zrMisc), FontDefault, 5, 0)
             FillEJournalContent("MISC/CHEQUES          " & NUMBERFORMAT(zrDebitCard), {"MISC/CHEQUES", NUMBERFORMAT(zrMisc)}, "LR", False, False)
             RECEIPTLINECOUNT += 10
-            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "GIFT CARD(GC)", NUMBERFORMAT(zrGC), FontDefault, 5, 0)
-            FillEJournalContent("GIFT CARD(GC)          " & NUMBERFORMAT(zrGC), {"GIFT CARD(GC)", NUMBERFORMAT(zrGC)}, "LR", False, False)
-            RECEIPTLINECOUNT += 10
-            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "GIFT CARD USED", NUMBERFORMAT(zrGCUsed), FontDefault, 5, 0)
-            FillEJournalContent("GIFT CARD SUM          " & NUMBERFORMAT(zrGCUsed), {"GIFT CARD SUM", NUMBERFORMAT(zrGCUsed)}, "LR", False, False)
-            RECEIPTLINECOUNT += 10
             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "A/R", NUMBERFORMAT(zrAR), FontDefault, 5, 0)
             FillEJournalContent("A/R          " & NUMBERFORMAT(zrAR), {"A/R", NUMBERFORMAT(zrAR)}, "LR", False, False)
             RECEIPTLINECOUNT += 10
@@ -418,6 +412,12 @@ Public Class zreadCls
             RECEIPTLINECOUNT += 10
             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "COMPLIMENTARY", NUMBERFORMAT(zrCompExpenses), FontDefault, 5, 0)
             FillEJournalContent("COMPLIMENTARY          " & NUMBERFORMAT(zrCompExpenses), {"COMPLIMENTARY", NUMBERFORMAT(zrCompExpenses)}, "LR", False, False)
+            RECEIPTLINECOUNT += 10
+            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "GIFT CARD(GC)", NUMBERFORMAT(zrGC), FontDefault, 5, 0)
+            FillEJournalContent("GIFT CARD(GC)          " & NUMBERFORMAT(zrGC), {"GIFT CARD(GC)", NUMBERFORMAT(zrGC)}, "LR", False, False)
+            RECEIPTLINECOUNT += 10
+            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "GIFT CARD USED", NUMBERFORMAT(zrGCUsed), FontDefault, 5, 0)
+            FillEJournalContent("GIFT CARD SUM          " & NUMBERFORMAT(zrGCUsed), {"GIFT CARD SUM", NUMBERFORMAT(zrGCUsed)}, "LR", False, False)
             RECEIPTLINECOUNT += 10
             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "OTHERS", NUMBERFORMAT(zrCashlessOthers), FontDefault, 5, 0)
             FillEJournalContent("OTHERS          " & NUMBERFORMAT(zrCashlessOthers), {"OTHERS", NUMBERFORMAT(zrCashlessOthers)}, "LR", False, False)

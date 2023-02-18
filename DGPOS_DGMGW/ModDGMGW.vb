@@ -9,12 +9,15 @@ Module ModDGMGW
     Property ConnectionString As String
     Property ExportPath As String
     Property UserType As String
+    Property FromReportingDate As Date
+    Property ToReportingDate As Date
+    Property ShowDialogBox As Boolean
     Property Settings As SettingsCls
     Property BatchNumberSettings As FieldTypeCls.BatchNumberSettings
     Property StartDate As New Date
     Property EndDate As New Date
 #Region "Daily Sales"
-    Public Function GenerateDailySales(ByVal _baseDate As Date, ByVal _daily As DailySalesCls) As List(Of String)
+    Public Function GetDailySales(ByVal _businessdate As Date, ByVal _daily As DailySalesCls) As List(Of String)
         Dim dlSales As New List(Of String)
 
         Dim mConn As New MySqlConnection
@@ -22,11 +25,12 @@ Module ModDGMGW
 
         Try
             mConn.Open()
-            Dim ZReadDate As String = Format(_baseDate, "yyyy-MM-dd")
+            Dim ZreadDate As String = Format(_businessdate, "yyyy-MM-dd")
             Using mCmd = New MySqlCommand("", mConn)
                 mCmd.Parameters.Clear()
                 mCmd.CommandText = "SELECT * FROM `loc_zread_table` WHERE ZXdate = @ZreadDate"
-                mCmd.Parameters.AddWithValue("@ZreadDate", ZReadDate)
+                mCmd.Parameters.AddWithValue("@ZreadDate", ZreadDate)
+
                 mCmd.Prepare()
 
                 Using mReader = mCmd.ExecuteReader
@@ -36,11 +40,11 @@ Module ModDGMGW
 
                                 .RetailPartnerCode = RetailPartnerCode
                                 .TerminalNumber = TerminalNumber
-                                .BaseDate = Format(_baseDate, Settings.BDFormat)
+                                .BaseDate = Format(CType(mReader("ZXdate"), Date), Settings.BDFormat)
                                 .OldAccumulatedTotal = mReader("ZXBegBalance")
-                                .TotalCashSales = mReader("ZXCashTotal") - mReader("ZXCashlessTotal")
+                                .TotalCashSales = mReader("ZXCashTotal") - mReader("ZXCashlessTotal") - mReader("ZXGiftCardSum")
                                 .TotalCreditDebitCardSales = mReader("ZXCreditCard") + mReader("ZXDebitCard")
-                                .TotalOtherPaymentSales = mReader("ZXCashlessTotal") + mReader("ZXGiftCardSum")
+                                .TotalOtherPaymentSales = mReader("ZXCashlessTotal") + mReader("ZXGiftCard")
 
                                 .TotalNetSalesAmount = mReader("ZXNetSales")
                                 .NewAccumulatedTotal = mReader("ZXBegBalance") + .TotalNetSalesAmount
@@ -64,7 +68,7 @@ Module ModDGMGW
 
                                 dlSales.Add(FieldTypeConstructor("RetailPartnerCode", .RetailPartnerCode, "01"))
                                 dlSales.Add(FieldTypeConstructor("TerminalNumber", .TerminalNumber, "02"))
-                                dlSales.Add(FieldTypeConstructor("BaseDate", Format(_baseDate, Settings.BDFormat), "03"))
+                                dlSales.Add(FieldTypeConstructor("BaseDate", Format(.BaseDate, Settings.BDFormat), "03"))
                                 dlSales.Add(FieldTypeConstructor("OldAccumulatedTotal", .OldAccumulatedTotal, "04"))
                                 dlSales.Add(FieldTypeConstructor("NewAccumulatedTotal", .NewAccumulatedTotal, "05"))
                                 dlSales.Add(FieldTypeConstructor("TotalGrossSalesAmount", .TotalGrossSalesAmount, "06"))
@@ -101,7 +105,7 @@ Module ModDGMGW
 #End Region
 
 #Region "Hourly Sales"
-    Public Function GenerateHourlySales(ByVal _baseDate As Date, ByVal _hourly As HourlySalesCls) As List(Of String)
+    Public Function GetHourlySales(ByVal _baseDate As Date, ByVal _hourly As HourlySalesCls) As List(Of String)
         Dim hlSales As New List(Of String)
         Try
             With _hourly
@@ -141,7 +145,7 @@ Module ModDGMGW
             Dim dtEnd = EndDate.AddHours(1)
 
             While dtStart < dtEnd
-                Dim fromTime = Format(dtStart, "HH:mm")
+                Dim fromTime = Format(dtStart, "HH:01")
                 Dim toTime = Format(dtStart.AddHours(1), "HH:00")
                 Dim nwhldata As New HourlySalesCls.HourlySales
 
@@ -165,7 +169,7 @@ Module ModDGMGW
 #End Region
 
 #Region "Daily Discount Data"
-    Public Function GenerateDailyDiscountData(ByVal _baseDate As Date, ByVal _discountData As List(Of DiscountDataCls)) As List(Of String)
+    Public Function GetDailyDiscountData(ByVal _baseDate As Date, ByVal _discountData As List(Of DiscountDataCls)) As List(Of String)
         Dim discData As New List(Of String)
 
         Dim mConn As New MySqlConnection
@@ -181,7 +185,7 @@ Module ModDGMGW
                     mCmd.CommandText = "SELECT tc.id as PromoCode, lcd.coupon_name as PromoDescription, lcd.coupon_total as PromoTotal FROM `loc_coupon_data` lcd 
                                     LEFT JOIN tbcoupon tc ON tc.ID = lcd.reference_id
                                     LEFT JOIN loc_daily_transaction ldt on ldt.transaction_number = lcd.transaction_number
-                                    WHERE lcd.zreading = @ZReadDate AND ldt.active = 1"
+                                    WHERE lcd.zreading = @ZReadDate AND ldt.active = 1 AND tc.id <> 3"
                     mCmd.Parameters.AddWithValue("@ZreadDate", ZReadDate)
 
                     Using mReader = mCmd.ExecuteReader
@@ -213,6 +217,7 @@ Module ModDGMGW
         Return discData
     End Function
 #End Region
+
 #Region "Global Functions"
     Public Function SumColumn(ByVal _field As String, ByVal _table As String, ByVal _condition As String) As Double
         Dim dbl As Double = 0
@@ -347,10 +352,57 @@ Module ModDGMGW
         mConn.Close()
     End Sub
 
+    Public Function ZreadDateExist() As Boolean
+
+        Dim isAllDateAreValid As Boolean = True
+        Dim CStartDate As Date = ModDGMGW.FromReportingDate
+        Dim CEndDate As Date = ModDGMGW.ToReportingDate
+
+        Dim mConn As New MySqlConnection
+        mConn.ConnectionString = ModDGMGW.ConnectionString
+
+        Try
+            mConn.Open()
+            Using mCmd = New MySqlCommand("", mConn)
+                While CStartDate < CEndDate
+                    mCmd.Parameters.Clear()
+                    mCmd.CommandText = "SELECT ZXdate FROM loc_zread_table WHERE ZXdate = @ZXdate"
+                    mCmd.Parameters.AddWithValue("@ZXdate", Format(StartDate, "yyyy-MM-dd"))
+                    Using mReader = mCmd.ExecuteReader
+                        If mReader.HasRows Then
+                            isAllDateAreValid = True
+                        Else
+                            isAllDateAreValid = False
+                            Exit Try
+                        End If
+                        mReader.Dispose()
+                    End Using
+                    CStartDate = CStartDate.AddDays(1)
+                End While
+                mCmd.Dispose()
+            End Using
+
+        Catch ex As Exception
+        End Try
+        mConn.Close()
+        Return isAllDateAreValid
+    End Function
 #End Region
 
 #Region "Directory Creator"
-
+    Public Sub CreateDirectories()
+        ModDGMGW.ExportPath = If(Not ModDGMGW.ExportPath.EndsWith("\"), ModDGMGW.ExportPath & "\", ModDGMGW.ExportPath)
+        If CheckYearDirectory() Then
+            If Not CheckDayDirectory() Then
+                ModDGMGW.ExportPath = CreateDayDir() & "\"
+            End If
+        Else
+            ModDGMGW.ExportPath = CreateYearDir() & "\"
+            If Not CheckDayDirectory() Then
+                ModDGMGW.ExportPath = CreateDayDir() & "\"
+            End If
+        End If
+    End Sub
     Public Function CheckYearDirectory() As Boolean
         Dim isExist As Boolean = False
         Try

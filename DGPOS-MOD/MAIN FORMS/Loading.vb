@@ -16,6 +16,7 @@ Public Class Loading
             LabelFOOTER.Text = My.Settings.Footer
             CheckForIllegalCrossThreadCalls = False
 
+            ReadConfigurationFiles()
             CreateXmlPath()
 
             BackgroundWorker1.WorkerSupportsCancellation = True

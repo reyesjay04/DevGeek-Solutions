@@ -4,7 +4,7 @@ Imports System.Text
 Imports System.Net
 Imports MySql.Data.MySqlClient
 Imports System.Drawing.Printing
-Imports System.Text.RegularExpressions
+Imports DGPOS_COMMON
 Imports System.Globalization
 Imports System.Xml
 
@@ -21,6 +21,8 @@ Module publicfunctions
     Public Declare Function com_init Lib "api_com.dll" (ByVal com As Integer, ByVal baud As Integer) As Boolean
     Public Declare Function com_send Lib "api_com.dll" (ByVal buf As String, ByVal lens As Long) As Boolean
     Public Declare Function com_rest Lib "api_com.dll" () As Boolean
+    Property ListOfDGPOSSettings As List(Of String)
+
 
     Public Sub ShowKeyboard()
         Try
@@ -2058,6 +2060,17 @@ Module publicfunctions
                 .SelectionMode = DataGridViewSelectionMode.FullRowSelect
             End With
         Catch ex As Exception
+        End Try
+    End Sub
+    Public Sub ReadConfigurationFiles()
+        Try
+            serviceConfigName = "DG_POS.config"
+
+            ListOfDGPOSSettings = ModPosCommon.ReadTextCategories("ctl")
+            Disable_Zread_Date_Overlapping = ModPosCommon.GetItemValue("disable_zread_date_overlapping", "N", ListOfDGPOSSettings).Equals("Y")
+            Enable_Megaworld_Functionality_On_Zread = ModPosCommon.GetItemValue("enable_megaworld_functionality_on_zread", "N", ListOfDGPOSSettings).Equals("Y")
+        Catch ex As Exception
+
         End Try
     End Sub
 End Module

@@ -138,4 +138,7 @@ Module publicVariables
     Property EJOURNAL_TotalLines As Integer = 0
     Property EJOURLAN_Content As String = ""
     Property XML_Path As String = ""
+    '################################################################ Zread Date
+    Property Disable_Zread_Date_Overlapping As Boolean
+    Property Enable_Megaworld_Functionality_On_Zread As Boolean
 End Module

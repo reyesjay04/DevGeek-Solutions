@@ -2852,6 +2852,26 @@ Public Class Reports
 
                 AuditTrail.LogToAuditTrail("System", $"Reports: Generated ZREAD, Z-Read for {S_Zreading}, {ClientCrewID}", "Normal")
                 genzreadreport.InsertZReadXRead()
+
+                If Enable_Megaworld_Functionality_On_Zread Then
+
+                    Try
+                        Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath & ",from_reporting_date^" & S_Zreading & ",to_reporting_date^" & S_Zreading & ",show_dialog_box^N"
+
+                        Dim ins As System.Reflection.Assembly
+                        ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DGPOS_DGMGW.dll")
+
+                        Dim obj As Object = ins.CreateInstance("DGPOS_DGMGW.DGPOS_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
+                        Dim type As Type = ins.GetType("DGPOS_DGMGW.DGPOS_DGMGW")
+
+                        Dim methodInfo As System.Reflection.MethodInfo = type.GetMethod("GenerateAll")
+                        methodInfo.Invoke(ins, New String() {})
+                    Catch ex As Exception
+
+                    End Try
+
+                End If
+
                 S_OLDGRANDTOTAL = genzreadreport.UpdateBegBalance()
                 S_Zreading = genzreadreport.UpdateZreadSettings()
 
@@ -3077,7 +3097,7 @@ Public Class Reports
             ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DGPOS_DGMGW.dll")
 
 
-            Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath
+            Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath & ",from_reporting_date^" & S_Zreading & ",to_reporting_date^" & S_Zreading & ",show_dialog_box^Y"
 
             Dim obj As Object = ins.CreateInstance("DGPOS_DGMGW.DGPOS_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
             Dim frm As Form = CType(obj, Form)

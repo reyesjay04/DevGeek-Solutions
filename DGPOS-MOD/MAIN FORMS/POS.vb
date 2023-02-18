@@ -274,7 +274,7 @@ Public Class POS
             If Not CheckMaxSales() Then
                 If ButtonPayMent.Text = "Checkout" Then
 
-                    If S_Zreading = Format(Now(), "yyyy-MM-dd") Or S_Zreading = Format(Now().AddDays(1), "yyyy-MM-dd") Then
+                    If Disable_Zread_Date_Overlapping Then
                         Enabled = False
                         PaymentForm.Show()
                         Application.DoEvents()
@@ -282,7 +282,16 @@ Public Class POS
                         PaymentForm.TextBoxTOTALPAY.Text = TextBoxGRANDTOTAL.Text
                         PaymentForm.Focus()
                     Else
-                        MessageBox.Show("Z-read first", "Z-Reading", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        If S_Zreading = Format(Now(), "yyyy-MM-dd") Or S_Zreading = Format(Now().AddDays(1), "yyyy-MM-dd") Then
+                            Enabled = False
+                            PaymentForm.Show()
+                            Application.DoEvents()
+                            PaymentForm.TextBoxMONEY.Focus()
+                            PaymentForm.TextBoxTOTALPAY.Text = TextBoxGRANDTOTAL.Text
+                            PaymentForm.Focus()
+                        Else
+                            MessageBox.Show("Z-read first", "Z-Reading", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                        End If
                     End If
                 Else
                     If Not BackgroundWorkerInventory.IsBusy Then

@@ -17,9 +17,9 @@ Public Class DGPOS_DGMGW
 
         ModDGMGW.UserType = "Admin"
         ModDGMGW.ConnectionString = "server=localhost;user id=posuser;password=posuser;database=pos;port=3306"
-        ModDGMGW.ExportPath = "C:\Users\jjrey\Documents\Innovention"
+        ModDGMGW.BaseExportPath = "C:\Users\jjrey\Documents\Innovention\"
         ModDGMGW.ShowDialogBox = True
-        CreateDirectories()
+
     End Sub
     Public Sub New(ByRef params As String)
 
@@ -36,7 +36,7 @@ Public Class DGPOS_DGMGW
                 Case "connection"
                     ModDGMGW.ConnectionString = strSplit(1)
                 Case "export_path"
-                    ModDGMGW.ExportPath = If(strSplit(1).EndsWith("\"), strSplit(1), strSplit(1) & "\")
+                    ModDGMGW.BaseExportPath = If(strSplit(1).EndsWith("\"), strSplit(1), strSplit(1) & "\")
                 Case "from_reporting_date"
                     ModDGMGW.FromReportingDate = CType(strSplit(1), Date)
                 Case "to_reporting_date"
@@ -48,7 +48,7 @@ Public Class DGPOS_DGMGW
         Next
 
         ' Add any initialization after the InitializeComponent() call.
-        CreateDirectories()
+
     End Sub
 
     Property FileNameGenerated As String
@@ -84,7 +84,15 @@ Public Class DGPOS_DGMGW
     Private Sub btnDaily_Click(sender As Object, e As EventArgs) Handles btnDaily.Click
         ModDGMGW.FromReportingDate = dtpFromReportingDate.Value
         ModDGMGW.ToReportingDate = dtpToReportingDate.Value
-        GenerateDailySales()
+
+        If ZreadDateExist() Then
+            GenerateDailySales()
+        Else
+            If ShowDialogBox Then
+                MsgBox("Sales data is not yet available. Please select other reporting date")
+            End If
+        End If
+
     End Sub
 
     Private Sub btnHourly_Click(sender As Object, e As EventArgs) Handles btnHourly.Click
@@ -132,7 +140,7 @@ Public Class DGPOS_DGMGW
                 .SalesFileType = SalesFileTypeCls.SalesFormat.DailySales
 
                 For Each Day As DateTime In DateRange(SStartDate, SEndDate)
-                    Dim setBtNum = GetBatchNumber(SStartDate)
+                    Dim setBtNum = GetBatchNumber(Day)
                     Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
 
                     ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
@@ -140,14 +148,14 @@ Public Class DGPOS_DGMGW
                     BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
 
                     With BatchNumberSettings
-                        .BusinessDate = SStartDate
+                        .BusinessDate = Day
                         .FieldType = "S"
                         .NewBatchNumber = ModDGMGW.BatchNumber
                     End With
 
-                    Dim GeneratedDailySales = GetDailySales(SStartDate, DailySales)
+                    Dim GeneratedDailySales = GetDailySales(Day, DailySales)
 
-                    Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName)
+                    Using addInfo = File.CreateText(CheckProgramDirectory(Day) & .GenerateFileName)
                         For Each str As String In GeneratedDailySales
                             addInfo.WriteLine(str)
                         Next
@@ -160,7 +168,7 @@ Public Class DGPOS_DGMGW
                     End If
 
                     If ShowDialogBox Then
-                        Dim userMsg As String = InputBox(.GenerateFileName, "File Location", ModDGMGW.ExportPath & .GenerateFileName)
+                        Dim userMsg As String = InputBox(.GenerateFileName, "File Location", CheckProgramDirectory(Day) & .GenerateFileName)
                     End If
                 Next
 
@@ -183,7 +191,7 @@ Public Class DGPOS_DGMGW
                 .SalesFileType = SalesFileTypeCls.SalesFormat.HourlySales
 
                 For Each Day As DateTime In DateRange(HStartDate, HEndDate)
-                    Dim setBtNum = GetBatchNumber(HStartDate)
+                    Dim setBtNum = GetBatchNumber(Day)
                     Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
 
                     ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
@@ -191,14 +199,14 @@ Public Class DGPOS_DGMGW
                     BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
 
                     With BatchNumberSettings
-                        .BusinessDate = HStartDate
+                        .BusinessDate = Day
                         .FieldType = "H"
                         .NewBatchNumber = ModDGMGW.BatchNumber
                     End With
 
-                    Dim GeneratedHourlySales = GetHourlySales(HStartDate, HourlySales)
+                    Dim GeneratedHourlySales = GetHourlySales(Day, HourlySales)
 
-                    Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName)
+                    Using addInfo = File.CreateText(CheckProgramDirectory(Day) & .GenerateFileName)
                         For Each str As String In GeneratedHourlySales
                             addInfo.WriteLine(str)
                         Next
@@ -211,7 +219,7 @@ Public Class DGPOS_DGMGW
                     End If
 
                     If ShowDialogBox Then
-                        Dim userMsg As String = InputBox(.GenerateFileName, "File Location", ModDGMGW.ExportPath & .GenerateFileName)
+                        Dim userMsg As String = InputBox(.GenerateFileName, "File Location", CheckProgramDirectory(Day) & .GenerateFileName)
                     End If
                 Next
             End With
@@ -237,7 +245,7 @@ Public Class DGPOS_DGMGW
                 .SalesFileType = SalesFileTypeCls.SalesFormat.DiscountData
 
                 For Each Day As DateTime In DateRange(DStartDate, DEndDate)
-                    Dim setBtNum = GetBatchNumber(DStartDate)
+                    Dim setBtNum = GetBatchNumber(Day)
                     Dim btNumExist As Boolean = If(setBtNum = 0, False, True)
 
                     ModDGMGW.BatchNumber = If(setBtNum = 9, 9, setBtNum + 1).ToString
@@ -245,15 +253,15 @@ Public Class DGPOS_DGMGW
                     BatchNumberSettings = New FieldTypeCls.BatchNumberSettings
 
                     With BatchNumberSettings
-                        .BusinessDate = DStartDate
+                        .BusinessDate = Day
                         .FieldType = "D"
                         .NewBatchNumber = ModDGMGW.BatchNumber
                     End With
 
-                    Dim GeneratedDiscountData = GetDailyDiscountData(DStartDate, HourlySales)
+                    Dim GeneratedDiscountData = GetDailyDiscountData(Day, HourlySales)
 
                     If GeneratedDiscountData.Count > 0 Then
-                        Using addInfo = File.CreateText(ModDGMGW.ExportPath & .GenerateFileName)
+                        Using addInfo = File.CreateText(CheckProgramDirectory(Day) & .GenerateFileName)
                             For Each str As String In GeneratedDiscountData
                                 addInfo.WriteLine(str)
                             Next
@@ -266,7 +274,7 @@ Public Class DGPOS_DGMGW
                         End If
 
                         If ShowDialogBox Then
-                            Dim userMsg As String = InputBox(.GenerateFileName, "File Location", ModDGMGW.ExportPath & .GenerateFileName)
+                            Dim userMsg As String = InputBox(.GenerateFileName, "File Location", CheckProgramDirectory(Day) & .GenerateFileName)
                         End If
                     End If
                 Next

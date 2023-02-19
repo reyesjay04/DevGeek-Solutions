@@ -1,7 +1,7 @@
 ﻿Public Class DailySalesCls
     Property RetailPartnerCode As String
     Property TerminalNumber As String
-    Property BaseDate As String
+    Property BaseDate As Date
     Property OldAccumulatedTotal As Double
     Property NewAccumulatedTotal As Double
     Property TotalGrossSalesAmount As Double

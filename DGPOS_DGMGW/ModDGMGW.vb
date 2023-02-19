@@ -1,13 +1,14 @@
 ﻿Imports System.IO
 Imports MySql.Data.MySqlClient
 Module ModDGMGW
+    Property ProgramID As String = "DGPOS_DGMGW"
     Property SalesFileName As New SalesFileTypeCls
     Property RetailPartnerCode As String = "DGPOS1234" 'Default Value
     Property TerminalNumber As String = "00" 'Default Value
     Property BatchNumber As String = "2"
     Property RetailPartnerCodeLength As Integer = 4 'Default Value
     Property ConnectionString As String
-    Property ExportPath As String
+    Property BaseExportPath As String
     Property UserType As String
     Property FromReportingDate As Date
     Property ToReportingDate As Date
@@ -40,7 +41,7 @@ Module ModDGMGW
 
                                 .RetailPartnerCode = RetailPartnerCode
                                 .TerminalNumber = TerminalNumber
-                                .BaseDate = Format(CType(mReader("ZXdate"), Date), Settings.BDFormat)
+                                .BaseDate = CType(mReader("ZXdate"), Date)
                                 .OldAccumulatedTotal = mReader("ZXBegBalance")
                                 .TotalCashSales = mReader("ZXCashTotal") - mReader("ZXCashlessTotal") - mReader("ZXGiftCardSum")
                                 .TotalCreditDebitCardSales = mReader("ZXCreditCard") + mReader("ZXDebitCard")
@@ -390,65 +391,51 @@ Module ModDGMGW
 #End Region
 
 #Region "Directory Creator"
-    Public Sub CreateDirectories()
-        ModDGMGW.ExportPath = If(Not ModDGMGW.ExportPath.EndsWith("\"), ModDGMGW.ExportPath & "\", ModDGMGW.ExportPath)
-        If CheckYearDirectory() Then
-            If Not CheckDayDirectory() Then
-                ModDGMGW.ExportPath = CreateDayDir() & "\"
-            End If
-        Else
-            ModDGMGW.ExportPath = CreateYearDir() & "\"
-            If Not CheckDayDirectory() Then
-                ModDGMGW.ExportPath = CreateDayDir() & "\"
-            End If
-        End If
-    End Sub
-    Public Function CheckYearDirectory() As Boolean
-        Dim isExist As Boolean = False
-        Try
-            If Directory.Exists(ModDGMGW.ExportPath & Format(Now(), "yyyy")) Then
-                isExist = True
-                ModDGMGW.ExportPath = ModDGMGW.ExportPath & Format(Now(), "yyyy") & "\"
-            Else
-                isExist = False
-            End If
-        Catch ex As Exception
-        End Try
-        Return isExist
-    End Function
-
-    Public Function CreateYearDir() As String
+    Public Function CheckProgramDirectory(ByRef _basedate As Date) As String
         Dim path As String = ""
-        Try
-            path = ModDGMGW.ExportPath & Format(Now(), "yyyy")
-            My.Computer.FileSystem.CreateDirectory(path)
-        Catch ex As Exception
-        End Try
+
+        Dim program_export_path = ModDGMGW.BaseExportPath & ProgramID
+
+        If Directory.Exists(program_export_path) Then
+            path = CreateYearDir(_basedate, program_export_path)
+        Else
+            My.Computer.FileSystem.CreateDirectory(program_export_path)
+            path = CreateYearDir(_basedate, program_export_path)
+        End If
+        path = If(path.EndsWith("\"), path, path & "\")
         Return path
     End Function
 
-    Public Function CheckDayDirectory() As Boolean
-        Dim isExist As Boolean = False
-        Try
-            If Directory.Exists(ModDGMGW.ExportPath & Format(Now(), "dd")) Then
-                isExist = True
-                ModDGMGW.ExportPath = ModDGMGW.ExportPath & Format(Now(), "dd") & "\"
-            Else
-                isExist = False
-            End If
-        Catch ex As Exception
+    Public Function CreateYearDir(ByRef _basedate As Date, ByRef program_export_path As String) As String
+        Dim path As String = ""
+        program_export_path = If(program_export_path.EndsWith("\"), program_export_path, program_export_path & "\")
 
-        End Try
-        Return isExist
+        Dim year_dir_path As String = program_export_path & Format(_basedate, "yyyy")
+
+        If Directory.Exists(year_dir_path) Then
+            path = CreateDayDir(_basedate, year_dir_path)
+        Else
+            My.Computer.FileSystem.CreateDirectory(year_dir_path)
+            path = CreateDayDir(_basedate, year_dir_path)
+        End If
+        Return path
     End Function
 
-    Public Function CreateDayDir() As String
+
+    Public Function CreateDayDir(ByRef _basedate As Date, ByRef year_dir_path As String) As String
         Dim path As String = ""
-        Try
-            path = ModDGMGW.ExportPath & Format(Now(), "dd MM yyyy")
-            My.Computer.FileSystem.CreateDirectory(path)
-        Catch ex As Exception
-        End Try
+        year_dir_path = If(year_dir_path.EndsWith("\"), year_dir_path, year_dir_path & "\")
+
+        Dim day_dir_path As String = year_dir_path & Format(_basedate, "dd MM yyyy")
+
+        If Not Directory.Exists(day_dir_path) Then
+            My.Computer.FileSystem.CreateDirectory(day_dir_path)
+            path = day_dir_path
+        Else
+            path = day_dir_path
+        End If
+
+        path = If(path.EndsWith("\"), path, path & "\")
         Return path
     End Function
 #End Region

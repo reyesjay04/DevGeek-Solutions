@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2023 at 04:03 PM
+-- Generation Time: Feb 20, 2023 at 09:51 AM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.7
 
@@ -188,6 +188,8 @@ DROP TABLE IF EXISTS `loc_coupon_data`;
 CREATE TABLE IF NOT EXISTS `loc_coupon_data` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `transaction_number` varchar(20) NOT NULL,
+  `ldtd_id` int(11) NOT NULL,
+  `ldtd_product_id` int(11) NOT NULL,
   `reference_id` int(11) NOT NULL,
   `coupon_name` text NOT NULL,
   `coupon_desc` text NOT NULL,
@@ -257,6 +259,7 @@ CREATE TABLE IF NOT EXISTS `loc_daily_transaction` (
   `shift` varchar(255) NOT NULL,
   `zreading` varchar(10) NOT NULL,
   `synced` varchar(255) NOT NULL,
+  `actual_trx_date` datetime NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`transaction_id`),
   KEY `transaction_number` (`transaction_number`,`crew_id`,`guid`,`zreading`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

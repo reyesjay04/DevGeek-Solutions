@@ -716,6 +716,24 @@ Module RetrieveModule
         End Try
         Return ReturnMe
     End Function
+    Public Function GetDetailsID(ByRef _product_id As Integer, ByRef _transaction_number As String) As Integer
+        Dim res As Integer = 0
+        Try
+            Dim ConnectionLocal As MySqlConnection = LocalhostConn()
+            Using mCmd = New MySqlCommand("", ConnectionLocal)
+                mCmd.Parameters.Clear()
+                mCmd.CommandText = "SELECT details_id FROM loc_daily_transaction_details WHERE product_id = @ProductID AND transaction_number = @TransactionNumber"
+                mCmd.Parameters.AddWithValue("@ProductID", _product_id)
+                mCmd.Parameters.AddWithValue("@TransactionNumber", _transaction_number)
+                mCmd.Prepare()
+                res = mCmd.ExecuteScalar
+                mCmd.Dispose()
+            End Using
+            ConnectionLocal.Close()
+        Catch ex As Exception
+        End Try
+        Return res
+    End Function
 #Region "UPDATES"
     Public Sub GetUpdatesRowCount(FromPosUpdate As Integer)
         Try

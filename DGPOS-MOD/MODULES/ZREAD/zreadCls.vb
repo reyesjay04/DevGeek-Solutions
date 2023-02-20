@@ -136,11 +136,11 @@ Public Class zreadCls
             'Total Discounts = Gross Sales ():60 / 1.12 = ():53.57 * 0.20 = 10.71(xrLessDiscVE) |OR| Used Gift Card(xrGCUsed)
             zrLessDiscVE = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Percentage(w/o vat)' AND status = 1")
             'Gross Sales (zrGrossSales) + Gift Card Used(zrGCSum) - Less Vat(zrLessVatVE) - Vat Amount()zrVatAmount - Discount (zrLessDiscVE)
-            zrDailySales = zrGrossSales + zrGCUsed - zrLessVatVE - zrLessDiscVE
+            zrDailySales = zrGrossSales - zrLessVatVE - zrLessDiscVE
             'Gross Sales (zrGrossSales) + Gift Card Used(zrGCSum) - Less Vat(zrLessVatVE) - Vat Amount()zrVatAmount - Discount (zrLessDiscVE)
 
 
-            zrCashTotal = sum("amountdue", $"loc_daily_transaction WHERE zreading = '{ZReadDate}'  AND active = 1")
+            zrCashTotal = sum("amountdue", $"loc_daily_transaction WHERE zreading = '{ZReadDate}'  AND active = 1") - zrGCUsed
 
             zrCreditCard = 0
             zrDebitCard = 0
@@ -167,8 +167,8 @@ Public Class zreadCls
             zrTrxCancel = zrReturnEx
             zrDiplomat = 0
 
-            zrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1")
-            zrNetSales = zrGrossSales + zrGCUsed - zrLessVatVE - zrTotalDisc
+            zrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1") - zrGCUsed
+            zrNetSales = zrGrossSales - zrLessVatVE - zrTotalDisc
             If zrCompBegBalance = "" Then zrCompBegBalance = 0
             zrCashinDrawer = zrGrossSales - zrCashless - zrTotalDisc - zrLessVatVE - zrTotalExpenses + Double.Parse(zrCompBegBalance)
 

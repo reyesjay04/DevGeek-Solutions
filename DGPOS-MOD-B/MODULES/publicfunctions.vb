@@ -2069,6 +2069,8 @@ Module publicfunctions
             ListOfDGPOSSettings = ModPosCommon.ReadTextCategories("ctl")
             Disable_Zread_Date_Overlapping = ModPosCommon.GetItemValue("disable_zread_date_overlapping", "N", ListOfDGPOSSettings).Equals("Y")
             Enable_Megaworld_Functionality_On_Zread = ModPosCommon.GetItemValue("enable_megaworld_functionality_on_zread", "N", ListOfDGPOSSettings).Equals("Y")
+            Enable_SIA_Functionality = ModPosCommon.GetItemValue("enable_sia_functionality", "N", ListOfDGPOSSettings).Equals("Y")
+
         Catch ex As Exception
 
         End Try

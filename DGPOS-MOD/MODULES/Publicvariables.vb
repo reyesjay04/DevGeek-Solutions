@@ -141,5 +141,5 @@ Module publicVariables
     '################################################################ Zread Date
     Property Disable_Zread_Date_Overlapping As Boolean
     Property Enable_Megaworld_Functionality_On_Zread As Boolean
-
+    Property Enable_SIA_Functionality As Boolean
 End Module

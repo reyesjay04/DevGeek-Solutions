@@ -168,7 +168,7 @@ Public Class SeniorDetails
 
             End With
 
-            TransactionVariables.DiscountName = COUPONNAME
+            TransactionVariables.DiscountName &= COUPONNAME & ","
             If PromoApplied Then
                 SeniorGCDiscount = True
             Else

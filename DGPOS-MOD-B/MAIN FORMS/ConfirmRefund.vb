@@ -108,6 +108,25 @@ Public Class ConfirmRefund
             XML_Writer.Indentation = 2
             XML_Writer.WriteStartElement("Table")
 
+            If Enable_SIA_Functionality Then
+                Try
+                    Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",base_date^" & S_Zreading & ",transaction_number^" & TRANSACTIONNUMBER & ",is_refund^Y"
+
+                    Dim ins As System.Reflection.Assembly
+                    ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DG_SIASYS.dll")
+
+                    Dim obj As Object = ins.CreateInstance("DG_SIASYS.DG_SIASYS", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
+                    Dim type As Type = ins.GetType("DG_SIASYS.DG_SIASYS")
+
+                    Dim methodInfo As System.Reflection.MethodInfo = type.GetMethod("GenerateCSVFiles")
+                    methodInfo.Invoke(ins, New String() {})
+
+                    Console.WriteLine(1)
+                Catch ex As Exception
+
+                End Try
+            End If
+
             If S_Print_Returns = "YES" Then
                 printdoc.Print()
             Else

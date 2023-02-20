@@ -567,140 +567,134 @@ Public Class Reports
             Dim DateFrom = Format(DateTimePicker17.Value, "yyyy-MM-dd")
             Dim Todate = Format(DateTimePicker18.Value, "yyyy-MM-dd")
 
+            Dim OrderBy = "ORDER BY LDT.transaction_number DESC"
+
             Dim ActiveQuery = ""
             If ToolStripComboBoxOption.Text = "All" Then
                 ActiveQuery = ""
             ElseIf ToolStripComboBoxOption.Text = "Complete" Then
-                If TransactionType = "All" Then
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active IN (1,3) "
-                    End If
-                ElseIf TransactionType = "All(Cash)" Then
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active IN (1,3) "
-                    End If
-                ElseIf TransactionType = "All(Others)" Then
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active IN (1,3) "
-                    End If
-                Else
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active IN (1,3) "
-                    End If
-                End If
+                ActiveQuery = " AND LDT.active IN (1,3) "
             Else
-                If TransactionType = "All" Then
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active = 2"
-                    End If
-                ElseIf TransactionType = "All(Cash)" Then
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active = 2"
-                    End If
-                ElseIf TransactionType = "All(Others)" Then
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active = 2"
-                    End If
-                Else
-                    If DiscountType = "All" Then
-                        ActiveQuery = " AND LDT.active = 2"
-                    End If
-                End If
+                ActiveQuery = " AND LDT.active = 2"
             End If
 
-            Dim NormalFields = "LDT.transaction_type, LDT.product_name, LDT.transaction_number, LDT.quantity, LDT.price, LDT.total, LDT.created_at, LDT.product_sku FROM loc_daily_transaction_details LDT"
+            Dim NormalFields = "LDT.transaction_type, LDT.product_name, LDT.transaction_number, LDT.quantity, LDT.price, LDT.total, LDT.created_at, LDT.product_sku FROM loc_daily_transaction_details LDT
+                                LEFT JOIN loc_coupon_data LCD ON LCD.transaction_number = LDT.transaction_number AND LDT.product_id = LCD.ldtd_product_id "
             Dim ZreadDtRange = $"LDT.zreading >= '{DateFrom}' AND LDT.zreading <= '{Todate}'"
-            Dim DtCreatedRange = $"date(LDT.created_at) >= '{DateFrom}' AND date(LDT.created_at) <= '{Todate}'"
+            Dim DtCreatedRange = $"date(LDT.created_at) >= '{DateFrom}' AND date(LDT.created_at) <= '{Todate}' {OrderBy}"
 
             If ProductName = "All" Then
                 If TaxType = "All" Then
                     If TransactionType = "All" Then
                         If DiscountType = "All" Then
-                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery}"
+                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} {OrderBy}"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     ElseIf TransactionType = "All(Cash)" Then
                         If DiscountType = "All" Then
-                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} AND transaction_type IN('Walk-In','Registered')"
+                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} AND transaction_type IN('Walk-In','Registered') {OrderBy}"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LDT.transaction_type IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LDT.transaction_type IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     ElseIf TransactionType = "All(Others)" Then
                         If DiscountType = "All" Then
-                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} AND transaction_type NOT IN('Walk-In','Registered')"
+                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} AND transaction_type NOT IN('Walk-In','Registered') {OrderBy}"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LDT.transaction_type NOT IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LDT.transaction_type NOT IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     Else
                         If DiscountType = "All" Then
-                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} AND transaction_type = '" & TransactionType & "' "
+                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} {ActiveQuery} AND transaction_type = '{TransactionType}' {OrderBy}"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LDT.transaction_type = '{TransactionType}' AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} {ActiveQuery} AND LDT.transaction_type = '{TransactionType}' AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     End If
                 Else
                     If TaxType = "VAT" Then
                         If TransactionType = "All" Then
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' AND LD.zeroratedsales = 0 {ActiveQuery} GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         ElseIf TransactionType = "All(Cash)" Then
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         ElseIf TransactionType = "All(Others)" Then
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         Else
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type = '{TransactionType}' "
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type = '{TransactionType}' {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND AND LCD.coupon_name = '{DiscountType}' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type = '{TransactionType}' GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         End If
                     ElseIf TaxType = "NONVAT" Then
                         Dim Types As String = "'Senior Discount 20%','PWD Discount 20%','Sports Discount 20%'"
                         If TransactionType = "All" Then
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type IN ({Types}) {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name IN ({Types}) {ActiveQuery} GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' {ActiveQuery} GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Cash)" Then
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type IN ({Types}) {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name IN ({Types}) {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         ElseIf TransactionType = "All(Others)" Then
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type IN ({Types}) {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name IN ({Types}) {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         Else
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.discount_type IN ({Types}) {ActiveQuery} AND LD.transaction_type = '{TransactionType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name IN ({Types}) {ActiveQuery} AND LD.transaction_type = '{TransactionType}' GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+                            Else
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LCD.coupon_name = '{DiscountType}' {ActiveQuery} AND LD.transaction_type = '{TransactionType}' GROUP BY LDT.product_id, LDT.transaction_number {OrderBy}"
+
                             End If
                         End If
                     ElseIf TaxType = "ZERO RATED" Then
                         If TransactionType = "All" Then
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 "
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Cash)" Then
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type IN('Walk-In','Registered') {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Others)" Then
                             If DiscountType = "All" Then
                                 sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type NOT IN('Walk-In','Registered')"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type NOT IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type NOT IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         Else
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         End If
                     End If
@@ -709,99 +703,99 @@ Public Class Reports
                 If TaxType = "All" Then
                     If TransactionType = "All" Then
                         If DiscountType = "All" Then
-                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} AND product_name = '{ProductName}' {ActiveQuery}"
+                            sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} AND product_name = '{ProductName}' {ActiveQuery} {OrderBy}"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     ElseIf TransactionType = "All(Cash)" Then
                         If DiscountType = "All" Then
                             sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} AND product_name = '{ProductName}' {ActiveQuery} AND transaction_type IN('Walk-In','Registered')"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' {ActiveQuery} AND LDT.transaction_type IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' {ActiveQuery} AND LDT.transaction_type IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     ElseIf TransactionType = "All(Others)" Then
                         If DiscountType = "All" Then
                             sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} AND product_name = '{ProductName}' {ActiveQuery} AND transaction_type NOT IN('Walk-In','Registered')"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' {ActiveQuery} AND LDT.transaction_type NOT IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' {ActiveQuery} AND LDT.transaction_type NOT IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     Else
                         If DiscountType = "All" Then
                             sql = $"SELECT {NormalFields} WHERE {ZreadDtRange} AND product_name = '{ProductName}' AND transaction_type = '{TransactionType}' {ActiveQuery}"
                         Else
-                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' AND LDT.transaction_type = '{TransactionType}' {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                            sql = $"SELECT {NormalFields} LEFT JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {DtCreatedRange} AND LDT.product_name = '{ProductName}' AND LDT.transaction_type = '{TransactionType}' {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                         End If
                     End If
                 Else
                     If TaxType = "VAT" Then
                         If TransactionType = "All" Then
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Cash)" Then
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Others)" Then
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered')"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         Else
                             If DiscountType = "All" Or DiscountType = "N/A" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type = 'N/A' AND LD.zeroratedsales = 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name = 'N/A' AND LD.zeroratedsales = 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         End If
                     ElseIf TaxType = "NONVAT" Then
                         Dim Types As String = "'Senior Discount 20%','PWD Discount 20%','Sports Discount 20%'"
                         If TransactionType = "All" Then
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type IN ({Types}) {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name IN ({Types}) {ActiveQuery} {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Cash)" Then
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type IN ({Types}) {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name IN ({Types}) {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Others)" Then
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type IN ({Types}) {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name IN ({Types}) {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') {OrderBy}"
                             End If
                         Else
                             If DiscountType = "All" Or DiscountType = "Percentage(w/o vat)" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.discount_type IN ({Types}) AND LD.transaction_type = '{TransactionType}' {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LCD.coupon_name IN ({Types}) AND LD.transaction_type = '{TransactionType}' {ActiveQuery} {OrderBy}"
                             End If
                         End If
                     ElseIf TaxType = "ZERO RATED" Then
                         If TransactionType = "All" Then
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Cash)" Then
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         ElseIf TransactionType = "All(Others)" Then
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered')"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 {ActiveQuery} AND LD.transaction_type NOT IN('Walk-In','Registered') AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         Else
                             If DiscountType = "All" Then
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery}"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} {OrderBy}"
                             Else
-                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} AND LD.discount_type = '{DiscountType}'"
+                                sql = $"SELECT {NormalFields} INNER JOIN loc_daily_transaction LD ON LDT.transaction_number = LD.transaction_number WHERE {ZreadDtRange} AND LDT.product_name = '{ProductName}' AND LD.zeroratedsales > 0 AND LD.transaction_type = '{TransactionType}' {ActiveQuery} AND LCD.coupon_name = '{DiscountType}' {OrderBy}"
                             End If
                         End If
                     End If
@@ -1864,10 +1858,11 @@ Public Class Reports
             Dim ConnectionLocal As MySqlConnection = LocalhostConn()
 
             For Each element As String In result
-                Dim Query = "SELECT LD.amountdue, LD.grosssales, LD.vatexemptsales, LD.active, LD.vatpercentage, LD.vatablesales, LD.lessvat , SUM(LC.coupon_total) as gc_used
-                FROM loc_daily_transaction LD LEFT JOIN loc_coupon_data LC ON LD.transaction_number = LC.transaction_number AND LC.coupon_type = 'Fix-1' WHERE LD.transaction_number = '" & element & "'"
+                Dim Query = $"SELECT LD.amountdue, LD.grosssales, LD.vatexemptsales, LD.active, LD.vatpercentage, LD.vatablesales, LD.lessvat , SUM(LC.coupon_total) as gc_used
+                FROM loc_daily_transaction LD 
+                LEFT JOIN loc_coupon_data LC ON LD.transaction_number = LC.transaction_number AND LC.coupon_type = 'Fix-1' WHERE LD.transaction_number = '{element}' ORDER BY LD.transaction_number DESC"
                 Dim Cmd As MySqlCommand = New MySqlCommand(Query, ConnectionLocal)
-                'Console.WriteLine(Query)
+
                 Using reader As MySqlDataReader = Cmd.ExecuteReader
                     If reader.HasRows Then
                         While reader.Read

@@ -33,17 +33,11 @@ Public Class POS
         _instance = Me
         LabelFOOTER.Text = My.Settings.Footer
         Try
-            'If Application.OpenForms().OfType(Of SynctoCloud).Any Then
-            '    SynctoCloud.BringToFront()
-            'End If
 
             LabelStorename.Text = ClientStorename
             Label11.Focus()
             Timer1.Start()
             Enabled = False
-
-
-
 
         Catch ex As Exception
             AuditTrail.LogToAuditTrail("System", "POS/Load: " & ex.ToString, "Critical")
@@ -1090,7 +1084,7 @@ Public Class POS
                     If DiscountName = "" Then
                         DiscountName = "N/A"
                     End If
-                    DiscountTypeTOSave = DiscountName
+                    DiscountTypeTOSave = DiscountName.TrimEnd(",")
                 Else
                     DiscountTypeTOSave = "N/A"
                 End If
@@ -1102,13 +1096,13 @@ Public Class POS
                                             (
                                                 `transaction_number`, `amounttendered`, `totaldiscount`, `change`, `amountdue`, `vatablesales`, `vatexemptsales`, `zeroratedsales`,
                                                 `lessvat`, `si_number`, `crew_id`, `guid`, `active`, `store_id`, `created_at`, `transaction_type`, `shift`, `zreading`, `synced`,
-                                                `discount_type`, `vatpercentage`, `grosssales`, `totaldiscountedamount`
+                                                `discount_type`, `vatpercentage`, `grosssales`, `totaldiscountedamount`, `actual_trx_date`
                                             ) 
                                        VALUES 
                                             (
                                                 @transaction_number, @amounttendered, @totaldiscount, @change, @amountdue, @vatablesales, @vatexemptsales,
                                                 @zeroratedsales, @lessvat, @si_number, @crew_id, @guid, @active, @store_id, @created_at, @transaction_type, @shift, @zreading, @synced,
-                                                @discount_type, @vatpercentage, @grosssales, @totaldiscountedamount
+                                                @discount_type, @vatpercentage, @grosssales, @totaldiscountedamount, sysdate()
                                             )"
                 Command.Parameters.Clear()
                 Command.Parameters.AddWithValue("@transaction_number", S_TRANSACTION_NUMBER)
@@ -1170,7 +1164,6 @@ Public Class POS
                             End If
                         Next
 
-                        Console.WriteLine(.Rows(i).Cells(3).Value)
                         Command.Parameters.Clear()
                         Command.Parameters.AddWithValue("@1", .Rows(i).Cells(5).Value)
                         Command.Parameters.AddWithValue("@2", .Rows(i).Cells(6).Value)
@@ -1248,7 +1241,7 @@ Public Class POS
             Dim Query As String = ""
             With DataGridViewOrders
                 For i As Integer = 0 To .Rows.Count - 1 Step +1
-                    Query = "INSERT INTO loc_coupon_data (`transaction_number`, `coupon_name`, `coupon_type`, `coupon_desc`, `coupon_line`, `coupon_total`, `zreading`, `status`, `synced`, `reference_id`) VALUES (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10)"
+                    Query = "INSERT INTO loc_coupon_data (`transaction_number`, `coupon_name`, `coupon_type`, `coupon_desc`, `coupon_line`, `coupon_total`, `zreading`, `status`, `synced`, `reference_id`, `ldtd_product_id`, `ldtd_id`) VALUES (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12)"
                     If .Rows(i).Cells(15).Value > 0 Then
                         Dim DiscTotal As Double = NUMBERFORMAT(Math.Round(.Rows(i).Cells(15).Value, 2, MidpointRounding.AwayFromZero))
                         Using mCmd = New MySqlCommand(Query, ConnectionLocal)
@@ -1262,7 +1255,10 @@ Public Class POS
                             mCmd.Parameters.AddWithValue("@7", S_Zreading)
                             mCmd.Parameters.AddWithValue("@8", 1)
                             mCmd.Parameters.AddWithValue("@9", "N")
-                            mCmd.Parameters.AddWithValue("@10", DiscountID)
+                            mCmd.Parameters.AddWithValue("@10", "1")
+                            mCmd.Parameters.AddWithValue("@11", .Rows(i).Cells(5).Value)
+                            mCmd.Parameters.AddWithValue("@12", GetDetailsID(.Rows(i).Cells(5).Value, S_TRANSACTION_NUMBER))
+
 
                             mCmd.ExecuteNonQuery()
                             mCmd.Dispose()
@@ -1281,7 +1277,10 @@ Public Class POS
                             mCmd.Parameters.AddWithValue("@7", S_Zreading)
                             mCmd.Parameters.AddWithValue("@8", 1)
                             mCmd.Parameters.AddWithValue("@9", "N")
-                            mCmd.Parameters.AddWithValue("@10", DiscountID)
+                            mCmd.Parameters.AddWithValue("@10", "8")
+                            mCmd.Parameters.AddWithValue("@11", .Rows(i).Cells(5).Value)
+                            mCmd.Parameters.AddWithValue("@12", GetDetailsID(.Rows(i).Cells(5).Value, S_TRANSACTION_NUMBER))
+
                             mCmd.ExecuteNonQuery()
                             mCmd.Dispose()
                         End Using
@@ -1299,7 +1298,9 @@ Public Class POS
                             mCmd.Parameters.AddWithValue("@7", S_Zreading)
                             mCmd.Parameters.AddWithValue("@8", 1)
                             mCmd.Parameters.AddWithValue("@9", "N")
-                            mCmd.Parameters.AddWithValue("@10", DiscountID)
+                            mCmd.Parameters.AddWithValue("@10", "9")
+                            mCmd.Parameters.AddWithValue("@11", .Rows(i).Cells(5).Value)
+                            mCmd.Parameters.AddWithValue("@12", GetDetailsID(.Rows(i).Cells(5).Value, S_TRANSACTION_NUMBER))
                             mCmd.ExecuteNonQuery()
                             mCmd.Dispose()
                         End Using
@@ -1317,7 +1318,9 @@ Public Class POS
                             mCmd.Parameters.AddWithValue("@7", S_Zreading)
                             mCmd.Parameters.AddWithValue("@8", 1)
                             mCmd.Parameters.AddWithValue("@9", "N")
-                            mCmd.Parameters.AddWithValue("@10", DiscountID)
+                            mCmd.Parameters.AddWithValue("@10", "")
+                            mCmd.Parameters.AddWithValue("@11", .Rows(i).Cells(5).Value)
+                            mCmd.Parameters.AddWithValue("@12", GetDetailsID(.Rows(i).Cells(5).Value, S_TRANSACTION_NUMBER))
                             mCmd.ExecuteNonQuery()
                             mCmd.Dispose()
                         End Using
@@ -1362,24 +1365,33 @@ Public Class POS
     End Sub
     Private Sub InsertSeniorDetails()
         Try
-            Dim table As String = "loc_senior_details"
-            Dim fields As String = "(`transaction_number`, `senior_id`, `senior_name`, `active`, `crew_id`, `store_id`, `guid`, `date_created`, `totalguest`, `totalid`,`phone_number`, `synced`)"
-            Dim value As String = "( '" & S_TRANSACTION_NUMBER & "'
-                      , '" & SeniorDetailsID & "'
-                      , '" & SeniorDetailsName & "'
-                      , '" & 1 & "'
-                      , '" & ClientCrewID & "'
-                      , '" & ClientStoreID & "'
-                      , '" & ClientGuid & "'
-                      , '" & S_Zreading & "'
-                      , '" & DISCGUESTCOUNT & "'
-                      , '" & DISCIDCOUNT & "'
-                      , '" & SeniorPhoneNumber & "'
-                      , 'N')"
-            GLOBAL_INSERT_FUNCTION(table, fields, value)
+
+            Dim ConnectionLocal As MySqlConnection = LocalhostConn()
+            Dim Query = "INSERT INTO loc_senior_details 
+                                (`transaction_number`, `senior_id`, `senior_name`, `active`, `crew_id`, `store_id`, `guid`, `date_created`, `totalguest`, `totalid`,`phone_number`, `synced`)
+                         VALUES
+                                (@transaction_number, @senior_id, @senior_name, @active, @crew_id, @store_id, @guid, @date_created, @totalguest, @totalid, @phone_number, @synced)"
+            Using mCmd = New MySqlCommand("", ConnectionLocal)
+                mCmd.Parameters.Clear()
+                mCmd.CommandText = Query
+                mCmd.Parameters.AddWithValue("@transaction_number", S_TRANSACTION_NUMBER)
+                mCmd.Parameters.AddWithValue("@senior_id", SeniorDetailsID)
+                mCmd.Parameters.AddWithValue("@senior_name", SeniorDetailsName)
+                mCmd.Parameters.AddWithValue("@active", 1)
+                mCmd.Parameters.AddWithValue("@crew_id", ClientCrewID)
+                mCmd.Parameters.AddWithValue("@store_id", ClientStoreID)
+                mCmd.Parameters.AddWithValue("@guid", ClientGuid)
+                mCmd.Parameters.AddWithValue("@date_created", S_Zreading)
+                mCmd.Parameters.AddWithValue("@totalguest", DISCGUESTCOUNT)
+                mCmd.Parameters.AddWithValue("@totalid", DISCIDCOUNT)
+                mCmd.Parameters.AddWithValue("@phone_number", SeniorPhoneNumber)
+                mCmd.Parameters.AddWithValue("@synced", "N")
+                mCmd.ExecuteNonQuery()
+                mCmd.Dispose()
+            End Using
+            ConnectionLocal.Close()
         Catch ex As Exception
             AuditTrail.LogToAuditTrail("System", ex.ToString, "Critical")
-            AuditTrail.LogToAuditTrail("System", "POS/Senior Data: " & ex.ToString, "Critical")
         End Try
     End Sub
 #End Region
@@ -1599,6 +1611,25 @@ Public Class POS
                 XML_Writer.Formatting = Formatting.Indented
                 XML_Writer.Indentation = 2
                 XML_Writer.WriteStartElement("Table")
+
+                If Enable_SIA_Functionality Then
+                    Try
+                        Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",base_date^" & S_Zreading & ",transaction_number^" & S_TRANSACTION_NUMBER & ",is_refund^N"
+
+                        Dim ins As System.Reflection.Assembly
+                        ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DG_SIASYS.dll")
+
+                        Dim obj As Object = ins.CreateInstance("DG_SIASYS.DG_SIASYS", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
+                        Dim type As Type = ins.GetType("DG_SIASYS.DG_SIASYS")
+
+                        Dim methodInfo As System.Reflection.MethodInfo = type.GetMethod("GenerateCSVFiles")
+                        methodInfo.Invoke(ins, New String() {})
+
+                        Console.WriteLine(1)
+                    Catch ex As Exception
+
+                    End Try
+                End If
 
                 ProductLine *= 2
                 TotalLines = CountHeaderLine + ProductLine + CountFooterLine + BodyLine + DiscountLine

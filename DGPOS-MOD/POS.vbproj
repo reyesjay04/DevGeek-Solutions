@@ -660,6 +660,9 @@
     <None Include="Config\DG_POS.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Config\DG_SIASYS.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -702,6 +705,10 @@
     <ProjectReference Include="..\DGPOS_EJournalPDF\DGPOS_EJOURNALPDF.vbproj">
       <Project>{50fc700d-7fd1-4d31-a17d-919984754ae0}</Project>
       <Name>DGPOS_EJOURNALPDF</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGPOS_SIA\DGPOS_SIASYS.vbproj">
+      <Project>{8474db2c-2b73-4c4d-a4e7-209b3b21cc80}</Project>
+      <Name>DGPOS_SIASYS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

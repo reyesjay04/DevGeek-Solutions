@@ -656,6 +656,15 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config\DG_DGMGW.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\DG_POS.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Config\DG_SIASYS.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -694,6 +703,10 @@
     <ProjectReference Include="..\DGPOS_DGMGW\DGPOS_DGMGW.vbproj">
       <Project>{61c729c6-64a0-4cb4-a0da-e266d2df46f0}</Project>
       <Name>DGPOS_DGMGW</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DGPOS_SIA\DGPOS_SIASYS.vbproj">
+      <Project>{8474db2c-2b73-4c4d-a4e7-209b3b21cc80}</Project>
+      <Name>DGPOS_SIASYS</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

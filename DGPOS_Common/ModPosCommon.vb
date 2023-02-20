@@ -66,6 +66,8 @@ Public Module ModPosCommon
                 returnCat = getContent.Substring(sepIndex)
             End If
 
+            returnCat = If(returnCat = "", _defaultVal, returnCat)
+
         Catch ex As Exception
             MsgBox(ex.ToString)
         End Try
@@ -80,7 +82,7 @@ Public Module ModPosCommon
             Dim allLinesfrom As List(Of String) = File.ReadAllLines(FullPath).ToList
 
             For Each line As String In allLinesfrom
-                If line.Contains(category) And Not line.Contains(";") And Not line.Contains("[") Then
+                If line.Contains(category) And Not line.Contains(";") And Not line.Contains("[") And Not line.Contains("#") Then
                     line = category & "=" & val
                 End If
                 ListOfUnderCat.Add(line)

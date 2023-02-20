@@ -649,11 +649,21 @@ Public Class SettingsForm
                     Else
                         Dim sql = "SELECT * FROM loc_daily_transaction WHERE created_at >= Now() - INTERVAL 10 MINUTE AND transaction_number = '" & transaction_num & "'"
 
-                        Dim cmd As MySqlCommand = New MySqlCommand(sql, LocalhostConn)
-                        Dim da As MySqlDataAdapter = New MySqlDataAdapter(cmd)
-                        Dim dt As DataTable = New DataTable
-                        da.Fill(dt)
-                        If dt.Rows.Count > 0 Then
+                        Dim ConnectionLocal As MySqlConnection = LocalhostConn()
+                        Dim isRefundable As Boolean = False
+
+                        Using mCmd = New MySqlCommand("", ConnectionLocal)
+                            mCmd.CommandText = sql
+                            Using mReader = mCmd.ExecuteReader
+                                If mReader.HasRows Then
+                                    isRefundable = True
+                                End If
+                                mReader.Dispose()
+                            End Using
+                            mCmd.Dispose()
+                        End Using
+
+                        If isRefundable Then
                             Dim refund As Integer = MessageBox.Show("Are you sure do you want to refund this transaction?", "Return and Refund", MessageBoxButtons.YesNo, MessageBoxIcon.Information)
                             If refund = DialogResult.Yes Then
                                 Enabled = False
@@ -2907,7 +2917,7 @@ Public Class SettingsForm
             Dim array() As String = {"loc_coupon_data", "loc_daily_transaction", "loc_daily_transaction_details", "loc_deposit", "loc_expense_details", "loc_expense_list",
             "loc_fm_stock", "loc_hold_inventory", "loc_inv_temp_data", "loc_pending_orders", "loc_refund_return_details", "loc_senior_details",
             "loc_system_logs", "loc_send_bug_report", "loc_transaction_mode_details", "loc_transfer_data", "loc_zread_inventory", "loc_zread_table", "loc_admin_category", "loc_admin_products",
-            "loc_partners_transaction", "loc_pos_inventory", "loc_product_formula", "tbcoupon", "loc_cash_breakdown", "loc_customer_info"}
+            "loc_partners_transaction", "loc_pos_inventory", "loc_product_formula", "tbcoupon", "loc_cash_breakdown", "loc_customer_info", "loc_e_journal", "loc_xml_ref"}
 
             With DataGridViewReset
                 If .Rows(0).Cells(1).Selected Then
@@ -4140,6 +4150,27 @@ Public Class SettingsForm
         Catch ex As Exception
             AuditTrail.LogToAuditTrail("System", "Settings/ButtonSaveZeroRated(): " & ex.ToString, "Critical")
         End Try
+    End Sub
+
+    Private Sub btnSia_Click(sender As Object, e As EventArgs) Handles btnSia.Click
+        If Enable_SIA_Functionality Then
+            Me.Hide()
+
+            Try
+                Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",base_date^" & S_Zreading & ",transaction_number^" & S_TRANSACTION_NUMBER & ",is_refund^N"
+
+                Dim ins As System.Reflection.Assembly
+                ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DG_SIASYS.dll")
+
+                Dim obj As Object = ins.CreateInstance("DG_SIASYS.DG_SIASYS", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
+                Dim frm As Form = CType(obj, Form)
+                frm.ShowDialog()
+
+            Catch ex As Exception
+            End Try
+
+            Me.Show()
+        End If
     End Sub
 #End Region
 End Class

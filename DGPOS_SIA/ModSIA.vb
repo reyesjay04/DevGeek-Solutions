@@ -157,14 +157,14 @@ Module ModSIA
                             nwtrx.Add(0)
                             nwtrx.Add(0)
                             nwtrx.Add(If(ModSIA.IsRefund, mReader("quantity").ToString, 0))
-                            nwtrx.Add(If(ModSIA.IsRefund, mReader("total").ToString, 0))
+                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("total").ToString, 0))
 
                             nwtrx.Add("") 'Guest Count - DONE
                             nwtrx.Add(mReader("SenQty").ToString)
                             nwtrx.Add(mReader("PWDQty").ToString)
-                            nwtrx.Add(mReader("grosssales").ToString)
-                            nwtrx.Add(mReader("amountdue").ToString) 'Net Sales
-                            nwtrx.Add(mReader("vatablesales").ToString)
+                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("grosssales").ToString, mReader("grosssales").ToString))
+                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("amountdue").ToString, mReader("amountdue").ToString)) 'Net Sales
+                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("vatablesales").ToString, mReader("vatablesales").ToString))
                             nwtrx.Add(0) 'Other Local Tax
                             nwtrx.Add(0) 'Total Service Charge
                             nwtrx.Add(0) 'Total Tip
@@ -196,7 +196,7 @@ Module ModSIA
                             nwtrx.Add(0)
                             nwtrx.Add(0)
                             nwtrx.Add(mReader("transaction_type").ToString)
-                            nwtrx.Add(mReader("amounttendered").ToString)
+                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("amounttendered").ToString, mReader("amounttendered").ToString))
                             nwtrx.Add("") 'paymenttype2 
                             nwtrx.Add(0) 'paymentamount2 
                             nwtrx.Add("") 'paymenttype3 
@@ -205,7 +205,7 @@ Module ModSIA
                             'totalcashsales 
                             Select Case mReader("transaction_type").ToString
                                 Case "Walk-In", "Registered"
-                                    nwtrx.Add(mReader("amounttendered").ToString)
+                                    nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("amounttendered").ToString, mReader("amounttendered").ToString))
                                 Case Else
                                     nwtrx.Add(0)
                             End Select

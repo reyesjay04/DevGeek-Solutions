@@ -30,6 +30,11 @@ Module ModSIA
 
 #Region "Transaction Header/Detail"
     Public Sub CheckCSVFiles(ByRef _basedate As Date)
+
+        If Not File.Exists(FilePath) Then
+            System.IO.Directory.CreateDirectory(FilePath)
+        End If
+
         FilePath = If(FilePath.EndsWith("\"), FilePath, FilePath & "\")
 
         TransactionHeaderFileName = $"{Format(_basedate, "MM")}_{Format(_basedate, "yyyy")}_{HeaderFileName}.csv"

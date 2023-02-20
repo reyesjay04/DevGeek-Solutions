@@ -110,7 +110,7 @@ Module ModSIA
                             End Try
 
                             Dim str = $"{mReader("transaction_number").ToString},{mReader("product_id").ToString},{mReader("product_name").ToString},{mReader("product_category").ToString},,,{mReader("quantity").ToString}"
-                            str &= $",{mReader("total").ToString},{mReader("price").ToString},{discounts},{discount_total},,0,,0,,,{If(ModSIA.IsRefund, mReader("quantity").ToString, 0)},{If(ModSIA.IsRefund, mReader("total").ToString, 0)}"
+                            str &= $",{If(ModSIA.IsRefund, "-" & mReader("total").ToString, mReader("total").ToString)},{If(ModSIA.IsRefund, "-" & mReader("price").ToString, mReader("price").ToString)},{discounts},{discount_total},,0,,0,,,{If(ModSIA.IsRefund, mReader("quantity").ToString, 0)},{If(ModSIA.IsRefund, mReader("total").ToString, 0)}"
                             nwtrxdet.Add(str)
                         End While
                     End If

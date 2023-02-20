@@ -331,7 +331,11 @@ Public Class Reports
 
             Dim trxLogs As New DataTable
             Dim fields = "crew_id, description, created_at"
-            trxLogs = AsDatatable($"loc_audit_trail WHERE group_name = 'Transaction' ", fields, DataGridViewReturns)
+            If searchdate Then
+                trxLogs = AsDatatable($"loc_audit_trail WHERE group_name = 'Transaction' AND DATE(created_at) BETWEEN '{Format(DateTimePicker11.Value, "yyyy-MM-dd")}' AND '{Format(DateTimePicker12.Value, "yyyy-MM-dd")}'  ", fields, DataGridViewReturns)
+            Else
+                trxLogs = AsDatatable($"loc_audit_trail WHERE group_name = 'Transaction' AND DATE(created_at) = CURDATE()  ", fields, DataGridViewReturns)
+            End If
 
             With DataGridViewTRANSACTIONLOGS
                 .Rows.Clear()

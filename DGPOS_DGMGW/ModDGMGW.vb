@@ -43,7 +43,8 @@ Module ModDGMGW
                                 .TerminalNumber = TerminalNumber
                                 .BaseDate = CType(mReader("ZXdate"), Date)
                                 .OldAccumulatedTotal = mReader("ZXBegBalance")
-                                .TotalCashSales = mReader("ZXCashTotal") - mReader("ZXCashlessTotal") - mReader("ZXGiftCardSum")
+                                '.TotalCashSales = mReader("ZXCashTotal") - mReader("ZXCashlessTotal") - mReader("ZXGiftCardSum")
+                                .TotalCashSales = mReader("ZXCashTotal")
                                 .TotalCreditDebitCardSales = mReader("ZXCreditCard") + mReader("ZXDebitCard")
                                 .TotalOtherPaymentSales = mReader("ZXCashlessTotal") + mReader("ZXGiftCard")
 
@@ -51,8 +52,8 @@ Module ModDGMGW
                                 .NewAccumulatedTotal = mReader("ZXBegBalance") + .TotalNetSalesAmount
 
                                 .TotalNonTaxableSalesAmount = mReader("ZXVatExemptSales")
-                                .TotalSeniorAndPWDDiscount = mReader("ZXSeniorCitizen") + mReader("ZXPWD")
-                                .TotalOtherDiscountAndFreeItems = mReader("ZXTotalDiscounts") - .TotalSeniorAndPWDDiscount
+                                .TotalSeniorAndPWDDiscount = CType(mReader("ZXSeniorCitizen"), Double) + CType(mReader("ZXPWD"), Double)
+                                .TotalOtherDiscountAndFreeItems = CType(mReader("ZXTotalDiscounts"), Double) - .TotalSeniorAndPWDDiscount
 
                                 .TotalRefundAmount = mReader("ZXReturnsRefund")
                                 .TotalGrossSalesAmount = mReader("ZXGross")
@@ -146,15 +147,15 @@ Module ModDGMGW
             Dim dtEnd = EndDate.AddHours(1)
 
             While dtStart < dtEnd
-                Dim fromTime = Format(dtStart, "HH:01")
-                Dim toTime = Format(dtStart.AddHours(1), "HH:00")
+                Dim fromTime = Format(dtStart, "HH:01:00")
+                Dim toTime = Format(dtStart.AddHours(1), "HH:00:59")
                 Dim nwhldata As New HourlySalesCls.HourlySales
 
                 With nwhldata
                     .HourCode = If(Format(dtStart, "HH").ToString = "00", "24", Format(dtStart, "HH").ToString)
-                    .CustomerCount = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME_FORMAT(created_at, '%H:%i:%s') BETWEEN '{fromTime}' AND '{toTime}'")
-                    .NetSalesAmount = SumColumn("amountdue", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME_FORMAT(created_at, '%H:%i:%s') BETWEEN '{fromTime}' AND '{toTime}'") + SumColumn("coupon_total", "loc_coupon_data lcd LEFT JOIN loc_daily_transaction lot ON lcd.transaction_number = lot.transaction_number", $"lcd.status = '1' AND lcd.zreading = '{_zreadDate}' AND TIME_FORMAT(lot.created_at, '%H:%i:%s') BETWEEN '{fromTime}' AND '{toTime}' AND lcd.coupon_type = 'Fix-1'")
-                    .SalesTransaction = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME_FORMAT(created_at, '%H:%i:%s') BETWEEN '{fromTime}' AND '{toTime}' AND active = 1")
+                    .CustomerCount = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'")
+                    .NetSalesAmount = SumColumn("amountdue", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'") + SumColumn("coupon_total", "loc_coupon_data lcd LEFT JOIN loc_daily_transaction lot ON lcd.transaction_number = lot.transaction_number", $"lcd.status = '1' AND lcd.zreading = '{_zreadDate}' AND TIME(lot.created_at) BETWEEN '{fromTime}' AND '{toTime}' AND lcd.coupon_type = 'Fix-1'")
+                    .SalesTransaction = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}' AND active = 1")
                 End With
 
                 dtStart = dtStart.AddHours(1)

@@ -1077,7 +1077,11 @@ Public Class POS
                     End If
                 Else
                     If PromoApplied Then
-                        disc_type = PromoType
+                        If PromoType = "Percentage(w/ vat)" Then
+                            disc_type = DiscountType
+                        Else
+                            disc_type = PromoType
+                        End If
                     Else
                         disc_type = DiscountType
                     End If

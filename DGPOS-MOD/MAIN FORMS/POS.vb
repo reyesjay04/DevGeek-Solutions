@@ -1052,33 +1052,6 @@ Public Class POS
     Private Sub InsertDailyTransaction()
         Try
 
-            'Dim NetSales As Double = 0
-
-
-
-            'Dim DiscountTypeTOSave As String = ""
-            'If SeniorGCDiscount Then
-            '    DiscountTypeTOSave = "Disc + GC"
-            'Else
-            '    If PromoApplied Then
-            '        If PromoName = "" Then
-            '            PromoName = "N/A"
-            '        End If
-            '        DiscountTypeTOSave = PromoName
-            '    Else
-            '        DiscountTypeTOSave = "N/A"
-            '    End If
-
-            '    If DiscAppleid Then
-            '        If DiscountName = "" Then
-            '            DiscountName = "N/A"
-            '        End If
-            '        DiscountTypeTOSave = DiscountName.TrimEnd(",")
-            '    Else
-            '        DiscountTypeTOSave = "N/A"
-            '    End If
-            'End If
-
             Dim ConnectionLocal As MySqlConnection = LocalhostConn()
             Using Command As New MySqlCommand("", ConnectionLocal)
                 Command.CommandText = "INSERT INTO loc_daily_transaction
@@ -1104,7 +1077,11 @@ Public Class POS
                     End If
                 Else
                     If PromoApplied Then
-                        disc_type = PromoType
+                        If PromoType = "Percentage(w/ vat)" Then
+                            disc_type = DiscountType
+                        Else
+                            disc_type = PromoType
+                        End If
                     Else
                         disc_type = DiscountType
                     End If
@@ -1507,7 +1484,9 @@ Public Class POS
 
                 End With
             Else
-                NETSALES = GROSSSALE / Val(1 + S_Tax)
+                If Not PromoType = "Percentage(w/ vat)" Then
+                    NETSALES = GROSSSALE / Val(1 + S_Tax)
+                End If
             End If
 
 

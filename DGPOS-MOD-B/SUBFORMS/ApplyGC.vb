@@ -128,7 +128,11 @@ Public Class ApplyGC
             If DiscAppleid Then
                 MainForm.TextBoxDiscType.Text = "DISC + GC"
             Else
-                MainForm.TextBoxDiscType.Text = "Fix-1"
+                If PromoType = "Percentage(w/ vat)" Then
+                    MainForm.TextBoxDiscType.Text = "DISC + GC"
+                Else
+                    MainForm.TextBoxDiscType.Text = "Fix-1"
+                End If
             End If
 
             Me.Dispose()

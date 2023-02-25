@@ -155,7 +155,7 @@ Module ModDGMGW
                     .HourCode = If(Format(dtStart, "HH").ToString = "00", "24", Format(dtStart, "HH").ToString)
                     .CustomerCount = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'")
                     '.NetSalesAmount = SumColumn("amountdue", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'") + SumColumn("coupon_total", "loc_coupon_data lcd LEFT JOIN loc_daily_transaction lot ON lcd.transaction_number = lot.transaction_number", $"lcd.status = '1' AND lcd.zreading = '{_zreadDate}' AND TIME(lot.created_at) BETWEEN '{fromTime}' AND '{toTime}' AND lcd.coupon_type = 'Fix-1'")
-                    .NetSalesAmount = SumColumn("amountdue", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'")
+                    .NetSalesAmount = SumColumn("netsales", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'")
                     .SalesTransaction = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}' AND active = 1")
                 End With
 

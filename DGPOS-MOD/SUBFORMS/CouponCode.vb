@@ -171,9 +171,10 @@ Public Class CouponCode
                     PRTOTALAMOUNTDUE = Format(PRGROSSSALES - PRTOTALDISCOUNT, "0.00")
 
                     Dim PRVATABLESALES As Double = Format(PRGROSSSALES / PRTAX, "0.00")
-                    Dim PRVAT12PERCENT As Double = Format(PRVATABLESALES * PRTAX, "0.00")
+                    Dim PRVAT12PERCENT As Double = Format(PRVATABLESALES * S_Tax, "0.00")
 
-                    '.GROSSSALE = GROSSSALES
+                    NETSALES = PRVATABLESALES - PRTOTALDISCOUNT
+
                     TOTALDISCOUNTEDAMOUNT = NUMBERFORMAT(PRGROSSSALES)
                     VATEXEMPTSALES = 0
                     LESSVAT = 0
@@ -208,6 +209,8 @@ Public Class CouponCode
                     LESSVAT = 0
                     TOTALDISCOUNT = NUMBERFORMAT(PRTOTALDISCOUNT)
                     VATABLESALES = NUMBERFORMAT(Double.Parse(.Label76.Text))
+                    NETSALES = VATABLESALES - PRTOTALDISCOUNT
+
                     VAT12PERCENT = 0
                     TOTALAMOUNTDUE = NUMBERFORMAT(PRTOTALAMOUNTDUE)
                     .TextBoxGRANDTOTAL.Text = NUMBERFORMAT(PRTOTALAMOUNTDUE)
@@ -369,7 +372,6 @@ Public Class CouponCode
             AuditTrail.LogToAuditTrail("System", "CouponCode/couponfix1(): " & ex.ToString, "Critical")
         End Try
     End Sub
-
     Private Sub couponfix2()
         Try
             With POS

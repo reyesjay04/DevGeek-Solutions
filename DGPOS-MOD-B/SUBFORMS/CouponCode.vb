@@ -171,7 +171,9 @@ Public Class CouponCode
                     PRTOTALAMOUNTDUE = Format(PRGROSSSALES - PRTOTALDISCOUNT, "0.00")
 
                     Dim PRVATABLESALES As Double = Format(PRGROSSSALES / PRTAX, "0.00")
-                    Dim PRVAT12PERCENT As Double = Format(PRVATABLESALES * PRTAX, "0.00")
+                    Dim PRVAT12PERCENT As Double = Format(PRVATABLESALES * S_Tax, "0.00")
+
+                    NETSALES = PRVATABLESALES - PRTOTALDISCOUNT
 
                     '.GROSSSALE = GROSSSALES
                     TOTALDISCOUNTEDAMOUNT = NUMBERFORMAT(PRGROSSSALES)
@@ -210,6 +212,8 @@ Public Class CouponCode
                     LESSVAT = 0
                     TOTALDISCOUNT = NUMBERFORMAT(PRTOTALDISCOUNT)
                     VATABLESALES = NUMBERFORMAT(Double.Parse(.Label76.Text))
+                    NETSALES = VATABLESALES - PRTOTALDISCOUNT
+
                     VAT12PERCENT = 0
                     TOTALAMOUNTDUE = NUMBERFORMAT(PRTOTALAMOUNTDUE)
                     .TextBoxGRANDTOTAL.Text = NUMBERFORMAT(PRTOTALAMOUNTDUE)

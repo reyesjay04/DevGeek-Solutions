@@ -145,7 +145,7 @@ Module ModSIA
                 mCmd.CommandText = "SELECT ldt.*, SUM(ldtd.seniorqty) as SenQty, SUM(ldtd.pwdqty) as PWDQty, SUM(ldtd.seniordisc) as SenDisc, SUM(ldtd.pwddisc) as PWDDisc, 
                                     SUM(ldtd.athletedisc) as SportDisc, ldtd.quantity, ldtd.total
                                     FROM loc_daily_transaction ldt LEFT JOIN loc_daily_transaction_details ldtd ON ldtd.transaction_number = ldt.transaction_number 
-                                    LEFT JOIN loc_coupon_data lcd ON lcd.transaction_number = ldt.transaction_number WHERE ldt.transaction_number = @TrxNo "
+                                    WHERE ldt.transaction_number = @TrxNo "
                 mCmd.Parameters.AddWithValue("@TrxNo", TransactionNumber)
                 mCmd.Prepare()
 

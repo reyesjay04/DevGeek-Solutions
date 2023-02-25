@@ -34,7 +34,10 @@
     Public VAT12PERCENT As Double = 0
     Public ZERORATEDSALES As Double = 0
     Public ZERORATEDNETSALES As Double = 0
+    Public NETSALES As Double = 0
+
     Public GETNOTDISCOUNTEDAMOUNT As Double = 0
+    Public GCAPPLIED As Boolean = False
 
     Public TRANSACTIONMODE As String = "Walk-In"
     'Public SENIORDETAILSBOOL As Boolean = False
@@ -51,7 +54,10 @@
             DiscountID = 0
             DISCGUESTCOUNT = 0
             DISCIDCOUNT = 0
+
             SeniorGCDiscount = False
+            GCAPPLIED = False
+            GCDetails = Nothing
 
             PromoID = 0
             PromoApplied = False
@@ -72,6 +78,7 @@
             VAT12PERCENT = 0
             ZERORATEDSALES = 0
             ZERORATEDNETSALES = 0
+            NETSALES = 0
 
             GETNOTDISCOUNTEDAMOUNT = 0
             SeniorDetails.COUPONNAME = ""

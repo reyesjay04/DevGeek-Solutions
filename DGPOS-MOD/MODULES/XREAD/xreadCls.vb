@@ -118,9 +118,9 @@ Public Class xreadCls
             ' Same value as Vat Amount (xrVatAmount)
             xrAddVat = xrVatAmount
             'Total Gift card value used
-            xrGCUsed = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1'")
+            xrGCUsed = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1' AND status = 1")
             'Total Value of Gift card
-            xrGC = sum("gc_value", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1' ")
+            xrGC = sum("gc_value", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1' AND status = 1")
             'Zero always
             xrGovTax = 0
             'Gross Sales (xrGrossSales):60 / 1.12(Tax) = Vatable Sales (xrVatableSales):53.57
@@ -136,7 +136,6 @@ Public Class xreadCls
             'Gross Sales (xrGrossSales) + Gift Card Used(xrGCSum) - Less Vat(xrLessVatVE) - Vat Amount()xrVatAmount - Discount (xrLessDiscVE)
 
 
-            xrCashTotal = sum("amountdue", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1 ") - xrGCUsed
 
             xrCreditCard = 0
             xrDebitCard = 0
@@ -148,6 +147,7 @@ Public Class xreadCls
             xrDeposit = sum("amount", $"loc_deposit WHERE date(transaction_date) = '{ZReadDate}'")
 
             xrCashless = sum("amountdue", $"loc_daily_transaction WHERE active IN (1,3) AND zreading = '{ZReadDate}' AND transaction_type NOT IN ('Walk-in' , 'Complimentary Expenses')") + xrGCUsed
+
             xrGcash = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Gcash' ")
             xrPaymaya = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Paymaya' ")
             xrGrab = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Grab' ")
@@ -163,10 +163,12 @@ Public Class xreadCls
             xrDiplomat = 0
 
             xrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1") - xrGCUsed
-            xrNetSales = xrGrossSales - xrLessVatVE - xrTotalDisc
+            xrNetSales = sum("netsales", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1")
 
             If xrCompBegBalance = "" Then xrCompBegBalance = 0
             xrCashinDrawer = xrGrossSales - xrCashless - xrLessVatVE - xrTotalDisc - xrTotalExpenses + Double.Parse(xrCompBegBalance)
+
+            xrCashTotal = xrCashinDrawer + xrCashless
 
             xrSeniorDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Senior Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
 

@@ -1,14 +1,32 @@
 ﻿Public Class PaymentForm
-    Private Sub PaymentForm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        POS.Enabled = True
-        POS.BringToFront()
+    Property MainForm As POS
+    Property GrandTotal As Double
+    Public Sub New(_mainform As POS, _grandTotal As Double)
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+        MainForm = _mainform
+        GrandTotal = _grandTotal
+    End Sub
+    Public Sub New()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+
+        ' Add any initialization after the InitializeComponent() call.
+
     End Sub
 
     Private Sub PaymentForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        TextBoxTOTALPAY.Text = NUMBERFORMAT(_GrandTotal)
+
         TopMost = True
         TextBoxMONEY.Text = "0.00"
         TextBoxCHANGE.Text = "0.00"
-        'MsgBox(SeniorGCDiscount)
+
         If SeniorGCDiscount Then
             TextBoxDiscType.Text = "Disc + GC"
         Else
@@ -19,12 +37,11 @@
             Else
                 TextBoxDiscType.Text = "N/A"
             End If
-
         End If
 
         TextBoxTransactionType.Text = TRANSACTIONMODE
-        TextBoxMONEY.Focus()
-        TextBoxMONEY.Focus()
+        TextBoxMONEY.SelectionStart = 0
+        TextBoxMONEY.SelectionLength = Len(TextBoxMONEY.Text)
     End Sub
     Private Sub TextBoxMONEY_KeyDown(sender As Object, e As KeyEventArgs) Handles TextBoxMONEY.KeyDown
         If e.KeyCode = Keys.F9 Then
@@ -45,17 +62,21 @@
                         TextBoxMONEY.Text = 0
                     End If
 
+                    DiscountType = TextBoxDiscType.Text
                     TEXTBOXMONEYVALUE = CType(TextBoxMONEY.Text, Double)
                     TEXTBOXCHANGEVALUE = CType(TextBoxCHANGE.Text, Double)
 
                     .BackgroundWorkerTransactions.WorkerSupportsCancellation = True
                     .BackgroundWorkerTransactions.WorkerReportsProgress = True
                     .BackgroundWorkerTransactions.RunWorkerAsync()
+
                     If My.Settings.LedDisplayTrue Then
                         LedDisplay(TextBoxCHANGE.Text, False)
                     End If
-                    Close()
+
+                    Me.Close()
                     WaitFrm.Show()
+
                 End If
             End With
         Catch ex As Exception
@@ -87,7 +108,10 @@
         End If
     End Sub
     Private Sub ButtonESC_Click(sender As Object, e As EventArgs) Handles ButtonESC.Click
-        Me.Close()
+        MainForm.TextBoxGRANDTOTAL.Text = NUMBERFORMAT(GrandTotal)
+        GCAPPLIED = False
+        GCDetails = Nothing
+        Me.Dispose()
     End Sub
     Private Sub TextBoxMONEY_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TextBoxMONEY.KeyPress
         If (e.KeyChar.ToString = ".") And (TextBoxMONEY.Text.Contains(e.KeyChar.ToString)) Then
@@ -131,7 +155,6 @@
         Else
             buttonpressedenterpayment(btntext:=ButtonNo5.Text)
         End If
-
     End Sub
     Private Sub ButtonNo4_Click(sender As Object, e As EventArgs) Handles ButtonNo4.Click
         If payment = False Then
@@ -153,7 +176,6 @@
         Else
             buttonpressedenterpayment(btntext:=ButtonNo2.Text)
         End If
-
     End Sub
     Private Sub ButtonNo1_Click(sender As Object, e As EventArgs) Handles ButtonNo1.Click
         If payment = False Then
@@ -188,7 +210,6 @@
             TextBoxMONEY.Text = "0.00"
             TextBoxCHANGE.Text = "0.00"
         End If
-
     End Sub
     Private Sub PaymentForm_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
         If e.KeyCode = Keys.NumPad0 Then
@@ -226,12 +247,10 @@
 
     Private Sub ButtonEx1000_Click(sender As Object, e As EventArgs) Handles ButtonEx1000.Click
         TextBoxMONEY.Text = 1000
-
     End Sub
 
     Private Sub ButtonEX500_Click(sender As Object, e As EventArgs) Handles ButtonEX500.Click
         TextBoxMONEY.Text = 500
-
     End Sub
 
     Private Sub ButtonEX200_Click(sender As Object, e As EventArgs) Handles ButtonEX200.Click
@@ -246,22 +265,16 @@
         TextBoxMONEY.Text = 50
     End Sub
 
-    Private Sub TextBoxCHANGE_TextChanged(sender As Object, e As EventArgs) Handles TextBoxCHANGE.TextChanged
-        'If Val(TextBoxCHANGE.Text) = 0 Then
-        '    TextBoxMONEY.Text = "0.00"
-        'End If
-    End Sub
-
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         TextBoxMONEY.Text = TextBoxTOTALPAY.Text
     End Sub
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         If Button7.Text = "Customer Information" Then
-            Enabled = False
-            Me.TopMost = False
-            CustomerInfo.Show()
-            CustomerInfo.TopMost = True
+            Me.Hide()
+            Dim frm As New CustomerInfo(Me)
+            frm.ShowDialog()
+            Me.Show()
         Else
             CUST_INFO_FILLED = False
             Button7.Text = "Customer Information"
@@ -270,11 +283,32 @@
         End If
     End Sub
 
-    'Private Sub 
-    '    Try
-    '        TextBoxCHANGE.Text = Double.Parse(TextBoxMONEY.Text) - Double.Parse(TextBoxTOTALPAY.Text)
-    '    Catch ex As Exception
-    '        AuditTrail.LogToAuditTrail("System", ex.ToString, "Critical")
-    '    End Try
-    'End Sub
+    Private Sub ButtonGC_Click(sender As Object, e As EventArgs) Handles ButtonGC.Click
+        If GCAPPLIED Then
+            TextBoxTOTALPAY.Text = NUMBERFORMAT(GrandTotal)
+            GCAPPLIED = False
+            ButtonGC.Text = "GC"
+            ButtonGC.BackColor = Color.White
+            ButtonGC.ForeColor = Color.Black
+            GCDetails = Nothing
+        Else
+            Me.Hide()
+            Dim frm As New ApplyGC(Me, LocalConnectionString, Double.Parse(TextBoxTOTALPAY.Text))
+            frm.ShowDialog()
+
+            If GCAPPLIED Then
+                TextBoxMONEY.Text = "0.00"
+            End If
+
+            Me.Show()
+        End If
+    End Sub
+
+    Private Sub TextBoxTOTALPAY_TextChanged(sender As Object, e As EventArgs) Handles TextBoxTOTALPAY.TextChanged
+        Try
+            MainForm.TextBoxGRANDTOTAL.Text = TextBoxTOTALPAY.Text
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        End Try
+    End Sub
 End Class

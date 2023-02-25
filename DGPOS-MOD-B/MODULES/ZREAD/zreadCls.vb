@@ -168,7 +168,8 @@ Public Class zreadCls
             zrDiplomat = 0
 
             zrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1") - zrGCUsed
-            zrNetSales = zrGrossSales - zrLessVatVE - zrTotalDisc
+            zrNetSales = sum("netsales", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1")
+
             If zrCompBegBalance = "" Then zrCompBegBalance = 0
             zrCashinDrawer = zrGrossSales - zrCashless - zrTotalDisc - zrLessVatVE - zrTotalExpenses + Double.Parse(zrCompBegBalance)
 

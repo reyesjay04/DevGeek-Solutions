@@ -133,6 +133,8 @@
     <Compile Include="MAIN FORMS\Auth.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MAIN FORMS\Class\ApplyGC\ApplyGCCls.vb" />
+    <Compile Include="MAIN FORMS\Class\ApplyGC\ModApplyGC.vb" />
     <Compile Include="MAIN FORMS\Class\Auth\AuthCls.vb" />
     <Compile Include="MAIN FORMS\Class\ConfigManager\DevInfoCls.vb" />
     <Compile Include="MAIN FORMS\Class\ConfigManager\FormulaCls.vb" />
@@ -248,6 +250,12 @@
       <DependentUpon>AdvancedCustomReport.vb</DependentUpon>
     </Compile>
     <Compile Include="SUBFORMS\AdvancedCustomReport.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SUBFORMS\ApplyGC.Designer.vb">
+      <DependentUpon>ApplyGC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SUBFORMS\ApplyGC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SUBFORMS\AuditTrailFilter.Designer.vb">
@@ -539,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SUBFORMS\AdvancedCustomReport.resx">
       <DependentUpon>AdvancedCustomReport.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SUBFORMS\ApplyGC.resx">
+      <DependentUpon>ApplyGC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SUBFORMS\AuditTrailFilter.resx">
       <DependentUpon>AuditTrailFilter.vb</DependentUpon>

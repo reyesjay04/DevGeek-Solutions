@@ -2,11 +2,6 @@
     Dim Submited As Boolean = False
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         TopMost = True
-        'If transactionmode = "GCash" Then
-        '    TextBoxMARKUP.Text = Val(POS.TextBoxGRANDTOTAL.Text) * 0.15
-        'Else
-        '    TextBoxMARKUP.Text = "N/A"
-        'End If
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click

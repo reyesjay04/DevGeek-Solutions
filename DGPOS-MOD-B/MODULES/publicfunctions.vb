@@ -1077,14 +1077,14 @@ Module publicfunctions
                             SimpleTextDisplay(sender, e, Dt(i)(4), FontDefault, 0, RECEIPTLINECOUNT - 20)
                             SimpleTextDisplay(sender, e, Dt(i)(2), FontDefault, 50, RECEIPTLINECOUNT - 20)
                             RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Dt(i)(5), FontDefault, 0, 122 + BodySpacing)
-                            RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price & "-", FontDefault, 0, 182 + BodySpacing)
+                            RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price & "-", FontDefault, 0, 183 + BodySpacing)
                             FillEJournalContent("        " & Dt(i)(4) & "           " & Dt(i)(2) & "     " & Dt(i)(5) & "       " & "-" & price, {Dt(i)(4), Dt(i)(2), Dt(i)(5), "-" & price}, "S4", False, False)
                         End If
                     Else
                         SimpleTextDisplay(sender, e, Dt(i)(4), FontDefault, 0, RECEIPTLINECOUNT - 20)
                         SimpleTextDisplay(sender, e, Dt(i)(2), FontDefault, 50, RECEIPTLINECOUNT - 20)
                         RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Dt(i)(5), FontDefault, 0, 122 + BodySpacing)
-                        RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price & "-", FontDefault, 0, 182 + BodySpacing)
+                        RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price & "-", FontDefault, 0, 183 + BodySpacing)
                         FillEJournalContent(Dt(i)(4) & "           " & Dt(i)(2) & "           " & Dt(i)(5) & "       " & "-" & price, {Dt(i)(4), Dt(i)(2), Dt(i)(5), "-" & price}, "S4", False, False)
                         If Dt(i)(17) > 0 Then
                             RECEIPTLINECOUNT += 10
@@ -1131,30 +1131,41 @@ Module publicfunctions
                             RECEIPTLINECOUNT += 10
                             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Net of VAT: ", reader("vatablesales") & "-", FontDefault, 11, 0)
                             FillEJournalContent("Amount Net of VAT:     -" & reader("vatablesales"), {"Amount Net of VAT: ", "-" & reader("vatablesales")}, "LR", False, False)
-                            RECEIPTLINECOUNT += 10
+
 
                             If reader("discount_type") <> "N/A" Then
+                                RECEIPTLINECOUNT += 10
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: " & reader("discount_type"), reader("totaldiscount") & "-", FontDefault, 11, 0)
                                 FillEJournalContent("Less Discount: " & reader("discount_type") & "     -" & reader("totaldiscount"), {"Less Discount: " & reader("discount_type"), "-" & reader("totaldiscount")}, "LR", False, False)
                             Else
+                                RECEIPTLINECOUNT += 10
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Discount: ", reader("totaldiscount") & "-", FontDefault, 11, 0)
                                 FillEJournalContent("Less Discount:      -" & reader("totaldiscount"), {"Discount: ", "-" & reader("totaldiscount")}, "LR", False, False)
                             End If
-                            RECEIPTLINECOUNT += 10
+
 
                             If reader("zeroratedsales") > 0 Then
+                                RECEIPTLINECOUNT += 10
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Vat: ", "0.00" & "-", FontDefault, 11, 0)
                                 FillEJournalContent("Less VAT:     -0.00", {"Less Vat: ", "-0.00"}, "LR", False, False)
                             Else
+                                RECEIPTLINECOUNT += 10
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Vat: ", reader("lessvat") & "-", FontDefault, 11, 0)
                                 FillEJournalContent("Less VAT:     -" & reader("lessvat"), {"Less Vat: ", "-" & reader("lessvat")}, "LR", False, False)
                             End If
 
+                            Dim HasGC = GetGCData(TransactionNumber)
+                            If Not HasGC.CouponName Is Nothing Then
+                                RECEIPTLINECOUNT += 10
+                                RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Gift Cheque: " & HasGC.CouponName, NUMBERFORMAT(HasGC.TotalCouponValue) & "-", FontDefault, 11, 0)
+                                FillEJournalContent("Gift Cheque:      -" & HasGC.CouponName & "     " & NUMBERFORMAT(HasGC.TotalCouponValue), {"Gift Cheque: " & HasGC.CouponName, "-" & NUMBERFORMAT(HasGC.TotalCouponValue)}, "LR", False, False)
+                            End If
+
                             RECEIPTLINECOUNT += 10
-                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Due: ", reader("amountdue") & "-", FontDefaultBold, 11, 0)
+                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Due: ", reader("amountdue") & "-", FontDefault, 11, 0)
                             FillEJournalContent("Amount Due:      -" & reader("amountdue"), {"Amount Due: ", "-" & reader("amountdue")}, "LR", False, False)
                             RECEIPTLINECOUNT += 10
-                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Add VAT: ", reader("vatpercentage") & "-", FontDefaultBold, 11, 0)
+                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Add VAT: ", reader("vatpercentage") & "-", FontDefault, 11, 0)
                             FillEJournalContent("Add VAT:      -" & reader("vatpercentage"), {"Add VAT: ", "-" & reader("vatpercentage")}, "LR", False, False)
                             RECEIPTLINECOUNT += 10
                             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Amount Due: ", reader("amountdue") & "-", FontDefaultBold, 11, 0)
@@ -1233,20 +1244,20 @@ Module publicfunctions
                         If Dt(i)(14).ToString = "Add-Ons" Then
                             If Dt(i)(18).ToString = "Classic" Then
                                 RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Dt(i)(3) & "@", FontDefault, 0, 82 + BodySpacing)
-                                RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 182 + BodySpacing)
+                                RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 183 + BodySpacing)
                                 FillEJournalContent("     @" & Dt(i)(3) & "     " & price, {}, "S", False, True)
                             Else
                                 SimpleTextDisplay(sender, e, Dt(i)(4), FontDefault, 0, RECEIPTLINECOUNT - 20)
                                 SimpleTextDisplay(sender, e, Dt(i)(2), FontDefault, 50, RECEIPTLINECOUNT - 20)
                                 RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Dt(i)(5), FontDefault, 0, 122 + BodySpacing)
-                                RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 182 + BodySpacing)
+                                RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 183 + BodySpacing)
                                 FillEJournalContent("        " & Dt(i)(4) & "           " & Dt(i)(2) & "           " & Dt(i)(5) & "       " & price, {Dt(i)(4), Dt(i)(2), Dt(i)(5), price}, "S4", False, False)
                             End If
                         Else
                             SimpleTextDisplay(sender, e, Dt(i)(4), FontDefault, 0, RECEIPTLINECOUNT - 20)
                             SimpleTextDisplay(sender, e, Dt(i)(2), FontDefault, 50, RECEIPTLINECOUNT - 20)
                             RightDisplay1(sender, e, RECEIPTLINECOUNT, "", Dt(i)(5), FontDefault, 0, 122 + BodySpacing)
-                            RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 182 + BodySpacing)
+                            RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 183 + BodySpacing)
                             FillEJournalContent("        " & Dt(i)(4) & "           " & Dt(i)(2) & "           " & Dt(i)(5) & "       " & price, {Dt(i)(4), Dt(i)(2), Dt(i)(5), price}, "S4", False, False)
                             If Dt(i)(17) > 0 Then
                                 RECEIPTLINECOUNT += 10
@@ -1301,6 +1312,13 @@ Module publicfunctions
 
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less VAT: ", NUMBERFORMAT(reader("lessvat")), FontDefault, 11, 0)
                                 FillEJournalContent("Less VAT: :      " & NUMBERFORMAT(reader("lessvat")), {"Less VAT: ", NUMBERFORMAT(reader("lessvat"))}, "LR", False, False)
+                                RECEIPTLINECOUNT += 10
+
+                                Dim HasGC = GetGCData(TransactionNumber)
+                                If Not HasGC.CouponName Is Nothing Then
+                                    RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Gift Cheque: " & HasGC.CouponName, NUMBERFORMAT(HasGC.TotalCouponValue), FontDefault, 11, 0)
+                                    FillEJournalContent("Gift Cheque:      " & HasGC.CouponName & "     " & NUMBERFORMAT(HasGC.TotalCouponValue), {"Gift Cheque: " & HasGC.CouponName, NUMBERFORMAT(HasGC.TotalCouponValue)}, "LR", False, False)
+                                End If
 
                                 RECEIPTLINECOUNT += 10
                                 RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Due: ", NUMBERFORMAT(reader("amountdue")), FontDefault, 11, 0)
@@ -1377,20 +1395,20 @@ Module publicfunctions
                             If .DataGridViewOrders.Rows(i).Cells(7).Value.ToString = "Add-Ons" Then
                                 If .DataGridViewOrders.Rows(i).Cells(13).Value.ToString = "Classic" Then
                                     RightDisplay1(sender, e, RECEIPTLINECOUNT, "", .DataGridViewOrders.Rows(i).Cells(0).Value & "@", FontDefault, 0, 82 + BodySpacing)
-                                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 182 + BodySpacing)
+                                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 183 + BodySpacing)
                                     FillEJournalContent("     @" & .DataGridViewOrders.Rows(i).Cells(0).Value & "     " & price, {}, "S", False, True)
                                 Else
                                     SimpleTextDisplay(sender, e, .DataGridViewOrders.Rows(i).Cells(1).Value, FontDefault, 0, RECEIPTLINECOUNT - 20)
                                     SimpleTextDisplay(sender, e, .DataGridViewOrders.Rows(i).Cells(6).Value, FontDefault, 50, RECEIPTLINECOUNT - 20)
                                     RightDisplay1(sender, e, RECEIPTLINECOUNT, "", .DataGridViewOrders.Rows(i).Cells(2).Value, FontDefault, 0, 122 + BodySpacing)
-                                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 182 + BodySpacing)
+                                    RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 183 + BodySpacing)
                                     FillEJournalContent("        " & .DataGridViewOrders.Rows(i).Cells(1).Value & "           " & .DataGridViewOrders.Rows(i).Cells(6).Value & "           " & .DataGridViewOrders.Rows(i).Cells(2).Value & "       " & price, { .DataGridViewOrders.Rows(i).Cells(1).Value, .DataGridViewOrders.Rows(i).Cells(6).Value, .DataGridViewOrders.Rows(i).Cells(2).Value, price}, "S4", False, False)
                                 End If
                             Else
                                 SimpleTextDisplay(sender, e, .DataGridViewOrders.Rows(i).Cells(1).Value, FontDefault, 0, RECEIPTLINECOUNT - 20)
                                 SimpleTextDisplay(sender, e, .DataGridViewOrders.Rows(i).Cells(6).Value, FontDefault, 50, RECEIPTLINECOUNT - 20)
                                 RightDisplay1(sender, e, RECEIPTLINECOUNT, "", .DataGridViewOrders.Rows(i).Cells(2).Value, FontDefault, 0, 122 + BodySpacing)
-                                RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 182 + BodySpacing)
+                                RightDisplay1(sender, e, RECEIPTLINECOUNT, "", price, FontDefault, 0, 183 + BodySpacing)
 
                                 FillEJournalContent("        " & .DataGridViewOrders.Rows(i).Cells(1).Value & "           " & .DataGridViewOrders.Rows(i).Cells(6).Value & "           " & .DataGridViewOrders.Rows(i).Cells(2).Value & "       " & price, { .DataGridViewOrders.Rows(i).Cells(1).Value, .DataGridViewOrders.Rows(i).Cells(6).Value, .DataGridViewOrders.Rows(i).Cells(2).Value, price}, "S4", False, False)
                                 If .DataGridViewOrders.Rows(i).Cells(11).Value > 0 Then
@@ -1422,11 +1440,13 @@ Module publicfunctions
                             RECEIPTLINECOUNT += 10
                         Next
                         Dim NETSALES As Double = 0
+
                         If S_ZeroRated = "0" Then
                             NETSALES = Convert.ToDecimal(Double.Parse(.TextBoxGRANDTOTAL.Text))
                         Else
                             NETSALES = ZERORATEDNETSALES
                         End If
+
                         Dim Qty = SumOfColumnsToInt(.DataGridViewOrders, 1)
                         RECEIPTLINECOUNT += 20
                         RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Sales: ", NUMBERFORMAT(Double.Parse(.TextBoxSUBTOTAL.Text)), FontDefault, 11, 0)
@@ -1440,6 +1460,7 @@ Module publicfunctions
                             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: " & PromoName, .TextBoxDISCOUNT.Text, FontDefault, 11, 0)
                             FillEJournalContent("Less Discount:      " & PromoName & "     " & .TextBoxDISCOUNT.Text, {"Less Discount: " & PromoName, .TextBoxDISCOUNT.Text}, "LR", False, False)
                         End If
+
                         If DiscAppleid Then
                             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: ", .TextBoxDISCOUNT.Text, FontDefault, 11, 0)
                             FillEJournalContent("Less Discount:      " & .TextBoxDISCOUNT.Text, {"Less Discount: ", .TextBoxDISCOUNT.Text}, "LR", False, False)
@@ -1459,6 +1480,12 @@ Module publicfunctions
                         Else
                             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less VAT: ", "0.00", FontDefault, 11, 0)
                             FillEJournalContent("Less VAT:      0.00", {"Less VAT: ", "0.00"}, "LR", False, False)
+                        End If
+
+                        If GCAPPLIED Then
+                            RECEIPTLINECOUNT += 10
+                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Gift Cheque: " & GCDetails.CouponName, NUMBERFORMAT(GCDetails.TotalCouponValue), FontDefault, 11, 0)
+                            FillEJournalContent("Gift Cheque:      " & GCDetails.CouponName & "     " & NUMBERFORMAT(GCDetails.TotalCouponValue), {"Gift Cheque: " & GCDetails.CouponName, NUMBERFORMAT(GCDetails.TotalCouponValue)}, "LR", False, False)
                         End If
 
                         RECEIPTLINECOUNT += 10

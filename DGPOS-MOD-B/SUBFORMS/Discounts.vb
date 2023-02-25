@@ -104,11 +104,11 @@
         End Try
         If DataGridView2.Rows.Count > 0 Then
             'MsgBox(GETNOTDISCOUNTEDAMOUNT)
-
+            SeniorDetails.COUPONID = COUPONID
             SeniorDetails.COUPONNAME = COUPONNAME
             SeniorDetails.COUPONVALUE = COUPONVALUE
             SeniorDetails.NOTDISCOUNTEDAMOUNT = SumOfColumnsToDecimal(DataGridView1, 2) - GETNOTDISCOUNTEDAMOUNT
-            GETNOTDISCOUNTEDAMOUNT += SumOfColumnsToDecimal(DataGridView2, 2)
+            GETNOTDISCOUNTEDAMOUNT += SumOfColumnsToDecimal(DataGridView1, 2)
 
 
             SeniorDetails.Show()

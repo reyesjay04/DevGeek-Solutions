@@ -64,6 +64,7 @@ Partial Class PaymentForm
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.ButtonGC = New System.Windows.Forms.Button()
         Me.Panel1.SuspendLayout()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
@@ -114,6 +115,7 @@ Partial Class PaymentForm
         '
         Me.TableLayoutPanel1.ColumnCount = 1
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.ButtonGC, 0, 7)
         Me.TableLayoutPanel1.Controls.Add(Me.Button1, 0, 0)
         Me.TableLayoutPanel1.Controls.Add(Me.Button7, 0, 6)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonEX50, 0, 5)
@@ -121,18 +123,18 @@ Partial Class PaymentForm
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonEX200, 0, 3)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonEX500, 0, 2)
         Me.TableLayoutPanel1.Controls.Add(Me.ButtonEx1000, 0, 1)
-        Me.TableLayoutPanel1.Location = New System.Drawing.Point(337, 53)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(337, 28)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
-        Me.TableLayoutPanel1.RowCount = 7
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.28571!))
-        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(133, 391)
+        Me.TableLayoutPanel1.RowCount = 8
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5!))
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(133, 416)
         Me.TableLayoutPanel1.TabIndex = 256
         '
         'Button1
@@ -146,7 +148,7 @@ Partial Class PaymentForm
         Me.Button1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Button1.Location = New System.Drawing.Point(3, 3)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(127, 49)
+        Me.Button1.Size = New System.Drawing.Size(127, 46)
         Me.Button1.TabIndex = 257
         Me.Button1.Text = "EXACT"
         Me.Button1.UseVisualStyleBackColor = False
@@ -160,9 +162,9 @@ Partial Class PaymentForm
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.Button7.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.Button7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.Button7.Location = New System.Drawing.Point(3, 333)
+        Me.Button7.Location = New System.Drawing.Point(3, 315)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(127, 55)
+        Me.Button7.Size = New System.Drawing.Size(127, 46)
         Me.Button7.TabIndex = 113
         Me.Button7.Text = "Customer Information"
         Me.Button7.UseVisualStyleBackColor = False
@@ -176,9 +178,9 @@ Partial Class PaymentForm
         Me.ButtonEX50.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEX50.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.ButtonEX50.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.ButtonEX50.Location = New System.Drawing.Point(3, 278)
+        Me.ButtonEX50.Location = New System.Drawing.Point(3, 263)
         Me.ButtonEX50.Name = "ButtonEX50"
-        Me.ButtonEX50.Size = New System.Drawing.Size(127, 49)
+        Me.ButtonEX50.Size = New System.Drawing.Size(127, 46)
         Me.ButtonEX50.TabIndex = 112
         Me.ButtonEX50.Text = "50"
         Me.ButtonEX50.UseVisualStyleBackColor = False
@@ -192,9 +194,9 @@ Partial Class PaymentForm
         Me.ButtonEX100.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEX100.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.ButtonEX100.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.ButtonEX100.Location = New System.Drawing.Point(3, 223)
+        Me.ButtonEX100.Location = New System.Drawing.Point(3, 211)
         Me.ButtonEX100.Name = "ButtonEX100"
-        Me.ButtonEX100.Size = New System.Drawing.Size(127, 49)
+        Me.ButtonEX100.Size = New System.Drawing.Size(127, 46)
         Me.ButtonEX100.TabIndex = 111
         Me.ButtonEX100.Text = "100"
         Me.ButtonEX100.UseVisualStyleBackColor = False
@@ -208,9 +210,9 @@ Partial Class PaymentForm
         Me.ButtonEX200.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEX200.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.ButtonEX200.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.ButtonEX200.Location = New System.Drawing.Point(3, 168)
+        Me.ButtonEX200.Location = New System.Drawing.Point(3, 159)
         Me.ButtonEX200.Name = "ButtonEX200"
-        Me.ButtonEX200.Size = New System.Drawing.Size(127, 49)
+        Me.ButtonEX200.Size = New System.Drawing.Size(127, 46)
         Me.ButtonEX200.TabIndex = 110
         Me.ButtonEX200.Text = "200"
         Me.ButtonEX200.UseVisualStyleBackColor = False
@@ -224,9 +226,9 @@ Partial Class PaymentForm
         Me.ButtonEX500.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEX500.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.ButtonEX500.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.ButtonEX500.Location = New System.Drawing.Point(3, 113)
+        Me.ButtonEX500.Location = New System.Drawing.Point(3, 107)
         Me.ButtonEX500.Name = "ButtonEX500"
-        Me.ButtonEX500.Size = New System.Drawing.Size(127, 49)
+        Me.ButtonEX500.Size = New System.Drawing.Size(127, 46)
         Me.ButtonEX500.TabIndex = 109
         Me.ButtonEX500.Text = "500"
         Me.ButtonEX500.UseVisualStyleBackColor = False
@@ -240,9 +242,9 @@ Partial Class PaymentForm
         Me.ButtonEx1000.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonEx1000.Font = New System.Drawing.Font("Tahoma", 9.0!)
         Me.ButtonEx1000.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.ButtonEx1000.Location = New System.Drawing.Point(3, 58)
+        Me.ButtonEx1000.Location = New System.Drawing.Point(3, 55)
         Me.ButtonEx1000.Name = "ButtonEx1000"
-        Me.ButtonEx1000.Size = New System.Drawing.Size(127, 49)
+        Me.ButtonEx1000.Size = New System.Drawing.Size(127, 46)
         Me.ButtonEx1000.TabIndex = 108
         Me.ButtonEx1000.Text = "1000"
         Me.ButtonEx1000.UseVisualStyleBackColor = False
@@ -654,6 +656,22 @@ Partial Class PaymentForm
         Me.Label9.TabIndex = 254
         Me.Label9.Text = "__________________________"
         '
+        'ButtonGC
+        '
+        Me.ButtonGC.BackColor = System.Drawing.Color.SkyBlue
+        Me.ButtonGC.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.ButtonGC.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ButtonGC.FlatAppearance.BorderColor = System.Drawing.Color.DimGray
+        Me.ButtonGC.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.ButtonGC.Font = New System.Drawing.Font("Tahoma", 9.0!)
+        Me.ButtonGC.ForeColor = System.Drawing.Color.FromArgb(CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.ButtonGC.Location = New System.Drawing.Point(3, 367)
+        Me.ButtonGC.Name = "ButtonGC"
+        Me.ButtonGC.Size = New System.Drawing.Size(127, 46)
+        Me.ButtonGC.TabIndex = 258
+        Me.ButtonGC.Text = "Gift Cheque (GC)"
+        Me.ButtonGC.UseVisualStyleBackColor = False
+        '
         'PaymentForm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -712,4 +730,5 @@ Partial Class PaymentForm
     Friend WithEvents ButtonEX200 As Button
     Friend WithEvents ButtonEX100 As Button
     Friend WithEvents Button1 As Button
+    Friend WithEvents ButtonGC As Button
 End Class

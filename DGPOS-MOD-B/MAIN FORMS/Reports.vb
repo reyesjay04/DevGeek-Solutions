@@ -544,23 +544,19 @@ Public Class Reports
             AuditTrail.LogToAuditTrail("System", "Reports/LoadProducts(): " & ex.ToString, "Critical")
         End Try
     End Sub
-    Dim TotalDiscountCustomReports As Double = 0
     Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
         Try
-            TotalDiscountCustomReports = 0
+
+            Dim TotalDiscountCustomReports As Double = 0
             DataGridViewCustomReport.Rows.Clear()
             CustomReport(ToolStripComboBoxProducts.Text, ToolStripComboBoxTaxType.Text, ToolStripComboBoxTransactionType.Text, ToolStripComboBoxDiscType.Text)
             ToolStripStatusLabel2.Text = DataGridViewCustomReport.Rows.Count
-
-            TotalDiscountCustomReports = 0
-            If ToolStripComboBoxOption.SelectedIndex <> 2 Then
-                TotalDiscountCustomReports = sum("coupon_total", "loc_coupon_data WHERE zreading >= '" & Format(DateTimePicker17.Value, "yyyy-MM-dd") & "' AND  zreading <= '" & Format(DateTimePicker18.Value, "yyyy-MM-dd") & "' AND status = 1")
-            End If
 
         Catch ex As Exception
             AuditTrail.LogToAuditTrail("System", "Reports/ToolStripButton2: " & ex.ToString, "Critical")
         End Try
     End Sub
+
 
     Private Sub CustomReport(ProductName, TaxType, TransactionType, DiscountType)
         Try
@@ -1858,26 +1854,34 @@ Public Class Reports
             Dim TotalAddVat As Double
             Dim TotalVatableSales As Double = 0
             Dim TotalLessVat As Double = 0
+            Dim TotalDiscount As Double = 0
+            Dim FaceValue As Double = 0
+            Dim GCUsed As Double = 0
+
+            'ToolStripComboBoxOption
+
             Dim ConnectionLocal As MySqlConnection = LocalhostConn()
 
             For Each element As String In result
-                Dim Query = $"SELECT LD.amountdue, LD.grosssales, LD.vatexemptsales, LD.active, LD.vatpercentage, LD.vatablesales, LD.lessvat , SUM(LC.coupon_total) as gc_used
-                FROM loc_daily_transaction LD 
-                LEFT JOIN loc_coupon_data LC ON LD.transaction_number = LC.transaction_number AND LC.coupon_type = 'Fix-1' WHERE LD.transaction_number = '{element}' ORDER BY LD.transaction_number DESC"
+                Dim Query = $"SELECT LD.netsales, LD.grosssales, LD.vatexemptsales, LD.active, LD.vatpercentage, LD.vatablesales, LD.lessvat, SUM(LCD.coupon_total) as TotalDisc
+                FROM loc_daily_transaction LD LEFT JOIN loc_coupon_data LCD ON LCD.transaction_number = LD.transaction_number AND coupon_type <> 'Fix-1'
+                WHERE LD.transaction_number = '{element}' ORDER BY LD.transaction_number DESC"
+
                 Dim Cmd As MySqlCommand = New MySqlCommand(Query, ConnectionLocal)
 
                 Using reader As MySqlDataReader = Cmd.ExecuteReader
                     If reader.HasRows Then
                         While reader.Read
-
                             If reader("active") = 1 Then
-                                Dim GCVal As Double = If(Not IsDBNull(reader("gc_used")), If(reader("gc_used").ToString <> "", CType(reader("gc_used").ToString, Double), 0), 0)
-                                TotalNetSales += reader("amountdue") + GCVal
+                                TotalDiscount += If(IsDBNull(reader("TotalDisc")), 0, reader("TotalDisc"))
+                                TotalNetSales += reader("netsales")
                                 TotalGrossSales += reader("grosssales")
                                 TotalVatExempt += reader("vatexemptsales")
                                 TotalAddVat += reader("vatpercentage")
                                 TotalVatableSales += reader("vatablesales")
                                 TotalLessVat += reader("lessvat")
+                                GCUsed += sum("coupon_total", $"loc_coupon_data WHERE transaction_number = '{element}' AND coupon_type = 'Fix-1'")
+                                FaceValue += sum("gc_value", $"loc_coupon_data WHERE transaction_number = '{element}' AND coupon_type = 'Fix-1'")
                             Else
                                 TotalRefund += reader("grosssales")
                             End If
@@ -1941,16 +1945,20 @@ Public Class Reports
 
 
 
+
+
+
                         gfx.DrawString("Total Gross Sales: " & NUMBERFORMAT(TotalGrossSales), font, XBrushes.Black, 50, 133 + RowCount)
                         gfx.DrawString("Total Items: " & SumOfColumnsToInt(DataGridViewCustomReport, 2), font, XBrushes.Black, 50, 143 + RowCount)
-                        gfx.DrawString("Total Discount: " & NUMBERFORMAT(TotalDiscountCustomReports), font, XBrushes.Black, 50, 153 + RowCount)
-                        gfx.DrawString("Vatable Sales: " & NUMBERFORMAT(TotalVatableSales), font, XBrushes.Black, 50, 163 + RowCount)
-                        gfx.DrawString("Net Sales: " & NUMBERFORMAT(TotalNetSales), font, XBrushes.Black, 50, 173 + RowCount)
-                        gfx.DrawString("Less Vat: " & NUMBERFORMAT(TotalLessVat), font, XBrushes.Black, 50, 183 + RowCount)
-                        gfx.DrawString("Add Vat: " & NUMBERFORMAT(TotalAddVat), font, XBrushes.Black, 50, 193 + RowCount)
-                        gfx.DrawString("Vat Exempt Sales: " & NUMBERFORMAT(TotalVatExempt), font, XBrushes.Black, 50, 203 + RowCount)
-                        gfx.DrawString("Refunded/ Cancel: " & NUMBERFORMAT(TotalRefund), font, XBrushes.Black, 50, 213 + RowCount)
-                        gfx.DrawString("Date Generated: " & FullDate24HR(), font, XBrushes.Black, 50, 223 + RowCount)
+                        gfx.DrawString("Total Discount: " & NUMBERFORMAT(TotalDiscount), font, XBrushes.Black, 50, 153 + RowCount)
+                        gfx.DrawString("Gift Cheque: " & GCUsed & "/" & FaceValue, font, XBrushes.Black, 50, 163 + RowCount)
+                        gfx.DrawString("Vatable Sales: " & NUMBERFORMAT(TotalVatableSales), font, XBrushes.Black, 50, 173 + RowCount)
+                        gfx.DrawString("Net Sales: " & NUMBERFORMAT(TotalNetSales), font, XBrushes.Black, 50, 183 + RowCount)
+                        gfx.DrawString("Less Vat: " & NUMBERFORMAT(TotalLessVat), font, XBrushes.Black, 50, 193 + RowCount)
+                        gfx.DrawString("Add Vat: " & NUMBERFORMAT(TotalAddVat), font, XBrushes.Black, 50, 203 + RowCount)
+                        gfx.DrawString("Vat Exempt Sales: " & NUMBERFORMAT(TotalVatExempt), font, XBrushes.Black, 50, 213 + RowCount)
+                        gfx.DrawString("Refunded/ Cancel: " & NUMBERFORMAT(TotalRefund), font, XBrushes.Black, 50, 223 + RowCount)
+                        gfx.DrawString("Date Generated: " & FullDate24HR(), font, XBrushes.Black, 50, 233 + RowCount)
 
                         Kahitano += 1
                     Else
@@ -1990,14 +1998,15 @@ Public Class Reports
 
                         gfx.DrawString("Total Gross Sales: " & NUMBERFORMAT(TotalGrossSales), font, XBrushes.Black, 50, 133 + RowCount)
                         gfx.DrawString("Total Items: " & SumOfColumnsToInt(DataGridViewCustomReport, 2), font, XBrushes.Black, 50, 143 + RowCount)
-                        gfx.DrawString("Total Discount: " & NUMBERFORMAT(TotalDiscountCustomReports), font, XBrushes.Black, 50, 153 + RowCount)
-                        gfx.DrawString("Vatable Sales: " & NUMBERFORMAT(TotalVatableSales), font, XBrushes.Black, 50, 163 + RowCount)
-                        gfx.DrawString("Net Sales: " & NUMBERFORMAT(TotalNetSales), font, XBrushes.Black, 50, 173 + RowCount)
-                        gfx.DrawString("Less Vat: " & NUMBERFORMAT(TotalLessVat), font, XBrushes.Black, 50, 183 + RowCount)
-                        gfx.DrawString("Add Vat: " & NUMBERFORMAT(TotalAddVat), font, XBrushes.Black, 50, 193 + RowCount)
-                        gfx.DrawString("Vat Exempt Sales: " & NUMBERFORMAT(TotalVatExempt), font, XBrushes.Black, 50, 203 + RowCount)
-                        gfx.DrawString("Refunded/ Cancel: " & NUMBERFORMAT(TotalRefund), font, XBrushes.Black, 50, 213 + RowCount)
-                        gfx.DrawString("Date Generated: " & FullDate24HR(), font, XBrushes.Black, 50, 223 + RowCount)
+                        gfx.DrawString("Total Discount: " & NUMBERFORMAT(TotalDiscount), font, XBrushes.Black, 50, 153 + RowCount)
+                        gfx.DrawString("Gift Cheque: " & GCUsed & "/" & FaceValue, font, XBrushes.Black, 50, 163 + RowCount)
+                        gfx.DrawString("Vatable Sales: " & NUMBERFORMAT(TotalVatableSales), font, XBrushes.Black, 50, 173 + RowCount)
+                        gfx.DrawString("Net Sales: " & NUMBERFORMAT(TotalNetSales), font, XBrushes.Black, 50, 183 + RowCount)
+                        gfx.DrawString("Less Vat: " & NUMBERFORMAT(TotalLessVat), font, XBrushes.Black, 50, 193 + RowCount)
+                        gfx.DrawString("Add Vat: " & NUMBERFORMAT(TotalAddVat), font, XBrushes.Black, 50, 203 + RowCount)
+                        gfx.DrawString("Vat Exempt Sales: " & NUMBERFORMAT(TotalVatExempt), font, XBrushes.Black, 50, 213 + RowCount)
+                        gfx.DrawString("Refunded/ Cancel: " & NUMBERFORMAT(TotalRefund), font, XBrushes.Black, 50, 223 + RowCount)
+                        gfx.DrawString("Date Generated: " & FullDate24HR(), font, XBrushes.Black, 50, 233 + RowCount)
                     End If
                 Next
                 AuditTrail.LogToAuditTrail("Report", "Reports/Custom Report: Generated Report, " & ClientCrewID, "Normal")

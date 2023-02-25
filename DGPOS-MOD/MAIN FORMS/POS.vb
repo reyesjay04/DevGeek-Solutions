@@ -271,20 +271,12 @@ Public Class POS
                 If ButtonPayMent.Text = "Checkout" Then
 
                     If Disable_Zread_Date_Overlapping Then
-                        Enabled = False
-                        PaymentForm.Show()
-                        Application.DoEvents()
-                        PaymentForm.TextBoxMONEY.Focus()
-                        PaymentForm.TextBoxTOTALPAY.Text = TextBoxGRANDTOTAL.Text
-                        PaymentForm.Focus()
+                        Dim frm As New PaymentForm(Me, TextBoxGRANDTOTAL.Text)
+                        frm.ShowDialog()
                     Else
                         If S_Zreading = Format(Now(), "yyyy-MM-dd") Or S_Zreading = Format(Now().AddDays(1), "yyyy-MM-dd") Then
-                            Enabled = False
-                            PaymentForm.Show()
-                            Application.DoEvents()
-                            PaymentForm.TextBoxMONEY.Focus()
-                            PaymentForm.TextBoxTOTALPAY.Text = TextBoxGRANDTOTAL.Text
-                            PaymentForm.Focus()
+                            Dim frm As New PaymentForm(Me, TextBoxGRANDTOTAL.Text)
+                            frm.ShowDialog()
                         Else
                             MessageBox.Show("Z-read first", "Z-Reading", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         End If
@@ -913,7 +905,6 @@ Public Class POS
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles ButtonApplyDiscounts.Click
         Try
 
-
             TOTALDISCOUNT = 0
             GROSSSALE = 0
             VATEXEMPTSALES = 0
@@ -924,6 +915,7 @@ Public Class POS
             VAT12PERCENT = 0
             ZERORATEDSALES = 0
             ZERORATEDNETSALES = 0
+            NETSALES = 0
 
             SeniorDetailsID = ""
             SeniorDetailsName = ""
@@ -981,6 +973,7 @@ Public Class POS
             CouponCode.Show()
             CouponCode.ButtonSubmit.Enabled = True
             Enabled = False
+
         Catch ex As Exception
             AuditTrail.LogToAuditTrail("System", "POS/ButtonApplyDiscounts: " & ex.ToString, "Critical")
         End Try
@@ -988,9 +981,6 @@ Public Class POS
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles ButtonApplyCoupon.Click
         Try
             MessageBox.Show("Apply coupon after taking all customer orders", "NOTICE", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            'If SeniorGCDiscount = False Then
-            '    ButtonRemovePromo.PerformClick()
-            'End If
             Enabled = False
             CouponCode.APPLYPROMO = True
             CouponCode.Show()
@@ -1062,35 +1052,32 @@ Public Class POS
     Private Sub InsertDailyTransaction()
         Try
 
-            Dim NetSales As Double = 0
+            'Dim NetSales As Double = 0
 
-            If S_ZeroRated = "0" Then
-                NetSales = SUPERAMOUNTDUE
-            Else
-                NetSales = ZERORATEDNETSALES
-            End If
-            Dim DiscountTypeTOSave As String = ""
-            If SeniorGCDiscount Then
-                DiscountTypeTOSave = "Disc + GC"
-            Else
-                If PromoApplied Then
-                    If PromoName = "" Then
-                        PromoName = "N/A"
-                    End If
-                    DiscountTypeTOSave = PromoName
-                Else
-                    DiscountTypeTOSave = "N/A"
-                End If
 
-                If DiscAppleid Then
-                    If DiscountName = "" Then
-                        DiscountName = "N/A"
-                    End If
-                    DiscountTypeTOSave = DiscountName.TrimEnd(",")
-                Else
-                    DiscountTypeTOSave = "N/A"
-                End If
-            End If
+
+            'Dim DiscountTypeTOSave As String = ""
+            'If SeniorGCDiscount Then
+            '    DiscountTypeTOSave = "Disc + GC"
+            'Else
+            '    If PromoApplied Then
+            '        If PromoName = "" Then
+            '            PromoName = "N/A"
+            '        End If
+            '        DiscountTypeTOSave = PromoName
+            '    Else
+            '        DiscountTypeTOSave = "N/A"
+            '    End If
+
+            '    If DiscAppleid Then
+            '        If DiscountName = "" Then
+            '            DiscountName = "N/A"
+            '        End If
+            '        DiscountTypeTOSave = DiscountName.TrimEnd(",")
+            '    Else
+            '        DiscountTypeTOSave = "N/A"
+            '    End If
+            'End If
 
             Dim ConnectionLocal As MySqlConnection = LocalhostConn()
             Using Command As New MySqlCommand("", ConnectionLocal)
@@ -1098,20 +1085,40 @@ Public Class POS
                                             (
                                                 `transaction_number`, `amounttendered`, `totaldiscount`, `change`, `amountdue`, `vatablesales`, `vatexemptsales`, `zeroratedsales`,
                                                 `lessvat`, `si_number`, `crew_id`, `guid`, `active`, `store_id`, `created_at`, `transaction_type`, `shift`, `zreading`, `synced`,
-                                                `discount_type`, `vatpercentage`, `grosssales`, `totaldiscountedamount`, `actual_trx_date`
+                                                `discount_type`, `vatpercentage`, `grosssales`, `totaldiscountedamount`, `actual_trx_date`, `netsales`
                                             ) 
                                        VALUES 
                                             (
                                                 @transaction_number, @amounttendered, @totaldiscount, @change, @amountdue, @vatablesales, @vatexemptsales,
                                                 @zeroratedsales, @lessvat, @si_number, @crew_id, @guid, @active, @store_id, @created_at, @transaction_type, @shift, @zreading, @synced,
-                                                @discount_type, @vatpercentage, @grosssales, @totaldiscountedamount, sysdate()
+                                                @discount_type, @vatpercentage, @grosssales, @totaldiscountedamount, sysdate(), @netsales
                                             )"
+
+                Dim disc_type As String = ""
+
+                If DiscAppleid Then
+                    If GCAPPLIED Then
+                        disc_type = DiscountType
+                    Else
+                        disc_type = PromoType
+                    End If
+                Else
+                    If PromoApplied Then
+                        disc_type = PromoType
+                    Else
+                        disc_type = DiscountType
+                    End If
+
+                End If
+
+                disc_type = If(disc_type.StartsWith(","), disc_type.Replace(",", ""), disc_type)
+
                 Command.Parameters.Clear()
                 Command.Parameters.AddWithValue("@transaction_number", S_TRANSACTION_NUMBER)
                 Command.Parameters.AddWithValue("@amounttendered", TEXTBOXMONEYVALUE)
                 Command.Parameters.AddWithValue("@totaldiscount", TOTALDISCOUNT)
                 Command.Parameters.AddWithValue("@change", TEXTBOXCHANGEVALUE)
-                Command.Parameters.AddWithValue("@amountdue", NetSales)
+                Command.Parameters.AddWithValue("@amountdue", SUPERAMOUNTDUE)
                 Command.Parameters.AddWithValue("@vatablesales", VATABLESALES)
                 Command.Parameters.AddWithValue("@vatexemptsales", VATEXEMPTSALES)
                 Command.Parameters.AddWithValue("@zeroratedsales", ZERORATEDSALES)
@@ -1126,9 +1133,10 @@ Public Class POS
                 Command.Parameters.AddWithValue("@shift", Shift)
                 Command.Parameters.AddWithValue("@zreading", S_Zreading)
                 Command.Parameters.AddWithValue("@synced", "N")
-                Command.Parameters.AddWithValue("@discount_type", DiscountTypeTOSave)
+                Command.Parameters.AddWithValue("@discount_type", Trim(disc_type))
                 Command.Parameters.AddWithValue("@vatpercentage", VAT12PERCENT)
                 Command.Parameters.AddWithValue("@grosssales", GROSSSALE)
+                Command.Parameters.AddWithValue("@netsales", NETSALES)
                 Command.Parameters.AddWithValue("@totaldiscountedamount", TOTALDISCOUNTEDAMOUNT)
                 Command.ExecuteNonQuery()
                 Command.Dispose()
@@ -1237,13 +1245,49 @@ Public Class POS
             AuditTrail.LogToAuditTrail("System", "POS/Mode of Transaction: " & ex.ToString, "Critical")
         End Try
     End Sub
+    Private Sub InsertGCData()
+        Try
+            Dim ConnectionLocal As MySqlConnection = LocalhostConn()
+            Dim Query As String = "INSERT INTO loc_coupon_data 
+                                        (`transaction_number`, `coupon_name`, `coupon_type`, `coupon_desc`, `coupon_line`, `coupon_total`, `zreading`, `status`, `synced`, `reference_id`, `ldtd_product_id`, `ldtd_id`, `gc_value`) 
+                                   VALUES 
+                                        (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12, @gc_value)"
+
+            With GCDetails
+                Using mCmd = New MySqlCommand(Query, ConnectionLocal)
+                    mCmd.Parameters.Clear()
+                    mCmd.Parameters.AddWithValue("@1", S_TRANSACTION_NUMBER)
+                    mCmd.Parameters.AddWithValue("@2", .CouponName)
+                    mCmd.Parameters.AddWithValue("@3", .Type)
+                    mCmd.Parameters.AddWithValue("@4", .CouponDesc)
+                    mCmd.Parameters.AddWithValue("@5", PromoLine)
+                    mCmd.Parameters.AddWithValue("@6", .TotalCouponValue)
+                    mCmd.Parameters.AddWithValue("@7", S_Zreading)
+                    mCmd.Parameters.AddWithValue("@8", 1)
+                    mCmd.Parameters.AddWithValue("@9", "N")
+                    mCmd.Parameters.AddWithValue("@10", .ID)
+                    mCmd.Parameters.AddWithValue("@11", 0)
+                    mCmd.Parameters.AddWithValue("@12", 0)
+                    mCmd.Parameters.AddWithValue("@gc_value", .DiscountValue)
+                    mCmd.ExecuteNonQuery()
+                    mCmd.Dispose()
+                End Using
+            End With
+
+        Catch ex As Exception
+            AuditTrail.LogToAuditTrail("System", ex.ToString, "Critical")
+        End Try
+    End Sub
     Private Sub InsertDiscountData()
         Try
             Dim ConnectionLocal As MySqlConnection = LocalhostConn()
-            Dim Query As String = ""
+            Dim Query As String = "INSERT INTO loc_coupon_data 
+                                        (`transaction_number`, `coupon_name`, `coupon_type`, `coupon_desc`, `coupon_line`, `coupon_total`, `zreading`, `status`, `synced`, `reference_id`, `ldtd_product_id`, `ldtd_id`) 
+                                   VALUES 
+                                        (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12)"
+
             With DataGridViewOrders
                 For i As Integer = 0 To .Rows.Count - 1 Step +1
-                    Query = "INSERT INTO loc_coupon_data (`transaction_number`, `coupon_name`, `coupon_type`, `coupon_desc`, `coupon_line`, `coupon_total`, `zreading`, `status`, `synced`, `reference_id`, `ldtd_product_id`, `ldtd_id`) VALUES (@1, @2, @3, @4, @5, @6, @7, @8, @9, @10, @11, @12)"
                     If .Rows(i).Cells(15).Value > 0 Then
                         Dim DiscTotal As Double = NUMBERFORMAT(Math.Round(.Rows(i).Cells(15).Value, 2, MidpointRounding.AwayFromZero))
                         Using mCmd = New MySqlCommand(Query, ConnectionLocal)
@@ -1332,7 +1376,6 @@ Public Class POS
             ConnectionLocal.Close()
         Catch ex As Exception
             AuditTrail.LogToAuditTrail("System", ex.ToString, "Critical")
-            AuditTrail.LogToAuditTrail("System", "POS/Discount Data: " & ex.ToString, "Critical")
         End Try
     End Sub
     Private Sub InsertCouponData()
@@ -1403,15 +1446,17 @@ Public Class POS
 
             INSERTTHISDATE = S_Zreading & " " & Format(Now(), "HH:mm:ss")
             SUPERAMOUNTDUE = Convert.ToDecimal(Double.Parse(TextBoxGRANDTOTAL.Text))
+
             If TRANSACTIONMODE = "Complimentary Expenses" Then
                 ACTIVE = 3
             End If
+
             GROSSSALE = NUMBERFORMAT(Double.Parse(Label76.Text))
 
             If S_ZeroRated = "0" Then
                 If Not PromoApplied And Not DiscAppleid Then
-                    VATABLESALES = Math.Round(SUPERAMOUNTDUE / Val(1 + S_Tax), 2, MidpointRounding.AwayFromZero)
-                    VAT12PERCENT = Math.Round(SUPERAMOUNTDUE - VATABLESALES, 2, MidpointRounding.AwayFromZero)
+                    VATABLESALES = Math.Round(GROSSSALE / Val(1 + S_Tax), 2, MidpointRounding.AwayFromZero)
+                    VAT12PERCENT = Math.Round(GROSSSALE - VATABLESALES, 2, MidpointRounding.AwayFromZero)
                 End If
             Else
                 VATABLESALES = 0
@@ -1432,10 +1477,39 @@ Public Class POS
                     ZERORATEDSALES = GROSSSALE
                 End If
             End If
-            'MsgBox(PromoApplied)
-            'MsgBox(DiscAppleid)
-            'MsgBox(VATABLESALES)
-            'MsgBox(VAT12PERCENT)
+
+            If DiscAppleid Then
+                NETSALES = GROSSSALE / Val(1 + S_Tax)
+
+                If S_ZeroRated <> "0" Then
+                    NETSALES = ZERORATEDNETSALES
+                End If
+
+                With DataGridViewOrders
+                    For i As Integer = 0 To .Rows.Count - 1 Step +1
+                        If .Rows(i).Cells(15).Value > 0 Then
+                            Dim DiscTotal As Double = NUMBERFORMAT(Math.Round(.Rows(i).Cells(15).Value, 2, MidpointRounding.AwayFromZero))
+                            NETSALES -= DiscTotal
+                        End If
+                        If .Rows(i).Cells(17).Value > 0 Then
+                            Dim DiscTotal As Double = NUMBERFORMAT(Math.Round(.Rows(i).Cells(17).Value, 2, MidpointRounding.AwayFromZero))
+                            NETSALES -= DiscTotal
+                        End If
+                        If .Rows(i).Cells(19).Value > 0 Then
+                            Dim DiscTotal As Double = NUMBERFORMAT(Math.Round(.Rows(i).Cells(19).Value, 2, MidpointRounding.AwayFromZero))
+                            NETSALES -= DiscTotal
+                        End If
+                        If .Rows(i).Cells(21).Value > 0 Then
+                            Dim DiscTotal As Double = NUMBERFORMAT(Math.Round(.Rows(i).Cells(21).Value, 2, MidpointRounding.AwayFromZero))
+                            NETSALES -= DiscTotal
+                        End If
+                    Next
+
+                End With
+            Else
+                NETSALES = GROSSSALE / Val(1 + S_Tax)
+            End If
+
 
             If S_SI_NUMBER = 0 Then
                 SiNumberToString = S_SI_NUMBER.ToString(S_SIFormat)
@@ -1486,7 +1560,7 @@ Public Class POS
                             t.Join()
                         Next
 
-                        If modeoftransaction = True Then
+                        If modeoftransaction Then
                             ThreadOrder = New Thread(AddressOf InsertModeofTransaction)
                             ThreadOrder.Start()
                             THREADLIST.Add(ThreadOrder)
@@ -1497,6 +1571,15 @@ Public Class POS
 
                         If CUST_INFO_FILLED Then
                             ThreadOrder = New Thread(AddressOf InsertCustInfo)
+                            ThreadOrder.Start()
+                            THREADLIST.Add(ThreadOrder)
+                            For Each t In THREADLIST
+                                t.Join()
+                            Next
+                        End If
+
+                        If Not GCDetails Is Nothing Then
+                            ThreadOrder = New Thread(AddressOf InsertGCData)
                             ThreadOrder.Start()
                             THREADLIST.Add(ThreadOrder)
                             For Each t In THREADLIST

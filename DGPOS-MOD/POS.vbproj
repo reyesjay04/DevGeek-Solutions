@@ -129,8 +129,10 @@
     <Compile Include="MAIN FORMS\Auth.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="MAIN FORMS\Class\ApplyGC\ModApplyGC.vb" />
     <Compile Include="MAIN FORMS\Class\Auth\AuthCls.vb" />
     <Compile Include="MAIN FORMS\Class\ConfigManager\ReceiptInfoCls.vb" />
+    <Compile Include="MAIN FORMS\Class\ApplyGC\ApplyGCCls.vb" />
     <Compile Include="MAIN FORMS\Class\Inventory\InventoryCls.vb" />
     <Compile Include="MAIN FORMS\Class\Inventory\ModInventory.vb" />
     <Compile Include="MAIN FORMS\Class\Loading\ScriptRunnerCls.vb" />
@@ -310,6 +312,12 @@
       <DependentUpon>ForgotPassword.vb</DependentUpon>
     </Compile>
     <Compile Include="SUBFORMS\ForgotPassword.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SUBFORMS\ApplyGC.Designer.vb">
+      <DependentUpon>ApplyGC.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SUBFORMS\ApplyGC.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SUBFORMS\Message.Designer.vb">
@@ -570,6 +578,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SUBFORMS\ForgotPassword.resx">
       <DependentUpon>ForgotPassword.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SUBFORMS\ApplyGC.resx">
+      <DependentUpon>ApplyGC.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SUBFORMS\Message.resx">
       <DependentUpon>Message.vb</DependentUpon>

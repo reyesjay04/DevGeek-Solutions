@@ -735,6 +735,34 @@ Module RetrieveModule
         End Try
         Return res
     End Function
+    Public Function GetGCData(ByRef _transaction_number As String) As ApplyGCCls
+        Dim res As New ApplyGCCls
+        Try
+            Dim ConnectionLocal As MySqlConnection = LocalhostConn()
+            Using mCmd = New MySqlCommand("", ConnectionLocal)
+                mCmd.Parameters.Clear()
+                mCmd.CommandText = "SELECT * FROM loc_coupon_data WHERE transaction_number = @TransactionNumber AND coupon_type = 'Fix-1'"
+                mCmd.Parameters.AddWithValue("@TransactionNumber", _transaction_number)
+                mCmd.Prepare()
+
+                Using mReader = mCmd.ExecuteReader
+                    While mReader.Read
+                        res.ID = mReader("reference_id")
+                        res.CouponName = mReader("coupon_name").ToString
+                        res.CouponDesc = mReader("coupon_desc").ToString
+                        res.TotalCouponValue = CType(mReader("coupon_total"), Double)
+                        res.DiscountValue = mReader("gc_value").ToString
+                        res.Type = mReader("coupon_type").ToString
+                    End While
+                End Using
+
+                mCmd.Dispose()
+            End Using
+            ConnectionLocal.Close()
+        Catch ex As Exception
+        End Try
+        Return res
+    End Function
 #Region "UPDATES"
     Public Sub GetUpdatesRowCount(FromPosUpdate As Integer)
         Try

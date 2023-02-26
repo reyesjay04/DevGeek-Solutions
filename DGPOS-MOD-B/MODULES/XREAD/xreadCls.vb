@@ -174,7 +174,7 @@ Public Class xreadCls
             If xrCompBegBalance = "" Then xrCompBegBalance = 0
             xrCashinDrawer = xrGrossSales - xrCashless - xrLessVatVE - xrTotalDisc - xrTotalExpenses + Double.Parse(xrCompBegBalance)
 
-            xrCashTotal = xrCashinDrawer
+            xrCashTotal = xrCashinDrawer + xrTotalExpenses + xrCashless
 
             xrSeniorDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Senior Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
 

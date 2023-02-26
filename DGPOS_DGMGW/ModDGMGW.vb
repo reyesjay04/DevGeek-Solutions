@@ -232,8 +232,10 @@ Module ModDGMGW
             Using mCmd = New MySqlCommand("", mConn)
                 mCmd.Parameters.Clear()
                 mCmd.CommandText = $"SELECT SUM({_field}) FROM {_table} WHERE {_condition}"
-                Dim val = mCmd.ExecuteScalar
-                dbl = If(Not IsDBNull(val), val, 0)
+                Try
+                    dbl = mCmd.ExecuteScalar
+                Catch ex As Exception
+                End Try
                 mCmd.Dispose()
             End Using
         Catch ex As Exception

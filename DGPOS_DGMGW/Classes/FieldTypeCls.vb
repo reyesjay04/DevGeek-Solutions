@@ -118,7 +118,7 @@ Public Class FieldTypeCls
         Dim strFormat As String = ""
         Select Case SetFieldValueType
             Case FieldDataType.isDouble
-                Me.FieldValue = CType(Me.FieldValue, Double)
+                Me.FieldValue = Format(CType(Me.FieldValue, Double), "0.00")
                 strFormat = Me.FieldValue.ToString.Replace(".", "")
             Case FieldDataType.isInteger
                 Me.FieldValue = CType(Me.FieldValue, Integer)

@@ -1124,22 +1124,23 @@ Module publicfunctions
                         While reader.Read
                             GetStoreID = reader("store_id")
                             GetTransactionType = reader("transaction_type")
-                            Dim NETSALES = reader("grosssales")
+                            Dim gross_sales As Double = reader("grosssales")
                             RECEIPTLINECOUNT += 20
-                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Sales: ", NUMBERFORMAT(NETSALES) & "-", FontDefault, 11, 0)
-                            FillEJournalContent("Total Sales:      " & "-" & NUMBERFORMAT(NETSALES), {"Total Sales: ", "-" & NUMBERFORMAT(NETSALES)}, "LR", False, False)
+                            RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Total Sales: ", NUMBERFORMAT(gross_sales) & "-", FontDefault, 11, 0)
+                            FillEJournalContent("Total Sales:      " & "-" & NUMBERFORMAT(gross_sales), {"Total Sales: ", "-" & NUMBERFORMAT(gross_sales)}, "LR", False, False)
                             RECEIPTLINECOUNT += 10
                             RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Amount Net of VAT: ", reader("vatablesales") & "-", FontDefault, 11, 0)
                             FillEJournalContent("Amount Net of VAT:     -" & reader("vatablesales"), {"Amount Net of VAT: ", "-" & reader("vatablesales")}, "LR", False, False)
+                            RECEIPTLINECOUNT += 10
 
                             Select Case reader("discount_type").ToString
                                 Case "N/A", "DISC + GC"
-                                    RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: ", NUMBERFORMAT(reader("totaldiscount") & "-"), FontDefault, 11, 0)
-                                    FillEJournalContent("Less Discount: -" & NUMBERFORMAT(reader("totaldiscount")), {"Less Discount: -", NUMBERFORMAT(reader("totaldiscount"))}, "LR", False, False)
+                                    RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: ", reader("totaldiscount") & "-", FontDefault, 11, 0)
+                                    FillEJournalContent("Less Discount: -" & reader("totaldiscount"), {"Less Discount: -", reader("totaldiscount")}, "LR", False, False)
                                 Case Else
                                     Dim coupon_name = GetLessDiscountDesc(TransactionNumber)
-                                    RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: " & coupon_name, NUMBERFORMAT(reader("totaldiscount") & "-"), FontDefault, 11, 0)
-                                    FillEJournalContent("Less Discount: " & coupon_name & "-" & NUMBERFORMAT(reader("totaldiscount")), {"Less Discount: " & coupon_name, "-" & NUMBERFORMAT(reader("totaldiscount"))}, "LR", False, False)
+                                    RightToLeftDisplay(sender, e, RECEIPTLINECOUNT, "Less Discount: " & coupon_name, reader("totaldiscount") & "-", FontDefault, 11, 0)
+                                    FillEJournalContent("Less Discount: " & coupon_name & "-" & reader("totaldiscount"), {"Less Discount: " & coupon_name, "-" & reader("totaldiscount")}, "LR", False, False)
                             End Select
 
                             If reader("zeroratedsales") > 0 Then

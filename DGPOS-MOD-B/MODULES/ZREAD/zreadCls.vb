@@ -122,7 +122,7 @@ Public Class zreadCls
             ' Same value as Vat Amount (zrVatAmount)
             zrAddVat = zrVatAmount
             'Total Gift card value used
-            zrGCUsed = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1'")
+            zrGCUsed = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1' AND status = 1")
             'Total Value of Gift card
             zrGC = sum("gc_value", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Fix-1' ")
             'Zero always
@@ -136,11 +136,6 @@ Public Class zreadCls
             'Total Discounts = Gross Sales ():60 / 1.12 = ():53.57 * 0.20 = 10.71(xrLessDiscVE) |OR| Used Gift Card(xrGCUsed)
             zrLessDiscVE = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Percentage(w/o vat)' AND status = 1")
             'Gross Sales (zrGrossSales) + Gift Card Used(zrGCSum) - Less Vat(zrLessVatVE) - Vat Amount()zrVatAmount - Discount (zrLessDiscVE)
-            zrDailySales = zrGrossSales - zrLessVatVE - zrLessDiscVE
-            'Gross Sales (zrGrossSales) + Gift Card Used(zrGCSum) - Less Vat(zrLessVatVE) - Vat Amount()zrVatAmount - Discount (zrLessDiscVE)
-
-
-            zrCashTotal = sum("amountdue", $"loc_daily_transaction WHERE zreading = '{ZReadDate}'  AND active = 1") - zrGCUsed
 
             zrCreditCard = 0
             zrDebitCard = 0
@@ -167,17 +162,24 @@ Public Class zreadCls
             zrTrxCancel = zrReturnEx
             zrDiplomat = 0
 
+
+
             zrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1") - zrGCUsed
+
+            zrDailySales = zrGrossSales - zrLessVatVE - zrLessDiscVE
+
             zrNetSales = sum("netsales", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1")
 
             If zrCompBegBalance = "" Then zrCompBegBalance = 0
             zrCashinDrawer = zrGrossSales - zrCashless - zrTotalDisc - zrLessVatVE - zrTotalExpenses + Double.Parse(zrCompBegBalance)
 
+            zrCashTotal = zrCashinDrawer
+
             zrSeniorDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Senior Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
             zrPWDDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'PWD Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
             zrAthleteDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Sports Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
             zrSPDisc = 0
-            zrDiscOthers = 0
+            zrDiscOthers = sum("coupon_total", $"loc_coupon_data WHERE coupon_type NOT IN('Fix-1','Percentage(w/o vat)') AND zreading = '{ZReadDate}' AND status = '1' ")
             zrTakeOutCharge = 0
             zrDelCharge = 0
 
@@ -240,21 +242,6 @@ Public Class zreadCls
                 zrPointTwentyFiveQty += row("PointTwoFive")
                 zrPointFiveQty += row("PointFive")
             Next row
-            'With CashBreakDownDatatable
-            '    For i As Integer = 0 To .Rows.Count - 1 Step +1
-            '        zrThousandQty += CashBreakDownDatatable(i)(19)
-            '        zrFiveHundredQty += CashBreakDownDatatable(i)(20)
-            '        zrTwoHundredQty += CashBreakDownDatatable(i)(21)
-            '        zrOneHundredQty += CashBreakDownDatatable(i)(22)
-            '        zrFiftyQty += CashBreakDownDatatable(i)(23)
-            '        zrTwentyQty += CashBreakDownDatatable(i)(24)
-            '        zrTenQty += CashBreakDownDatatable(i)(25)
-            '        zrFiveQty += CashBreakDownDatatable(i)(26)
-            '        zrOneQty += CashBreakDownDatatable(i)(27)
-            '        zrPointTwentyFiveQty += CashBreakDownDatatable(i)(28)
-            '        zrPointFiveQty += CashBreakDownDatatable(i)(29)
-            '    Next
-            'End With
 
             zrThousandTotal = zrThousandQty * 1000
             zrFiveHundredTotal = zrFiveHundredQty * 500

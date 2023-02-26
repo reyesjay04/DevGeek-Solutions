@@ -168,7 +168,7 @@ Module ModSIA
                             nwtrx.Add(mReader("SenQty").ToString)
                             nwtrx.Add(mReader("PWDQty").ToString)
                             nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("grosssales").ToString, mReader("grosssales").ToString))
-                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("amountdue").ToString, mReader("amountdue").ToString)) 'Net Sales
+                            nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("netsales").ToString, mReader("netsales").ToString)) 'Net Sales
                             nwtrx.Add(If(ModSIA.IsRefund, "-" & mReader("vatablesales").ToString, mReader("vatablesales").ToString))
                             nwtrx.Add(0) 'Other Local Tax
                             nwtrx.Add(0) 'Total Service Charge

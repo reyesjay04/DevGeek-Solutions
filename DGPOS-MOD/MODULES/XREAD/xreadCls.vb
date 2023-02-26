@@ -102,9 +102,13 @@ Public Class xreadCls
     Property xrXREADDate As String
     Property xrDateFooter As String
 
+
+
+
+
+
     Public Sub FillReportValue(ZReadDate As String)
         Try
-
             'Total of Product Price(PHP 60.00)
             xrGrossSales = sum("grosssales", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1")
             'Zero always
@@ -132,10 +136,6 @@ Public Class xreadCls
             'Total Discounts = Gross Sales ():60 / 1.12 = ():53.57 * 0.20 = 10.71(xrLessDiscVE) |OR| Used Gift Card(xrGCUsed)
             xrLessDiscVE = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND coupon_type = 'Percentage(w/o vat)' AND status = 1")
             'Gross Sales (xrGrossSales) + Gift Card Used(xrGCSum) - Less Vat(xrLessVatVE) - Vat Amount()xrVatAmount - Discount (xrLessDiscVE)
-            xrDailySales = xrGrossSales - xrLessVatVE - xrLessDiscVE
-            'Gross Sales (xrGrossSales) + Gift Card Used(xrGCSum) - Less Vat(xrLessVatVE) - Vat Amount()xrVatAmount - Discount (xrLessDiscVE)
-
-
 
             xrCreditCard = 0
             xrDebitCard = 0
@@ -147,14 +147,14 @@ Public Class xreadCls
             xrDeposit = sum("amount", $"loc_deposit WHERE date(transaction_date) = '{ZReadDate}'")
 
             xrCashless = sum("amountdue", $"loc_daily_transaction WHERE active IN (1,3) AND zreading = '{ZReadDate}' AND transaction_type NOT IN ('Walk-in' , 'Complimentary Expenses')") + xrGCUsed
+            xrGcash = sum("amountdue", $"loc_daily_transaction ldt WHERE ldt.active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Gcash' ")
+            xrPaymaya = sum("amountdue", $"loc_daily_transaction ldt WHERE ldt.active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Paymaya' ")
+            xrGrab = sum("amountdue", $"loc_daily_transaction ldt WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Grab' ")
+            xrFoodPanda = sum("amountdue", $"loc_daily_transaction ldt WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Food Panda' ")
+            xrShopee = sum("amountdue", $"loc_daily_transaction ldt WHERE ldt.active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Shopee'")
+            xrCompExpenses = sum("amountdue", $"loc_daily_transaction ldt WHERE active = 3 AND zreading = '{ZReadDate}' AND transaction_type = 'Complimentary Expenses' ")
+            xrCashlessOthers = sum("amountdue", $"loc_daily_transaction ldt WHERE active = 3 AND zreading = '{ZReadDate}' AND transaction_type = 'Others' ")
 
-            xrGcash = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Gcash' ")
-            xrPaymaya = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Paymaya' ")
-            xrGrab = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Grab' ")
-            xrFoodPanda = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Food Panda' ")
-            xrShopee = sum("amountdue", $"loc_daily_transaction WHERE active = 1 AND zreading = '{ZReadDate}' AND transaction_type = 'Shopee' ")
-            xrCompExpenses = sum("amountdue", $"loc_daily_transaction WHERE active = 3 AND zreading = '{ZReadDate}' AND transaction_type = 'Complimentary Expenses' ")
-            xrCashlessOthers = sum("amountdue", $"loc_daily_transaction WHERE active = 3 AND zreading = '{ZReadDate}' AND transaction_type = 'Others' ")
             xrReturnEx = sum("quantity", $"loc_daily_transaction_details WHERE active = 2 AND zreading = '{ZReadDate}' ")
             xrReturnRef = sum("total", $"loc_daily_transaction_details WHERE active = 2 AND zreading = '{ZReadDate}' ")
             xrItemVoid = xrReturnEx
@@ -162,19 +162,26 @@ Public Class xreadCls
             xrTrxCancel = xrReturnEx
             xrDiplomat = 0
 
+            'Dim get_cashless_data = $"loc_daily_transaction ldt LEFT JOIN loc_coupon_data lcd ON lcd.transaction_number = ldt.transaction_number AND lcd.reference_id = 10 WHERE ldt.active = 1 AND ldt.zreading = '{ZReadDate}' AND ldt.discount_type = 'Percentage(w/ vat)' AND lcd.coupon_name = 'Shopee Discount 20%'"
+
+            'Dim shopee_disc = sum("coupon_total", $"{get_cashless_data}")
             xrTotalDisc = sum("coupon_total", $"loc_coupon_data WHERE zreading = '{ZReadDate}' AND status = 1") - xrGCUsed
+
+            xrDailySales = xrGrossSales - xrLessVatVE - xrTotalDisc
+
             xrNetSales = sum("netsales", $"loc_daily_transaction WHERE zreading = '{ZReadDate}' AND active = 1")
 
             If xrCompBegBalance = "" Then xrCompBegBalance = 0
             xrCashinDrawer = xrGrossSales - xrCashless - xrLessVatVE - xrTotalDisc - xrTotalExpenses + Double.Parse(xrCompBegBalance)
 
-            xrCashTotal = xrCashinDrawer + xrCashless
+            xrCashTotal = xrCashinDrawer
 
             xrSeniorDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Senior Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
 
             xrPWDDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'PWD Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
             xrAthleteDisc = sum("coupon_total", $"loc_coupon_data WHERE coupon_name = 'Sports Discount 20%' AND zreading = '{ZReadDate}' AND status = '1' ")
-            xrDiscOthers = 0
+
+            xrDiscOthers = sum("coupon_total", $"loc_coupon_data WHERE coupon_type NOT IN('Fix-1','Percentage(w/o vat)') AND zreading = '{ZReadDate}' AND status = '1' ")
             xrTakeOutCharge = 0
             xrDelCharge = 0
 

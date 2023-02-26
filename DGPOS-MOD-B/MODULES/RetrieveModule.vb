@@ -762,6 +762,24 @@ Module RetrieveModule
         End Try
         Return res
     End Function
+
+    Public Function GetLessDiscountDesc(ByRef _transaction_number As String) As String
+        Dim res As String = ""
+        Try
+            Dim ConnectionLocal As MySqlConnection = LocalhostConn()
+            Using mCmd = New MySqlCommand("", ConnectionLocal)
+                mCmd.Parameters.Clear()
+                mCmd.CommandText = "SELECT coupon_name FROM loc_coupon_data WHERE transaction_number = @TransactionNumber AND coupon_type <> 'Fix-1'"
+                mCmd.Parameters.AddWithValue("@TransactionNumber", _transaction_number)
+                mCmd.Prepare()
+                res = mCmd.ExecuteScalar.ToString
+                mCmd.Dispose()
+            End Using
+            ConnectionLocal.Close()
+        Catch ex As Exception
+        End Try
+        Return res
+    End Function
 #Region "UPDATES"
     Public Sub GetUpdatesRowCount(FromPosUpdate As Integer)
         Try

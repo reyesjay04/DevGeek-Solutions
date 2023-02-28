@@ -158,10 +158,10 @@ Module ModDGMGW
                     End If
                     'SELECT COUNT(transaction_id) FROM loc_daily_transaction WHERE zreading = '2023-02-17' AND TIME(created_at) BETWEEN '23:01:00' AND ADDTIME('23:01:00','00:59:00') AND active = 1
 
-                    .CustomerCount = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND ADDTIME('{fromTime}','00:59:00')")
+                    .CustomerCount = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND ADDTIME('{fromTime}','00:59:59')")
                     '.NetSalesAmount = SumColumn("amountdue", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND '{toTime}'") + SumColumn("coupon_total", "loc_coupon_data lcd LEFT JOIN loc_daily_transaction lot ON lcd.transaction_number = lot.transaction_number", $"lcd.status = '1' AND lcd.zreading = '{_zreadDate}' AND TIME(lot.created_at) BETWEEN '{fromTime}' AND '{toTime}' AND lcd.coupon_type = 'Fix-1'")
-                    .NetSalesAmount = SumColumn("netsales", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND ADDTIME('{fromTime}','00:59:00')  AND active = 1")
-                    .SalesTransaction = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND ADDTIME('{fromTime}','00:59:00') ")
+                    .NetSalesAmount = SumColumn("netsales", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND ADDTIME('{fromTime}','00:59:59')  AND active = 1")
+                    .SalesTransaction = CountColumn("transaction_id", "loc_daily_transaction", $"zreading = '{_zreadDate}' AND TIME(created_at) BETWEEN '{fromTime}' AND ADDTIME('{fromTime}','00:59:59') ")
                 End With
 
                 dtStart = dtStart.AddHours(1)

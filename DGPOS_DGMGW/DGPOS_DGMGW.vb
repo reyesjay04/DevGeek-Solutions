@@ -229,9 +229,7 @@ Public Class DGPOS_DGMGW
         End Try
     End Sub
 
-    Public Shared Function DateRange(Start As DateTime, Thru As DateTime) As IEnumerable(Of Date)
-        Return Enumerable.Range(0, (Thru.Date - Start.Date).Days + 1).Select(Function(i) Start.AddDays(i))
-    End Function
+
     Public Shared Sub GenerateDiscountData()
         Try
 

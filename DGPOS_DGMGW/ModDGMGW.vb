@@ -374,10 +374,10 @@ Module ModDGMGW
         Try
             mConn.Open()
             Using mCmd = New MySqlCommand("", mConn)
-                While CStartDate < CEndDate
+                For Each Day As DateTime In DateRange(CStartDate, CEndDate)
                     mCmd.Parameters.Clear()
                     mCmd.CommandText = "SELECT ZXdate FROM loc_zread_table WHERE ZXdate = @ZXdate"
-                    mCmd.Parameters.AddWithValue("@ZXdate", Format(StartDate, "yyyy-MM-dd"))
+                    mCmd.Parameters.AddWithValue("@ZXdate", Format(Day, "yyyy-MM-dd"))
                     Using mReader = mCmd.ExecuteReader
                         If mReader.HasRows Then
                             isAllDateAreValid = True
@@ -387,8 +387,7 @@ Module ModDGMGW
                         End If
                         mReader.Dispose()
                     End Using
-                    CStartDate = CStartDate.AddDays(1)
-                End While
+                Next
                 mCmd.Dispose()
             End Using
 
@@ -448,4 +447,7 @@ Module ModDGMGW
         Return path
     End Function
 #End Region
+    Public Function DateRange(Start As DateTime, Thru As DateTime) As IEnumerable(Of Date)
+        Return Enumerable.Range(0, (Thru.Date - Start.Date).Days + 1).Select(Function(i) Start.AddDays(i))
+    End Function
 End Module

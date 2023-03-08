@@ -23,28 +23,28 @@ Partial Class SettingsForm
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle43 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle44 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle45 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SettingsForm))
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle46 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle47 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle48 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle49 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle50 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle51 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle52 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle53 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle54 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle55 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle56 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle57 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle58 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle59 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle60 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle61 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle62 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle63 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -533,8 +533,6 @@ Partial Class SettingsForm
         Me.ToolStripLabelValidityStatus = New System.Windows.Forms.ToolStripLabel()
         Me.GroupBox27 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewRefundExchange = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBoxRefundFooter = New System.Windows.Forms.TextBox()
         Me.Label117 = New System.Windows.Forms.Label()
         Me.ToolStrip6 = New System.Windows.Forms.ToolStrip()
@@ -544,8 +542,8 @@ Partial Class SettingsForm
         Me.ToolStripLabelRFooterStatus = New System.Windows.Forms.ToolStripLabel()
         Me.BackgroundWorkerLocalConnection = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorkerCloudConnection = New System.ComponentModel.BackgroundWorker()
-        Me.GroupBox31 = New System.Windows.Forms.GroupBox()
-        Me.btnSia = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPage6.SuspendLayout()
         CType(Me.DataGridViewReset, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel35.SuspendLayout()
@@ -677,7 +675,6 @@ Partial Class SettingsForm
         Me.GroupBox27.SuspendLayout()
         CType(Me.DataGridViewRefundExchange, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip6.SuspendLayout()
-        Me.GroupBox31.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -711,28 +708,28 @@ Partial Class SettingsForm
         Me.DataGridViewReset.AllowUserToDeleteRows = False
         Me.DataGridViewReset.AllowUserToResizeColumns = False
         Me.DataGridViewReset.AllowUserToResizeRows = False
-        DataGridViewCellStyle22.BackColor = System.Drawing.Color.White
-        Me.DataGridViewReset.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle43.BackColor = System.Drawing.Color.White
+        Me.DataGridViewReset.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle43
         Me.DataGridViewReset.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewReset.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewReset.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle23.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle23.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewReset.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle44.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle44.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle44.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle44.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle44.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle44.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle44.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewReset.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle44
         Me.DataGridViewReset.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle24.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle24.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewReset.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle45.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle45.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle45.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle45.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewReset.DefaultCellStyle = DataGridViewCellStyle45
         Me.DataGridViewReset.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewReset.Enabled = False
         Me.DataGridViewReset.EnableHeadersVisualStyles = False
@@ -770,7 +767,7 @@ Partial Class SettingsForm
         Me.CheckBoxAll.AutoSize = True
         Me.CheckBoxAll.Location = New System.Drawing.Point(5, 5)
         Me.CheckBoxAll.Name = "CheckBoxAll"
-        Me.CheckBoxAll.Size = New System.Drawing.Size(47, 23)
+        Me.CheckBoxAll.Size = New System.Drawing.Size(40, 22)
         Me.CheckBoxAll.TabIndex = 46
         Me.CheckBoxAll.Text = "All"
         Me.CheckBoxAll.UseVisualStyleBackColor = True
@@ -900,7 +897,7 @@ Partial Class SettingsForm
         Me.LabelCountAllRows.AutoSize = True
         Me.LabelCountAllRows.Location = New System.Drawing.Point(349, 5)
         Me.LabelCountAllRows.Name = "LabelCountAllRows"
-        Me.LabelCountAllRows.Size = New System.Drawing.Size(18, 19)
+        Me.LabelCountAllRows.Size = New System.Drawing.Size(16, 18)
         Me.LabelCountAllRows.TabIndex = 73
         Me.LabelCountAllRows.Text = "0"
         Me.LabelCountAllRows.Visible = False
@@ -1339,10 +1336,10 @@ Partial Class SettingsForm
         Me.TabPage9.Controls.Add(Me.Label92)
         Me.TabPage9.Controls.Add(Me.Label33)
         Me.TabPage9.Controls.Add(Me.Label96)
-        Me.TabPage9.Location = New System.Drawing.Point(4, 28)
+        Me.TabPage9.Location = New System.Drawing.Point(4, 27)
         Me.TabPage9.Name = "TabPage9"
         Me.TabPage9.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage9.Size = New System.Drawing.Size(1011, 377)
+        Me.TabPage9.Size = New System.Drawing.Size(1011, 378)
         Me.TabPage9.TabIndex = 0
         Me.TabPage9.Text = "TabPage9"
         Me.TabPage9.UseVisualStyleBackColor = True
@@ -1366,29 +1363,29 @@ Partial Class SettingsForm
         Me.DataGridViewProducts.AllowUserToDeleteRows = False
         Me.DataGridViewProducts.AllowUserToResizeColumns = False
         Me.DataGridViewProducts.AllowUserToResizeRows = False
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.White
-        Me.DataGridViewProducts.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle46.BackColor = System.Drawing.Color.White
+        Me.DataGridViewProducts.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle46
         Me.DataGridViewProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewProducts.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewProducts.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle26.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle47.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle47.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewProducts.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle47
         Me.DataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewProducts.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.Column20})
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle27.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle27.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle27.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle27.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewProducts.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle48.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle48.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewProducts.DefaultCellStyle = DataGridViewCellStyle48
         Me.DataGridViewProducts.Dock = System.Windows.Forms.DockStyle.Top
         Me.DataGridViewProducts.EnableHeadersVisualStyles = False
         Me.DataGridViewProducts.Location = New System.Drawing.Point(3, 28)
@@ -1694,7 +1691,7 @@ Partial Class SettingsForm
         Me.Label97.AutoSize = True
         Me.Label97.Location = New System.Drawing.Point(705, 244)
         Me.Label97.Name = "Label97"
-        Me.Label97.Size = New System.Drawing.Size(216, 19)
+        Me.Label97.Size = New System.Drawing.Size(192, 18)
         Me.Label97.TabIndex = 264
         Me.Label97.Text = "_______________________"
         '
@@ -1703,7 +1700,7 @@ Partial Class SettingsForm
         Me.Label95.AutoSize = True
         Me.Label95.Location = New System.Drawing.Point(705, 287)
         Me.Label95.Name = "Label95"
-        Me.Label95.Size = New System.Drawing.Size(216, 19)
+        Me.Label95.Size = New System.Drawing.Size(192, 18)
         Me.Label95.TabIndex = 263
         Me.Label95.Text = "_______________________"
         '
@@ -1712,7 +1709,7 @@ Partial Class SettingsForm
         Me.Label94.AutoSize = True
         Me.Label94.Location = New System.Drawing.Point(489, 287)
         Me.Label94.Name = "Label94"
-        Me.Label94.Size = New System.Drawing.Size(216, 19)
+        Me.Label94.Size = New System.Drawing.Size(192, 18)
         Me.Label94.TabIndex = 262
         Me.Label94.Text = "_______________________"
         '
@@ -1721,7 +1718,7 @@ Partial Class SettingsForm
         Me.Label93.AutoSize = True
         Me.Label93.Location = New System.Drawing.Point(489, 244)
         Me.Label93.Name = "Label93"
-        Me.Label93.Size = New System.Drawing.Size(216, 19)
+        Me.Label93.Size = New System.Drawing.Size(192, 18)
         Me.Label93.TabIndex = 261
         Me.Label93.Text = "_______________________"
         '
@@ -1730,7 +1727,7 @@ Partial Class SettingsForm
         Me.Label92.AutoSize = True
         Me.Label92.Location = New System.Drawing.Point(273, 339)
         Me.Label92.Name = "Label92"
-        Me.Label92.Size = New System.Drawing.Size(216, 19)
+        Me.Label92.Size = New System.Drawing.Size(192, 18)
         Me.Label92.TabIndex = 260
         Me.Label92.Text = "_______________________"
         '
@@ -1739,7 +1736,7 @@ Partial Class SettingsForm
         Me.Label33.AutoSize = True
         Me.Label33.Location = New System.Drawing.Point(273, 287)
         Me.Label33.Name = "Label33"
-        Me.Label33.Size = New System.Drawing.Size(216, 19)
+        Me.Label33.Size = New System.Drawing.Size(192, 18)
         Me.Label33.TabIndex = 259
         Me.Label33.Text = "_______________________"
         '
@@ -1748,7 +1745,7 @@ Partial Class SettingsForm
         Me.Label96.AutoSize = True
         Me.Label96.Location = New System.Drawing.Point(270, 244)
         Me.Label96.Name = "Label96"
-        Me.Label96.Size = New System.Drawing.Size(216, 19)
+        Me.Label96.Size = New System.Drawing.Size(192, 18)
         Me.Label96.TabIndex = 258
         Me.Label96.Text = "_______________________"
         '
@@ -1777,10 +1774,10 @@ Partial Class SettingsForm
         'TabPage13
         '
         Me.TabPage13.Controls.Add(Me.DataGridViewCouponList)
-        Me.TabPage13.Location = New System.Drawing.Point(4, 28)
+        Me.TabPage13.Location = New System.Drawing.Point(4, 27)
         Me.TabPage13.Name = "TabPage13"
         Me.TabPage13.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage13.Size = New System.Drawing.Size(997, 345)
+        Me.TabPage13.Size = New System.Drawing.Size(997, 346)
         Me.TabPage13.TabIndex = 0
         Me.TabPage13.Text = "TabPage13"
         Me.TabPage13.UseVisualStyleBackColor = True
@@ -1791,34 +1788,34 @@ Partial Class SettingsForm
         Me.DataGridViewCouponList.AllowUserToDeleteRows = False
         Me.DataGridViewCouponList.AllowUserToResizeColumns = False
         Me.DataGridViewCouponList.AllowUserToResizeRows = False
-        DataGridViewCellStyle28.BackColor = System.Drawing.Color.White
-        Me.DataGridViewCouponList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle49.BackColor = System.Drawing.Color.White
+        Me.DataGridViewCouponList.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle49
         Me.DataGridViewCouponList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewCouponList.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewCouponList.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle29.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle29.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle29.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle29.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewCouponList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle50.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle50.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle50.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle50.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle50.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle50.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle50.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewCouponList.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle50
         Me.DataGridViewCouponList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle30.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCouponList.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle51.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle51.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle51.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle51.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle51.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle51.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle51.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCouponList.DefaultCellStyle = DataGridViewCellStyle51
         Me.DataGridViewCouponList.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewCouponList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewCouponList.EnableHeadersVisualStyles = False
         Me.DataGridViewCouponList.Location = New System.Drawing.Point(3, 3)
         Me.DataGridViewCouponList.Name = "DataGridViewCouponList"
-        Me.DataGridViewCouponList.Size = New System.Drawing.Size(991, 339)
+        Me.DataGridViewCouponList.Size = New System.Drawing.Size(991, 340)
         Me.DataGridViewCouponList.TabIndex = 238
         '
         'TabPage14
@@ -1838,28 +1835,28 @@ Partial Class SettingsForm
         Me.DataGridViewCouponPending.AllowUserToDeleteRows = False
         Me.DataGridViewCouponPending.AllowUserToResizeColumns = False
         Me.DataGridViewCouponPending.AllowUserToResizeRows = False
-        DataGridViewCellStyle31.BackColor = System.Drawing.Color.White
-        Me.DataGridViewCouponPending.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle31
+        DataGridViewCellStyle52.BackColor = System.Drawing.Color.White
+        Me.DataGridViewCouponPending.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle52
         Me.DataGridViewCouponPending.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewCouponPending.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewCouponPending.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle32.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle32.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewCouponPending.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle32
+        DataGridViewCellStyle53.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle53.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle53.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle53.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle53.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle53.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle53.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewCouponPending.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle53
         Me.DataGridViewCouponPending.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle33.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle33.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewCouponPending.DefaultCellStyle = DataGridViewCellStyle33
+        DataGridViewCellStyle54.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle54.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle54.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle54.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle54.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle54.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle54.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewCouponPending.DefaultCellStyle = DataGridViewCellStyle54
         Me.DataGridViewCouponPending.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewCouponPending.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewCouponPending.EnableHeadersVisualStyles = False
@@ -2558,7 +2555,7 @@ Partial Class SettingsForm
         Me.LabelITEMRET.AutoSize = True
         Me.LabelITEMRET.Location = New System.Drawing.Point(233, 23)
         Me.LabelITEMRET.Name = "LabelITEMRET"
-        Me.LabelITEMRET.Size = New System.Drawing.Size(18, 19)
+        Me.LabelITEMRET.Size = New System.Drawing.Size(16, 18)
         Me.LabelITEMRET.TabIndex = 224
         Me.LabelITEMRET.Text = "0"
         '
@@ -2631,28 +2628,28 @@ Partial Class SettingsForm
         Me.DataGridViewFormula.AllowUserToDeleteRows = False
         Me.DataGridViewFormula.AllowUserToResizeColumns = False
         Me.DataGridViewFormula.AllowUserToResizeRows = False
-        DataGridViewCellStyle34.BackColor = System.Drawing.Color.White
-        Me.DataGridViewFormula.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle34
+        DataGridViewCellStyle55.BackColor = System.Drawing.Color.White
+        Me.DataGridViewFormula.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle55
         Me.DataGridViewFormula.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewFormula.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewFormula.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle35.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle35.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewFormula.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle35
+        DataGridViewCellStyle56.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle56.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle56.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle56.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle56.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle56.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle56.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewFormula.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle56
         Me.DataGridViewFormula.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle36.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle36.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle36.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewFormula.DefaultCellStyle = DataGridViewCellStyle36
+        DataGridViewCellStyle57.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle57.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle57.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle57.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle57.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle57.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle57.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewFormula.DefaultCellStyle = DataGridViewCellStyle57
         Me.DataGridViewFormula.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewFormula.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewFormula.EnableHeadersVisualStyles = False
@@ -2764,10 +2761,10 @@ Partial Class SettingsForm
         'TabPage7
         '
         Me.TabPage7.Controls.Add(Me.TableLayoutPanel4)
-        Me.TabPage7.Location = New System.Drawing.Point(4, 28)
+        Me.TabPage7.Location = New System.Drawing.Point(4, 27)
         Me.TabPage7.Name = "TabPage7"
         Me.TabPage7.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage7.Size = New System.Drawing.Size(1017, 443)
+        Me.TabPage7.Size = New System.Drawing.Size(1017, 444)
         Me.TabPage7.TabIndex = 0
         Me.TabPage7.Text = "TabPage7"
         Me.TabPage7.UseVisualStyleBackColor = True
@@ -2784,7 +2781,7 @@ Partial Class SettingsForm
         Me.TableLayoutPanel4.RowCount = 2
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel4.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60.0!))
-        Me.TableLayoutPanel4.Size = New System.Drawing.Size(1011, 437)
+        Me.TableLayoutPanel4.Size = New System.Drawing.Size(1011, 438)
         Me.TableLayoutPanel4.TabIndex = 7
         '
         'GroupBox7
@@ -2794,7 +2791,7 @@ Partial Class SettingsForm
         Me.GroupBox7.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox7.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(1005, 371)
+        Me.GroupBox7.Size = New System.Drawing.Size(1005, 372)
         Me.GroupBox7.TabIndex = 164
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Bank List"
@@ -2805,35 +2802,35 @@ Partial Class SettingsForm
         Me.DataGridViewPartners.AllowUserToDeleteRows = False
         Me.DataGridViewPartners.AllowUserToResizeColumns = False
         Me.DataGridViewPartners.AllowUserToResizeRows = False
-        DataGridViewCellStyle37.BackColor = System.Drawing.Color.White
-        Me.DataGridViewPartners.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle37
+        DataGridViewCellStyle58.BackColor = System.Drawing.Color.White
+        Me.DataGridViewPartners.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle58
         Me.DataGridViewPartners.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewPartners.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewPartners.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle38.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle38.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle38.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle38.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle38.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewPartners.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle38
+        DataGridViewCellStyle59.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle59.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle59.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle59.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle59.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle59.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle59.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewPartners.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle59
         Me.DataGridViewPartners.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewPartners.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8, Me.Column9, Me.Column10})
-        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle39.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle39.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle39.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle39.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle39.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle39.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewPartners.DefaultCellStyle = DataGridViewCellStyle39
+        DataGridViewCellStyle60.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle60.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle60.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle60.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle60.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle60.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle60.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewPartners.DefaultCellStyle = DataGridViewCellStyle60
         Me.DataGridViewPartners.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewPartners.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewPartners.EnableHeadersVisualStyles = False
         Me.DataGridViewPartners.Location = New System.Drawing.Point(3, 22)
         Me.DataGridViewPartners.Name = "DataGridViewPartners"
-        Me.DataGridViewPartners.Size = New System.Drawing.Size(999, 346)
+        Me.DataGridViewPartners.Size = New System.Drawing.Size(999, 347)
         Me.DataGridViewPartners.TabIndex = 5
         '
         'Column2
@@ -2892,7 +2889,7 @@ Partial Class SettingsForm
         Me.GroupBox9.Controls.Add(Me.Panel4)
         Me.GroupBox9.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox9.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox9.Location = New System.Drawing.Point(3, 380)
+        Me.GroupBox9.Location = New System.Drawing.Point(3, 381)
         Me.GroupBox9.Name = "GroupBox9"
         Me.GroupBox9.Size = New System.Drawing.Size(1005, 54)
         Me.GroupBox9.TabIndex = 166
@@ -3019,29 +3016,29 @@ Partial Class SettingsForm
         Me.DataGridViewPartnersDeact.AllowUserToDeleteRows = False
         Me.DataGridViewPartnersDeact.AllowUserToResizeColumns = False
         Me.DataGridViewPartnersDeact.AllowUserToResizeRows = False
-        DataGridViewCellStyle40.BackColor = System.Drawing.Color.White
-        Me.DataGridViewPartnersDeact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle40
+        DataGridViewCellStyle61.BackColor = System.Drawing.Color.White
+        Me.DataGridViewPartnersDeact.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle61
         Me.DataGridViewPartnersDeact.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewPartnersDeact.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewPartnersDeact.BorderStyle = System.Windows.Forms.BorderStyle.None
-        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        DataGridViewCellStyle41.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle41.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle41.ForeColor = System.Drawing.Color.White
-        DataGridViewCellStyle41.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle41.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle41.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewPartnersDeact.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle41
+        DataGridViewCellStyle62.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        DataGridViewCellStyle62.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
+        DataGridViewCellStyle62.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle62.ForeColor = System.Drawing.Color.White
+        DataGridViewCellStyle62.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle62.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle62.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewPartnersDeact.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle62
         Me.DataGridViewPartnersDeact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewPartnersDeact.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column11, Me.Column12, Me.Column13, Me.Column14, Me.Column15, Me.Column16, Me.Column17, Me.Column18, Me.Column19})
-        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle42.BackColor = System.Drawing.Color.White
-        DataGridViewCellStyle42.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle42.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle42.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
-        DataGridViewCellStyle42.SelectionForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle42.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewPartnersDeact.DefaultCellStyle = DataGridViewCellStyle42
+        DataGridViewCellStyle63.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle63.BackColor = System.Drawing.Color.White
+        DataGridViewCellStyle63.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle63.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle63.SelectionBackColor = System.Drawing.Color.FromArgb(CType(CType(252, Byte), Integer), CType(CType(248, Byte), Integer), CType(CType(209, Byte), Integer))
+        DataGridViewCellStyle63.SelectionForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle63.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewPartnersDeact.DefaultCellStyle = DataGridViewCellStyle63
         Me.DataGridViewPartnersDeact.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewPartnersDeact.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewPartnersDeact.EnableHeadersVisualStyles = False
@@ -3172,10 +3169,10 @@ Partial Class SettingsForm
         'TabPage11
         '
         Me.TabPage11.Controls.Add(Me.TableLayoutPanel1)
-        Me.TabPage11.Location = New System.Drawing.Point(4, 28)
+        Me.TabPage11.Location = New System.Drawing.Point(4, 27)
         Me.TabPage11.Name = "TabPage11"
         Me.TabPage11.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage11.Size = New System.Drawing.Size(1017, 443)
+        Me.TabPage11.Size = New System.Drawing.Size(1017, 444)
         Me.TabPage11.TabIndex = 0
         Me.TabPage11.Text = "TabPage11"
         Me.TabPage11.UseVisualStyleBackColor = True
@@ -3193,7 +3190,7 @@ Partial Class SettingsForm
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1011, 437)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(1011, 438)
         Me.TableLayoutPanel1.TabIndex = 5
         '
         'GroupBox3
@@ -3203,7 +3200,7 @@ Partial Class SettingsForm
         Me.GroupBox3.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox3.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(1005, 212)
+        Me.GroupBox3.Size = New System.Drawing.Size(1005, 213)
         Me.GroupBox3.TabIndex = 0
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Local Database Connection"
@@ -3236,7 +3233,7 @@ Partial Class SettingsForm
         Me.Panel5.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.999999!)
         Me.Panel5.Location = New System.Drawing.Point(3, 22)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(999, 187)
+        Me.Panel5.Size = New System.Drawing.Size(999, 188)
         Me.Panel5.TabIndex = 2
         '
         'TextBoxLocalServer
@@ -3351,7 +3348,7 @@ Partial Class SettingsForm
         'StatusStrip2
         '
         Me.StatusStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel2, Me.ToolStripProgressBar1})
-        Me.StatusStrip2.Location = New System.Drawing.Point(0, 165)
+        Me.StatusStrip2.Location = New System.Drawing.Point(0, 166)
         Me.StatusStrip2.Name = "StatusStrip2"
         Me.StatusStrip2.Size = New System.Drawing.Size(999, 22)
         Me.StatusStrip2.TabIndex = 16
@@ -3475,7 +3472,7 @@ Partial Class SettingsForm
         Me.GroupBox4.Controls.Add(Me.Panel2)
         Me.GroupBox4.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GroupBox4.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GroupBox4.Location = New System.Drawing.Point(3, 221)
+        Me.GroupBox4.Location = New System.Drawing.Point(3, 222)
         Me.GroupBox4.Name = "GroupBox4"
         Me.GroupBox4.Size = New System.Drawing.Size(1005, 213)
         Me.GroupBox4.TabIndex = 1
@@ -4088,6 +4085,7 @@ Partial Class SettingsForm
         Me.GroupBox11.Controls.Add(Me.DateTimePicker2ACCRVU)
         Me.GroupBox11.Controls.Add(Me.DateTimePicker1ACCRDI)
         Me.GroupBox11.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox11.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox11.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox11.Name = "GroupBox11"
         Me.GroupBox11.Size = New System.Drawing.Size(335, 469)
@@ -4100,7 +4098,7 @@ Partial Class SettingsForm
         Me.TextBoxDevAccr.BackColor = System.Drawing.Color.White
         Me.TextBoxDevAccr.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDevAccr.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxDevAccr.Location = New System.Drawing.Point(41, 175)
+        Me.TextBoxDevAccr.Location = New System.Drawing.Point(39, 200)
         Me.TextBoxDevAccr.Name = "TextBoxDevAccr"
         Me.TextBoxDevAccr.ReadOnly = True
         Me.TextBoxDevAccr.Size = New System.Drawing.Size(245, 15)
@@ -4111,7 +4109,7 @@ Partial Class SettingsForm
         Me.TextBoxDevTIN.BackColor = System.Drawing.Color.White
         Me.TextBoxDevTIN.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDevTIN.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxDevTIN.Location = New System.Drawing.Point(41, 132)
+        Me.TextBoxDevTIN.Location = New System.Drawing.Point(39, 157)
         Me.TextBoxDevTIN.Name = "TextBoxDevTIN"
         Me.TextBoxDevTIN.ReadOnly = True
         Me.TextBoxDevTIN.Size = New System.Drawing.Size(245, 15)
@@ -4122,7 +4120,7 @@ Partial Class SettingsForm
         Me.TextBoxDEVPTU.BackColor = System.Drawing.Color.White
         Me.TextBoxDEVPTU.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDEVPTU.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxDEVPTU.Location = New System.Drawing.Point(41, 304)
+        Me.TextBoxDEVPTU.Location = New System.Drawing.Point(39, 329)
         Me.TextBoxDEVPTU.Name = "TextBoxDEVPTU"
         Me.TextBoxDEVPTU.ReadOnly = True
         Me.TextBoxDEVPTU.Size = New System.Drawing.Size(245, 15)
@@ -4133,7 +4131,7 @@ Partial Class SettingsForm
         Me.TextBoxDevAdd.BackColor = System.Drawing.Color.White
         Me.TextBoxDevAdd.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDevAdd.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxDevAdd.Location = New System.Drawing.Point(41, 89)
+        Me.TextBoxDevAdd.Location = New System.Drawing.Point(39, 114)
         Me.TextBoxDevAdd.Name = "TextBoxDevAdd"
         Me.TextBoxDevAdd.ReadOnly = True
         Me.TextBoxDevAdd.Size = New System.Drawing.Size(245, 15)
@@ -4144,7 +4142,7 @@ Partial Class SettingsForm
         Me.TextBoxDevname.BackColor = System.Drawing.Color.White
         Me.TextBoxDevname.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TextBoxDevname.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxDevname.Location = New System.Drawing.Point(41, 46)
+        Me.TextBoxDevname.Location = New System.Drawing.Point(39, 71)
         Me.TextBoxDevname.Name = "TextBoxDevname"
         Me.TextBoxDevname.ReadOnly = True
         Me.TextBoxDevname.Size = New System.Drawing.Size(245, 15)
@@ -4154,7 +4152,7 @@ Partial Class SettingsForm
         '
         Me.Label102.AutoSize = True
         Me.Label102.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label102.Location = New System.Drawing.Point(41, 306)
+        Me.Label102.Location = New System.Drawing.Point(39, 331)
         Me.Label102.Name = "Label102"
         Me.Label102.Size = New System.Drawing.Size(245, 14)
         Me.Label102.TabIndex = 276
@@ -4164,7 +4162,7 @@ Partial Class SettingsForm
         '
         Me.Label101.AutoSize = True
         Me.Label101.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label101.Location = New System.Drawing.Point(41, 177)
+        Me.Label101.Location = New System.Drawing.Point(39, 202)
         Me.Label101.Name = "Label101"
         Me.Label101.Size = New System.Drawing.Size(245, 14)
         Me.Label101.TabIndex = 275
@@ -4174,7 +4172,7 @@ Partial Class SettingsForm
         '
         Me.Label100.AutoSize = True
         Me.Label100.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label100.Location = New System.Drawing.Point(41, 134)
+        Me.Label100.Location = New System.Drawing.Point(39, 159)
         Me.Label100.Name = "Label100"
         Me.Label100.Size = New System.Drawing.Size(245, 14)
         Me.Label100.TabIndex = 274
@@ -4184,7 +4182,7 @@ Partial Class SettingsForm
         '
         Me.Label99.AutoSize = True
         Me.Label99.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label99.Location = New System.Drawing.Point(41, 91)
+        Me.Label99.Location = New System.Drawing.Point(39, 116)
         Me.Label99.Name = "Label99"
         Me.Label99.Size = New System.Drawing.Size(245, 14)
         Me.Label99.TabIndex = 273
@@ -4194,7 +4192,7 @@ Partial Class SettingsForm
         '
         Me.Label98.AutoSize = True
         Me.Label98.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label98.Location = New System.Drawing.Point(41, 48)
+        Me.Label98.Location = New System.Drawing.Point(39, 73)
         Me.Label98.Name = "Label98"
         Me.Label98.Size = New System.Drawing.Size(245, 14)
         Me.Label98.TabIndex = 272
@@ -4204,7 +4202,7 @@ Partial Class SettingsForm
         '
         Me.Label79.AutoSize = True
         Me.Label79.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label79.Location = New System.Drawing.Point(41, 367)
+        Me.Label79.Location = New System.Drawing.Point(39, 392)
         Me.Label79.Name = "Label79"
         Me.Label79.Size = New System.Drawing.Size(64, 14)
         Me.Label79.TabIndex = 271
@@ -4214,7 +4212,7 @@ Partial Class SettingsForm
         '
         Me.Label78.AutoSize = True
         Me.Label78.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label78.Location = New System.Drawing.Point(41, 324)
+        Me.Label78.Location = New System.Drawing.Point(39, 349)
         Me.Label78.Name = "Label78"
         Me.Label78.Size = New System.Drawing.Size(76, 14)
         Me.Label78.TabIndex = 270
@@ -4224,7 +4222,7 @@ Partial Class SettingsForm
         '
         Me.Label77.AutoSize = True
         Me.Label77.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label77.Location = New System.Drawing.Point(41, 281)
+        Me.Label77.Location = New System.Drawing.Point(39, 306)
         Me.Label77.Name = "Label77"
         Me.Label77.Size = New System.Drawing.Size(57, 14)
         Me.Label77.TabIndex = 269
@@ -4234,7 +4232,7 @@ Partial Class SettingsForm
         '
         Me.Label76.AutoSize = True
         Me.Label76.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label76.Location = New System.Drawing.Point(41, 238)
+        Me.Label76.Location = New System.Drawing.Point(39, 263)
         Me.Label76.Name = "Label76"
         Me.Label76.Size = New System.Drawing.Size(64, 14)
         Me.Label76.TabIndex = 268
@@ -4244,7 +4242,7 @@ Partial Class SettingsForm
         '
         Me.Label75.AutoSize = True
         Me.Label75.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label75.Location = New System.Drawing.Point(41, 195)
+        Me.Label75.Location = New System.Drawing.Point(39, 220)
         Me.Label75.Name = "Label75"
         Me.Label75.Size = New System.Drawing.Size(76, 14)
         Me.Label75.TabIndex = 267
@@ -4254,7 +4252,7 @@ Partial Class SettingsForm
         '
         Me.Label74.AutoSize = True
         Me.Label74.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label74.Location = New System.Drawing.Point(41, 152)
+        Me.Label74.Location = New System.Drawing.Point(39, 177)
         Me.Label74.Name = "Label74"
         Me.Label74.Size = New System.Drawing.Size(53, 14)
         Me.Label74.TabIndex = 266
@@ -4264,7 +4262,7 @@ Partial Class SettingsForm
         '
         Me.Label73.AutoSize = True
         Me.Label73.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label73.Location = New System.Drawing.Point(41, 109)
+        Me.Label73.Location = New System.Drawing.Point(39, 134)
         Me.Label73.Name = "Label73"
         Me.Label73.Size = New System.Drawing.Size(76, 14)
         Me.Label73.TabIndex = 265
@@ -4274,7 +4272,7 @@ Partial Class SettingsForm
         '
         Me.Label72.AutoSize = True
         Me.Label72.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label72.Location = New System.Drawing.Point(41, 66)
+        Me.Label72.Location = New System.Drawing.Point(39, 91)
         Me.Label72.Name = "Label72"
         Me.Label72.Size = New System.Drawing.Size(108, 14)
         Me.Label72.TabIndex = 264
@@ -4284,7 +4282,7 @@ Partial Class SettingsForm
         '
         Me.Label71.AutoSize = True
         Me.Label71.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label71.Location = New System.Drawing.Point(41, 21)
+        Me.Label71.Location = New System.Drawing.Point(39, 46)
         Me.Label71.Name = "Label71"
         Me.Label71.Size = New System.Drawing.Size(96, 14)
         Me.Label71.TabIndex = 263
@@ -4294,7 +4292,7 @@ Partial Class SettingsForm
         '
         Me.DateTimePickerPTUVU.Enabled = False
         Me.DateTimePickerPTUVU.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePickerPTUVU.Location = New System.Drawing.Point(41, 385)
+        Me.DateTimePickerPTUVU.Location = New System.Drawing.Point(39, 410)
         Me.DateTimePickerPTUVU.Name = "DateTimePickerPTUVU"
         Me.DateTimePickerPTUVU.Size = New System.Drawing.Size(245, 22)
         Me.DateTimePickerPTUVU.TabIndex = 262
@@ -4303,7 +4301,7 @@ Partial Class SettingsForm
         '
         Me.DateTimePicker4PTUDI.Enabled = False
         Me.DateTimePicker4PTUDI.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker4PTUDI.Location = New System.Drawing.Point(41, 342)
+        Me.DateTimePicker4PTUDI.Location = New System.Drawing.Point(39, 367)
         Me.DateTimePicker4PTUDI.Name = "DateTimePicker4PTUDI"
         Me.DateTimePicker4PTUDI.Size = New System.Drawing.Size(245, 22)
         Me.DateTimePicker4PTUDI.TabIndex = 261
@@ -4312,7 +4310,7 @@ Partial Class SettingsForm
         '
         Me.DateTimePicker2ACCRVU.Enabled = False
         Me.DateTimePicker2ACCRVU.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker2ACCRVU.Location = New System.Drawing.Point(41, 256)
+        Me.DateTimePicker2ACCRVU.Location = New System.Drawing.Point(39, 281)
         Me.DateTimePicker2ACCRVU.Name = "DateTimePicker2ACCRVU"
         Me.DateTimePicker2ACCRVU.Size = New System.Drawing.Size(245, 22)
         Me.DateTimePicker2ACCRVU.TabIndex = 259
@@ -4321,7 +4319,7 @@ Partial Class SettingsForm
         '
         Me.DateTimePicker1ACCRDI.Enabled = False
         Me.DateTimePicker1ACCRDI.Font = New System.Drawing.Font("Tahoma", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.DateTimePicker1ACCRDI.Location = New System.Drawing.Point(41, 213)
+        Me.DateTimePicker1ACCRDI.Location = New System.Drawing.Point(39, 238)
         Me.DateTimePicker1ACCRDI.Name = "DateTimePicker1ACCRDI"
         Me.DateTimePicker1ACCRDI.Size = New System.Drawing.Size(245, 22)
         Me.DateTimePicker1ACCRDI.TabIndex = 258
@@ -4332,7 +4330,6 @@ Partial Class SettingsForm
         Me.TableLayoutPanel14.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
         Me.TableLayoutPanel14.Controls.Add(Me.GroupBox13, 0, 0)
         Me.TableLayoutPanel14.Controls.Add(Me.GroupBox19, 0, 1)
-        Me.TableLayoutPanel14.Controls.Add(Me.GroupBox31, 0, 2)
         Me.TableLayoutPanel14.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel14.Location = New System.Drawing.Point(685, 3)
         Me.TableLayoutPanel14.Name = "TableLayoutPanel14"
@@ -4352,6 +4349,7 @@ Partial Class SettingsForm
         Me.GroupBox13.Controls.Add(Me.Panel31)
         Me.GroupBox13.Controls.Add(Me.Panel32)
         Me.GroupBox13.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox13.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox13.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox13.Name = "GroupBox13"
         Me.GroupBox13.Size = New System.Drawing.Size(331, 204)
@@ -4366,7 +4364,7 @@ Partial Class SettingsForm
         Me.Panel34.Controls.Add(Me.NumericUpDownPrintCount)
         Me.Panel34.Controls.Add(Me.Label80)
         Me.Panel34.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel34.Location = New System.Drawing.Point(3, 173)
+        Me.Panel34.Location = New System.Drawing.Point(3, 172)
         Me.Panel34.Name = "Panel34"
         Me.Panel34.Size = New System.Drawing.Size(325, 30)
         Me.Panel34.TabIndex = 293
@@ -4417,7 +4415,7 @@ Partial Class SettingsForm
         Me.Panel36.Controls.Add(Me.RadioButtonPrintSRYes)
         Me.Panel36.Controls.Add(Me.Label118)
         Me.Panel36.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel36.Location = New System.Drawing.Point(3, 143)
+        Me.Panel36.Location = New System.Drawing.Point(3, 142)
         Me.Panel36.Name = "Panel36"
         Me.Panel36.Size = New System.Drawing.Size(325, 30)
         Me.Panel36.TabIndex = 294
@@ -4462,7 +4460,7 @@ Partial Class SettingsForm
         Me.Panel33.Controls.Add(Me.RadioButtonPrintReturnsYes)
         Me.Panel33.Controls.Add(Me.Label67)
         Me.Panel33.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel33.Location = New System.Drawing.Point(3, 113)
+        Me.Panel33.Location = New System.Drawing.Point(3, 112)
         Me.Panel33.Name = "Panel33"
         Me.Panel33.Size = New System.Drawing.Size(325, 30)
         Me.Panel33.TabIndex = 292
@@ -4507,7 +4505,7 @@ Partial Class SettingsForm
         Me.Panel30.Controls.Add(Me.RadioButtonPrintXZReadYes)
         Me.Panel30.Controls.Add(Me.Label59)
         Me.Panel30.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel30.Location = New System.Drawing.Point(3, 83)
+        Me.Panel30.Location = New System.Drawing.Point(3, 82)
         Me.Panel30.Name = "Panel30"
         Me.Panel30.Size = New System.Drawing.Size(325, 30)
         Me.Panel30.TabIndex = 291
@@ -4552,7 +4550,7 @@ Partial Class SettingsForm
         Me.Panel31.Controls.Add(Me.RadioButtonRePrintReceiptYes)
         Me.Panel31.Controls.Add(Me.Label62)
         Me.Panel31.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel31.Location = New System.Drawing.Point(3, 53)
+        Me.Panel31.Location = New System.Drawing.Point(3, 52)
         Me.Panel31.Name = "Panel31"
         Me.Panel31.Size = New System.Drawing.Size(325, 30)
         Me.Panel31.TabIndex = 290
@@ -4597,7 +4595,7 @@ Partial Class SettingsForm
         Me.Panel32.Controls.Add(Me.RadioButtonPrintReceiptYes)
         Me.Panel32.Controls.Add(Me.Label63)
         Me.Panel32.Dock = System.Windows.Forms.DockStyle.Top
-        Me.Panel32.Location = New System.Drawing.Point(3, 23)
+        Me.Panel32.Location = New System.Drawing.Point(3, 22)
         Me.Panel32.Name = "Panel32"
         Me.Panel32.Size = New System.Drawing.Size(325, 30)
         Me.Panel32.TabIndex = 289
@@ -4650,6 +4648,7 @@ Partial Class SettingsForm
         Me.GroupBox19.Controls.Add(Me.Label68)
         Me.GroupBox19.Controls.Add(Me.ComboBoxComPort)
         Me.GroupBox19.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox19.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox19.Location = New System.Drawing.Point(3, 213)
         Me.GroupBox19.Name = "GroupBox19"
         Me.GroupBox19.Size = New System.Drawing.Size(331, 194)
@@ -4822,6 +4821,7 @@ Partial Class SettingsForm
         Me.GroupBox30.Controls.Add(Me.RadioButtonNO)
         Me.GroupBox30.Controls.Add(Me.RadioButtonYES)
         Me.GroupBox30.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox30.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox30.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox30.Name = "GroupBox30"
         Me.GroupBox30.Size = New System.Drawing.Size(323, 43)
@@ -4836,7 +4836,7 @@ Partial Class SettingsForm
         Me.ButtonSaveZeroRated.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.ButtonSaveZeroRated.Font = New System.Drawing.Font("Tahoma", 8.0!)
         Me.ButtonSaveZeroRated.ForeColor = System.Drawing.Color.White
-        Me.ButtonSaveZeroRated.Location = New System.Drawing.Point(243, 18)
+        Me.ButtonSaveZeroRated.Location = New System.Drawing.Point(241, 16)
         Me.ButtonSaveZeroRated.Name = "ButtonSaveZeroRated"
         Me.ButtonSaveZeroRated.Size = New System.Drawing.Size(74, 19)
         Me.ButtonSaveZeroRated.TabIndex = 299
@@ -4890,6 +4890,7 @@ Partial Class SettingsForm
         '
         Me.GroupBox18.Controls.Add(Me.RadioButtonInvResetOff)
         Me.GroupBox18.Controls.Add(Me.RadioButtonInvResetOn)
+        Me.GroupBox18.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox18.Location = New System.Drawing.Point(3, 101)
         Me.GroupBox18.Name = "GroupBox18"
         Me.GroupBox18.Size = New System.Drawing.Size(323, 43)
@@ -4926,6 +4927,7 @@ Partial Class SettingsForm
         Me.GroupBox25.Controls.Add(Me.TextBoxSyncInterval)
         Me.GroupBox25.Controls.Add(Me.Label111)
         Me.GroupBox25.Controls.Add(Me.Label119)
+        Me.GroupBox25.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox25.Location = New System.Drawing.Point(3, 150)
         Me.GroupBox25.Name = "GroupBox25"
         Me.GroupBox25.Size = New System.Drawing.Size(323, 43)
@@ -4966,6 +4968,7 @@ Partial Class SettingsForm
         '
         Me.GroupBox28.Controls.Add(Me.RadioButtonAutoSyncOn)
         Me.GroupBox28.Controls.Add(Me.RadioButtonAutoSyncOff)
+        Me.GroupBox28.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox28.Location = New System.Drawing.Point(3, 199)
         Me.GroupBox28.Name = "GroupBox28"
         Me.GroupBox28.Size = New System.Drawing.Size(323, 43)
@@ -5001,12 +5004,13 @@ Partial Class SettingsForm
         '
         Me.GroupBox29.Controls.Add(Me.RadioButtonAutoUpdateOn)
         Me.GroupBox29.Controls.Add(Me.RadioButtonAutoUpdateOff)
+        Me.GroupBox29.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox29.Location = New System.Drawing.Point(3, 248)
         Me.GroupBox29.Name = "GroupBox29"
         Me.GroupBox29.Size = New System.Drawing.Size(323, 45)
         Me.GroupBox29.TabIndex = 301
         Me.GroupBox29.TabStop = False
-        Me.GroupBox29.Text = "Auto Check Update"
+        Me.GroupBox29.Text = "Check Update"
         '
         'RadioButtonAutoUpdateOn
         '
@@ -5036,6 +5040,7 @@ Partial Class SettingsForm
         '
         Me.GroupBox17.Controls.Add(Me.RadioButtonTrainingOFF)
         Me.GroupBox17.Controls.Add(Me.RadioButtonTraningON)
+        Me.GroupBox17.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox17.Location = New System.Drawing.Point(3, 52)
         Me.GroupBox17.Name = "GroupBox17"
         Me.GroupBox17.Size = New System.Drawing.Size(323, 43)
@@ -5082,6 +5087,7 @@ Partial Class SettingsForm
         Me.GroupBox12.Controls.Add(Me.Label26)
         Me.GroupBox12.Controls.Add(Me.Label31)
         Me.GroupBox12.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox12.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox12.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox12.Name = "GroupBox12"
         Me.GroupBox12.Size = New System.Drawing.Size(329, 158)
@@ -5177,7 +5183,7 @@ Partial Class SettingsForm
         '
         Me.Label24.AutoSize = True
         Me.Label24.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label24.Location = New System.Drawing.Point(166, 58)
+        Me.Label24.Location = New System.Drawing.Point(166, 61)
         Me.Label24.Name = "Label24"
         Me.Label24.Size = New System.Drawing.Size(82, 16)
         Me.Label24.TabIndex = 292
@@ -5187,7 +5193,7 @@ Partial Class SettingsForm
         '
         Me.Label25.AutoSize = True
         Me.Label25.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label25.Location = New System.Drawing.Point(43, 102)
+        Me.Label25.Location = New System.Drawing.Point(43, 105)
         Me.Label25.Name = "Label25"
         Me.Label25.Size = New System.Drawing.Size(119, 16)
         Me.Label25.TabIndex = 290
@@ -5207,7 +5213,7 @@ Partial Class SettingsForm
         '
         Me.Label31.AutoSize = True
         Me.Label31.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label31.Location = New System.Drawing.Point(43, 59)
+        Me.Label31.Location = New System.Drawing.Point(43, 62)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(37, 16)
         Me.Label31.TabIndex = 286
@@ -5225,9 +5231,12 @@ Partial Class SettingsForm
         Me.TabControl1.Controls.Add(Me.TabPage17)
         Me.TabControl1.Controls.Add(Me.TabPage15)
         Me.TabControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TabControl1.HotTrack = True
+        Me.TabControl1.ItemSize = New System.Drawing.Size(82, 27)
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.Name = "TabControl1"
+        Me.TabControl1.Padding = New System.Drawing.Point(10, 3)
         Me.TabControl1.SelectedIndex = 0
         Me.TabControl1.Size = New System.Drawing.Size(1039, 513)
         Me.TabControl1.TabIndex = 0
@@ -5418,10 +5427,10 @@ Partial Class SettingsForm
         'TabPage15
         '
         Me.TabPage15.Controls.Add(Me.TableLayoutPanel15)
-        Me.TabPage15.Location = New System.Drawing.Point(4, 28)
+        Me.TabPage15.Location = New System.Drawing.Point(4, 31)
         Me.TabPage15.Name = "TabPage15"
         Me.TabPage15.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage15.Size = New System.Drawing.Size(1031, 481)
+        Me.TabPage15.Size = New System.Drawing.Size(1031, 478)
         Me.TabPage15.TabIndex = 8
         Me.TabPage15.Text = "TabPage15"
         Me.TabPage15.UseVisualStyleBackColor = True
@@ -5440,7 +5449,7 @@ Partial Class SettingsForm
         Me.TableLayoutPanel15.Name = "TableLayoutPanel15"
         Me.TableLayoutPanel15.RowCount = 1
         Me.TableLayoutPanel15.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
-        Me.TableLayoutPanel15.Size = New System.Drawing.Size(1025, 475)
+        Me.TableLayoutPanel15.Size = New System.Drawing.Size(1025, 472)
         Me.TableLayoutPanel15.TabIndex = 2
         '
         'GroupBox24
@@ -5455,9 +5464,10 @@ Partial Class SettingsForm
         Me.GroupBox24.Controls.Add(Me.Label110)
         Me.GroupBox24.Controls.Add(Me.ToolStrip4)
         Me.GroupBox24.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox24.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox24.Location = New System.Drawing.Point(685, 3)
         Me.GroupBox24.Name = "GroupBox24"
-        Me.GroupBox24.Size = New System.Drawing.Size(337, 469)
+        Me.GroupBox24.Size = New System.Drawing.Size(337, 466)
         Me.GroupBox24.TabIndex = 0
         Me.GroupBox24.TabStop = False
         Me.GroupBox24.Text = "Others"
@@ -5465,18 +5475,18 @@ Partial Class SettingsForm
         'TextBoxOfficialRefund
         '
         Me.TextBoxOfficialRefund.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxOfficialRefund.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxOfficialRefund.Location = New System.Drawing.Point(3, 222)
+        Me.TextBoxOfficialRefund.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxOfficialRefund.Location = New System.Drawing.Point(3, 212)
         Me.TextBoxOfficialRefund.MaxLength = 45
         Me.TextBoxOfficialRefund.Name = "TextBoxOfficialRefund"
-        Me.TextBoxOfficialRefund.Size = New System.Drawing.Size(331, 26)
+        Me.TextBoxOfficialRefund.Size = New System.Drawing.Size(331, 23)
         Me.TextBoxOfficialRefund.TabIndex = 11
         '
         'Label115
         '
         Me.Label115.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label115.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label115.Location = New System.Drawing.Point(3, 198)
+        Me.Label115.Location = New System.Drawing.Point(3, 188)
         Me.Label115.Name = "Label115"
         Me.Label115.Size = New System.Drawing.Size(331, 24)
         Me.Label115.TabIndex = 10
@@ -5486,18 +5496,18 @@ Partial Class SettingsForm
         'TextBoxOfficialInvoice
         '
         Me.TextBoxOfficialInvoice.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxOfficialInvoice.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxOfficialInvoice.Location = New System.Drawing.Point(3, 172)
+        Me.TextBoxOfficialInvoice.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxOfficialInvoice.Location = New System.Drawing.Point(3, 165)
         Me.TextBoxOfficialInvoice.MaxLength = 45
         Me.TextBoxOfficialInvoice.Name = "TextBoxOfficialInvoice"
-        Me.TextBoxOfficialInvoice.Size = New System.Drawing.Size(331, 26)
+        Me.TextBoxOfficialInvoice.Size = New System.Drawing.Size(331, 23)
         Me.TextBoxOfficialInvoice.TabIndex = 9
         '
         'Label112
         '
         Me.Label112.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label112.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label112.Location = New System.Drawing.Point(3, 148)
+        Me.Label112.Location = New System.Drawing.Point(3, 141)
         Me.Label112.Name = "Label112"
         Me.Label112.Size = New System.Drawing.Size(331, 24)
         Me.Label112.TabIndex = 8
@@ -5507,18 +5517,18 @@ Partial Class SettingsForm
         'TextBoxRefundHeader
         '
         Me.TextBoxRefundHeader.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxRefundHeader.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxRefundHeader.Location = New System.Drawing.Point(3, 122)
+        Me.TextBoxRefundHeader.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxRefundHeader.Location = New System.Drawing.Point(3, 118)
         Me.TextBoxRefundHeader.MaxLength = 45
         Me.TextBoxRefundHeader.Name = "TextBoxRefundHeader"
-        Me.TextBoxRefundHeader.Size = New System.Drawing.Size(331, 26)
+        Me.TextBoxRefundHeader.Size = New System.Drawing.Size(331, 23)
         Me.TextBoxRefundHeader.TabIndex = 3
         '
         'LabelRefundHeader
         '
         Me.LabelRefundHeader.Dock = System.Windows.Forms.DockStyle.Top
         Me.LabelRefundHeader.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LabelRefundHeader.Location = New System.Drawing.Point(3, 98)
+        Me.LabelRefundHeader.Location = New System.Drawing.Point(3, 94)
         Me.LabelRefundHeader.Name = "LabelRefundHeader"
         Me.LabelRefundHeader.Size = New System.Drawing.Size(331, 24)
         Me.LabelRefundHeader.TabIndex = 2
@@ -5528,18 +5538,18 @@ Partial Class SettingsForm
         'TextBoxSIOthers
         '
         Me.TextBoxSIOthers.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxSIOthers.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxSIOthers.Location = New System.Drawing.Point(3, 72)
+        Me.TextBoxSIOthers.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxSIOthers.Location = New System.Drawing.Point(3, 71)
         Me.TextBoxSIOthers.MaxLength = 45
         Me.TextBoxSIOthers.Name = "TextBoxSIOthers"
-        Me.TextBoxSIOthers.Size = New System.Drawing.Size(331, 26)
+        Me.TextBoxSIOthers.Size = New System.Drawing.Size(331, 23)
         Me.TextBoxSIOthers.TabIndex = 4
         '
         'Label110
         '
         Me.Label110.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label110.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label110.Location = New System.Drawing.Point(3, 48)
+        Me.Label110.Location = New System.Drawing.Point(3, 47)
         Me.Label110.Name = "Label110"
         Me.Label110.Size = New System.Drawing.Size(331, 24)
         Me.Label110.TabIndex = 0
@@ -5549,7 +5559,7 @@ Partial Class SettingsForm
         'ToolStrip4
         '
         Me.ToolStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonUpdateOthers, Me.ToolStripLabelOthersStatus})
-        Me.ToolStrip4.Location = New System.Drawing.Point(3, 23)
+        Me.ToolStrip4.Location = New System.Drawing.Point(3, 22)
         Me.ToolStrip4.Name = "ToolStrip4"
         Me.ToolStrip4.Size = New System.Drawing.Size(331, 25)
         Me.ToolStrip4.TabIndex = 7
@@ -5583,7 +5593,7 @@ Partial Class SettingsForm
         Me.TableLayoutPanel16.RowCount = 2
         Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel16.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel16.Size = New System.Drawing.Size(335, 469)
+        Me.TableLayoutPanel16.Size = New System.Drawing.Size(335, 466)
         Me.TableLayoutPanel16.TabIndex = 2
         '
         'GroupBox22
@@ -5593,9 +5603,10 @@ Partial Class SettingsForm
         Me.GroupBox22.Controls.Add(Me.Label113)
         Me.GroupBox22.Controls.Add(Me.ToolStrip2)
         Me.GroupBox22.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox22.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox22.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox22.Name = "GroupBox22"
-        Me.GroupBox22.Size = New System.Drawing.Size(329, 228)
+        Me.GroupBox22.Size = New System.Drawing.Size(329, 227)
         Me.GroupBox22.TabIndex = 1
         Me.GroupBox22.TabStop = False
         Me.GroupBox22.Text = "Header"
@@ -5609,17 +5620,20 @@ Partial Class SettingsForm
         Me.DataGridViewHeader.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewHeader.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewHeader.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewHeader.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewHeader.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column57, Me.Column58})
         Me.DataGridViewHeader.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewHeader.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewHeader.EnableHeadersVisualStyles = False
-        Me.DataGridViewHeader.Location = New System.Drawing.Point(3, 101)
+        Me.DataGridViewHeader.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridViewHeader.Location = New System.Drawing.Point(3, 97)
         Me.DataGridViewHeader.MultiSelect = False
         Me.DataGridViewHeader.Name = "DataGridViewHeader"
         Me.DataGridViewHeader.RowHeadersVisible = False
+        Me.DataGridViewHeader.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewHeader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewHeader.Size = New System.Drawing.Size(323, 124)
+        Me.DataGridViewHeader.Size = New System.Drawing.Size(323, 127)
         Me.DataGridViewHeader.TabIndex = 0
         '
         'Column57
@@ -5632,22 +5646,25 @@ Partial Class SettingsForm
         '
         Me.Column58.HeaderText = "Description"
         Me.Column58.Name = "Column58"
+        Me.Column58.ReadOnly = True
+        Me.Column58.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.Column58.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'TextBoxHeaderDesc
         '
         Me.TextBoxHeaderDesc.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxHeaderDesc.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxHeaderDesc.Location = New System.Drawing.Point(3, 75)
+        Me.TextBoxHeaderDesc.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxHeaderDesc.Location = New System.Drawing.Point(3, 74)
         Me.TextBoxHeaderDesc.MaxLength = 45
         Me.TextBoxHeaderDesc.Name = "TextBoxHeaderDesc"
-        Me.TextBoxHeaderDesc.Size = New System.Drawing.Size(323, 26)
+        Me.TextBoxHeaderDesc.Size = New System.Drawing.Size(323, 23)
         Me.TextBoxHeaderDesc.TabIndex = 2
         '
         'Label113
         '
         Me.Label113.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label113.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label113.Location = New System.Drawing.Point(3, 48)
+        Me.Label113.Location = New System.Drawing.Point(3, 47)
         Me.Label113.Name = "Label113"
         Me.Label113.Size = New System.Drawing.Size(323, 27)
         Me.Label113.TabIndex = 3
@@ -5657,7 +5674,7 @@ Partial Class SettingsForm
         'ToolStrip2
         '
         Me.ToolStrip2.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonAddHeader, Me.ToolStripButtonUpdateHeader, Me.ToolStripButtonDeleteHeader, Me.ToolStripLabelHeaderStatus})
-        Me.ToolStrip2.Location = New System.Drawing.Point(3, 23)
+        Me.ToolStrip2.Location = New System.Drawing.Point(3, 22)
         Me.ToolStrip2.Name = "ToolStrip2"
         Me.ToolStrip2.Size = New System.Drawing.Size(323, 25)
         Me.ToolStrip2.TabIndex = 1
@@ -5704,9 +5721,10 @@ Partial Class SettingsForm
         Me.GroupBox23.Controls.Add(Me.Label114)
         Me.GroupBox23.Controls.Add(Me.ToolStrip3)
         Me.GroupBox23.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox23.Location = New System.Drawing.Point(3, 237)
+        Me.GroupBox23.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox23.Location = New System.Drawing.Point(3, 236)
         Me.GroupBox23.Name = "GroupBox23"
-        Me.GroupBox23.Size = New System.Drawing.Size(329, 229)
+        Me.GroupBox23.Size = New System.Drawing.Size(329, 227)
         Me.GroupBox23.TabIndex = 2
         Me.GroupBox23.TabStop = False
         Me.GroupBox23.Text = "Footer"
@@ -5720,17 +5738,20 @@ Partial Class SettingsForm
         Me.DataGridViewFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewFooter.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewFooter.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewFooter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewFooter.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30})
         Me.DataGridViewFooter.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewFooter.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewFooter.EnableHeadersVisualStyles = False
-        Me.DataGridViewFooter.Location = New System.Drawing.Point(3, 101)
+        Me.DataGridViewFooter.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridViewFooter.Location = New System.Drawing.Point(3, 97)
         Me.DataGridViewFooter.MultiSelect = False
         Me.DataGridViewFooter.Name = "DataGridViewFooter"
         Me.DataGridViewFooter.RowHeadersVisible = False
+        Me.DataGridViewFooter.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewFooter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewFooter.Size = New System.Drawing.Size(323, 125)
+        Me.DataGridViewFooter.Size = New System.Drawing.Size(323, 127)
         Me.DataGridViewFooter.TabIndex = 0
         '
         'DataGridViewTextBoxColumn29
@@ -5743,22 +5764,25 @@ Partial Class SettingsForm
         '
         Me.DataGridViewTextBoxColumn30.HeaderText = "Description"
         Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        Me.DataGridViewTextBoxColumn30.ReadOnly = True
+        Me.DataGridViewTextBoxColumn30.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn30.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'TextBoxFooterDesc
         '
         Me.TextBoxFooterDesc.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxFooterDesc.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxFooterDesc.Location = New System.Drawing.Point(3, 75)
+        Me.TextBoxFooterDesc.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxFooterDesc.Location = New System.Drawing.Point(3, 74)
         Me.TextBoxFooterDesc.MaxLength = 45
         Me.TextBoxFooterDesc.Name = "TextBoxFooterDesc"
-        Me.TextBoxFooterDesc.Size = New System.Drawing.Size(323, 26)
+        Me.TextBoxFooterDesc.Size = New System.Drawing.Size(323, 23)
         Me.TextBoxFooterDesc.TabIndex = 2
         '
         'Label114
         '
         Me.Label114.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label114.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label114.Location = New System.Drawing.Point(3, 48)
+        Me.Label114.Location = New System.Drawing.Point(3, 47)
         Me.Label114.Name = "Label114"
         Me.Label114.Size = New System.Drawing.Size(323, 27)
         Me.Label114.TabIndex = 4
@@ -5768,7 +5792,7 @@ Partial Class SettingsForm
         'ToolStrip3
         '
         Me.ToolStrip3.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonAddFooter, Me.ToolStripButtonUpdateFooter, Me.ToolStripButtonDeleteFooter, Me.ToolStripLabelFooterStatus})
-        Me.ToolStrip3.Location = New System.Drawing.Point(3, 23)
+        Me.ToolStrip3.Location = New System.Drawing.Point(3, 22)
         Me.ToolStrip3.Name = "ToolStrip3"
         Me.ToolStrip3.Size = New System.Drawing.Size(323, 25)
         Me.ToolStrip3.TabIndex = 1
@@ -5820,7 +5844,7 @@ Partial Class SettingsForm
         Me.TableLayoutPanel17.RowCount = 2
         Me.TableLayoutPanel17.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
         Me.TableLayoutPanel17.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.0!))
-        Me.TableLayoutPanel17.Size = New System.Drawing.Size(335, 469)
+        Me.TableLayoutPanel17.Size = New System.Drawing.Size(335, 466)
         Me.TableLayoutPanel17.TabIndex = 3
         '
         'GroupBox26
@@ -5830,9 +5854,10 @@ Partial Class SettingsForm
         Me.GroupBox26.Controls.Add(Me.Label116)
         Me.GroupBox26.Controls.Add(Me.ToolStrip5)
         Me.GroupBox26.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox26.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.GroupBox26.Location = New System.Drawing.Point(3, 3)
         Me.GroupBox26.Name = "GroupBox26"
-        Me.GroupBox26.Size = New System.Drawing.Size(329, 228)
+        Me.GroupBox26.Size = New System.Drawing.Size(329, 227)
         Me.GroupBox26.TabIndex = 4
         Me.GroupBox26.TabStop = False
         Me.GroupBox26.Text = "Validity"
@@ -5846,17 +5871,20 @@ Partial Class SettingsForm
         Me.DataGridViewVALIDITY.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewVALIDITY.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewVALIDITY.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewVALIDITY.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewVALIDITY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewVALIDITY.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32})
         Me.DataGridViewVALIDITY.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewVALIDITY.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewVALIDITY.EnableHeadersVisualStyles = False
-        Me.DataGridViewVALIDITY.Location = New System.Drawing.Point(3, 101)
+        Me.DataGridViewVALIDITY.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridViewVALIDITY.Location = New System.Drawing.Point(3, 97)
         Me.DataGridViewVALIDITY.MultiSelect = False
         Me.DataGridViewVALIDITY.Name = "DataGridViewVALIDITY"
         Me.DataGridViewVALIDITY.RowHeadersVisible = False
+        Me.DataGridViewVALIDITY.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewVALIDITY.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewVALIDITY.Size = New System.Drawing.Size(323, 124)
+        Me.DataGridViewVALIDITY.Size = New System.Drawing.Size(323, 127)
         Me.DataGridViewVALIDITY.TabIndex = 6
         '
         'DataGridViewTextBoxColumn31
@@ -5869,22 +5897,25 @@ Partial Class SettingsForm
         '
         Me.DataGridViewTextBoxColumn32.HeaderText = "Description"
         Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.ReadOnly = True
+        Me.DataGridViewTextBoxColumn32.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn32.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'TextBoxValidity
         '
         Me.TextBoxValidity.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxValidity.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxValidity.Location = New System.Drawing.Point(3, 75)
+        Me.TextBoxValidity.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxValidity.Location = New System.Drawing.Point(3, 74)
         Me.TextBoxValidity.MaxLength = 45
         Me.TextBoxValidity.Name = "TextBoxValidity"
-        Me.TextBoxValidity.Size = New System.Drawing.Size(323, 26)
+        Me.TextBoxValidity.Size = New System.Drawing.Size(323, 23)
         Me.TextBoxValidity.TabIndex = 5
         '
         'Label116
         '
         Me.Label116.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label116.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label116.Location = New System.Drawing.Point(3, 48)
+        Me.Label116.Location = New System.Drawing.Point(3, 47)
         Me.Label116.Name = "Label116"
         Me.Label116.Size = New System.Drawing.Size(323, 27)
         Me.Label116.TabIndex = 4
@@ -5894,7 +5925,7 @@ Partial Class SettingsForm
         'ToolStrip5
         '
         Me.ToolStrip5.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButtonValidity, Me.ToolStripButtonUpdateValidity, Me.ToolStripButtonDeleteValidity, Me.ToolStripLabelValidityStatus})
-        Me.ToolStrip5.Location = New System.Drawing.Point(3, 23)
+        Me.ToolStrip5.Location = New System.Drawing.Point(3, 22)
         Me.ToolStrip5.Name = "ToolStrip5"
         Me.ToolStrip5.Size = New System.Drawing.Size(323, 25)
         Me.ToolStrip5.TabIndex = 2
@@ -5941,9 +5972,10 @@ Partial Class SettingsForm
         Me.GroupBox27.Controls.Add(Me.Label117)
         Me.GroupBox27.Controls.Add(Me.ToolStrip6)
         Me.GroupBox27.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox27.Location = New System.Drawing.Point(3, 237)
+        Me.GroupBox27.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox27.Location = New System.Drawing.Point(3, 236)
         Me.GroupBox27.Name = "GroupBox27"
-        Me.GroupBox27.Size = New System.Drawing.Size(329, 229)
+        Me.GroupBox27.Size = New System.Drawing.Size(329, 227)
         Me.GroupBox27.TabIndex = 5
         Me.GroupBox27.TabStop = False
         Me.GroupBox27.Text = "Refund/Exchange Footer"
@@ -5957,45 +5989,37 @@ Partial Class SettingsForm
         Me.DataGridViewRefundExchange.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewRefundExchange.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewRefundExchange.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewRefundExchange.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewRefundExchange.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewRefundExchange.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34})
         Me.DataGridViewRefundExchange.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridViewRefundExchange.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGridViewRefundExchange.EnableHeadersVisualStyles = False
-        Me.DataGridViewRefundExchange.Location = New System.Drawing.Point(3, 101)
+        Me.DataGridViewRefundExchange.GridColor = System.Drawing.SystemColors.Control
+        Me.DataGridViewRefundExchange.Location = New System.Drawing.Point(3, 97)
         Me.DataGridViewRefundExchange.MultiSelect = False
         Me.DataGridViewRefundExchange.Name = "DataGridViewRefundExchange"
         Me.DataGridViewRefundExchange.RowHeadersVisible = False
+        Me.DataGridViewRefundExchange.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewRefundExchange.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DataGridViewRefundExchange.Size = New System.Drawing.Size(323, 125)
+        Me.DataGridViewRefundExchange.Size = New System.Drawing.Size(323, 127)
         Me.DataGridViewRefundExchange.TabIndex = 12
-        '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.HeaderText = "Column57"
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        Me.DataGridViewTextBoxColumn33.Visible = False
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
         '
         'TextBoxRefundFooter
         '
         Me.TextBoxRefundFooter.Dock = System.Windows.Forms.DockStyle.Top
-        Me.TextBoxRefundFooter.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBoxRefundFooter.Location = New System.Drawing.Point(3, 75)
+        Me.TextBoxRefundFooter.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextBoxRefundFooter.Location = New System.Drawing.Point(3, 74)
         Me.TextBoxRefundFooter.MaxLength = 45
         Me.TextBoxRefundFooter.Name = "TextBoxRefundFooter"
-        Me.TextBoxRefundFooter.Size = New System.Drawing.Size(323, 26)
+        Me.TextBoxRefundFooter.Size = New System.Drawing.Size(323, 23)
         Me.TextBoxRefundFooter.TabIndex = 13
         '
         'Label117
         '
         Me.Label117.Dock = System.Windows.Forms.DockStyle.Top
         Me.Label117.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label117.Location = New System.Drawing.Point(3, 48)
+        Me.Label117.Location = New System.Drawing.Point(3, 47)
         Me.Label117.Name = "Label117"
         Me.Label117.Size = New System.Drawing.Size(323, 27)
         Me.Label117.TabIndex = 14
@@ -6005,7 +6029,7 @@ Partial Class SettingsForm
         'ToolStrip6
         '
         Me.ToolStrip6.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3, Me.ToolStripLabelRFooterStatus})
-        Me.ToolStrip6.Location = New System.Drawing.Point(3, 23)
+        Me.ToolStrip6.Location = New System.Drawing.Point(3, 22)
         Me.ToolStrip6.Name = "ToolStrip6"
         Me.ToolStrip6.Size = New System.Drawing.Size(323, 25)
         Me.ToolStrip6.TabIndex = 3
@@ -6051,30 +6075,19 @@ Partial Class SettingsForm
         'BackgroundWorkerCloudConnection
         '
         '
-        'GroupBox31
+        'DataGridViewTextBoxColumn33
         '
-        Me.GroupBox31.Controls.Add(Me.btnSia)
-        Me.GroupBox31.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox31.Location = New System.Drawing.Point(3, 413)
-        Me.GroupBox31.Name = "GroupBox31"
-        Me.GroupBox31.Size = New System.Drawing.Size(331, 53)
-        Me.GroupBox31.TabIndex = 299
-        Me.GroupBox31.TabStop = False
-        Me.GroupBox31.Text = "Other Settings"
+        Me.DataGridViewTextBoxColumn33.HeaderText = "Column57"
+        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
+        Me.DataGridViewTextBoxColumn33.Visible = False
         '
-        'btnSia
+        'DataGridViewTextBoxColumn34
         '
-        Me.btnSia.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.btnSia.FlatAppearance.BorderSize = 0
-        Me.btnSia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSia.Font = New System.Drawing.Font("Tahoma", 9.75!)
-        Me.btnSia.ForeColor = System.Drawing.Color.White
-        Me.btnSia.Location = New System.Drawing.Point(25, 24)
-        Me.btnSia.Name = "btnSia"
-        Me.btnSia.Size = New System.Drawing.Size(65, 23)
-        Me.btnSia.TabIndex = 293
-        Me.btnSia.Text = "SIA"
-        Me.btnSia.UseVisualStyleBackColor = False
+        Me.DataGridViewTextBoxColumn34.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
+        Me.DataGridViewTextBoxColumn34.ReadOnly = True
+        Me.DataGridViewTextBoxColumn34.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGridViewTextBoxColumn34.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'SettingsForm
         '
@@ -6267,7 +6280,6 @@ Partial Class SettingsForm
         CType(Me.DataGridViewRefundExchange, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip6.ResumeLayout(False)
         Me.ToolStrip6.PerformLayout()
-        Me.GroupBox31.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -6698,8 +6710,6 @@ Partial Class SettingsForm
     Friend WithEvents ToolStripButtonUpdateFooter As ToolStripButton
     Friend WithEvents ToolStripButtonDeleteFooter As ToolStripButton
     Friend WithEvents ToolStripLabelHeaderStatus As ToolStripLabel
-    Friend WithEvents Column57 As DataGridViewTextBoxColumn
-    Friend WithEvents Column58 As DataGridViewTextBoxColumn
     Friend WithEvents ToolStripLabelFooterStatus As ToolStripLabel
     Friend WithEvents GroupBox24 As GroupBox
     Friend WithEvents TextBoxSIOthers As TextBox
@@ -6707,8 +6717,6 @@ Partial Class SettingsForm
     Friend WithEvents LabelRefundHeader As Label
     Friend WithEvents Label110 As Label
     Friend WithEvents Label113 As Label
-    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
     Friend WithEvents Label114 As Label
     Friend WithEvents ToolStrip4 As ToolStrip
     Friend WithEvents ToolStripButtonUpdateOthers As ToolStripButton
@@ -6740,11 +6748,7 @@ Partial Class SettingsForm
     Friend WithEvents ToolStripLabelValidityStatus As ToolStripLabel
     Friend WithEvents TableLayoutPanel16 As TableLayoutPanel
     Friend WithEvents DataGridViewVALIDITY As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewRefundExchange As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel17 As TableLayoutPanel
     Friend WithEvents GroupBox27 As GroupBox
     Friend WithEvents TextBoxRefundFooter As TextBox
@@ -6770,6 +6774,12 @@ Partial Class SettingsForm
     Friend WithEvents Label120 As Label
     Friend WithEvents GroupBox30 As GroupBox
     Friend WithEvents ButtonSaveZeroRated As Button
-    Friend WithEvents GroupBox31 As GroupBox
-    Friend WithEvents btnSia As Button
+    Friend WithEvents Column57 As DataGridViewTextBoxColumn
+    Friend WithEvents Column58 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
 End Class

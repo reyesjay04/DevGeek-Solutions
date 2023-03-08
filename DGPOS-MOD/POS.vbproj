@@ -362,6 +362,12 @@
     <Compile Include="SUBFORMS\StockAdjustment.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SUBFORMS\subreports.Designer.vb">
+      <DependentUpon>subreports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SUBFORMS\subreports.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SUBFORMS\TakeOut.Designer.vb">
       <DependentUpon>TakeOut.vb</DependentUpon>
     </Compile>
@@ -602,6 +608,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SUBFORMS\StockAdjustment.resx">
       <DependentUpon>StockAdjustment.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SUBFORMS\subreports.resx">
+      <DependentUpon>subreports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SUBFORMS\TakeOut.resx">
       <DependentUpon>TakeOut.vb</DependentUpon>

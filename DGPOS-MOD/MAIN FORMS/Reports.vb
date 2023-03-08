@@ -3100,19 +3100,21 @@ Public Class Reports
     End Sub
 
     Private Sub ButtonMGW_Click(sender As Object, e As EventArgs) Handles ButtonMGW.Click
-        Try
-            Dim ins As System.Reflection.Assembly
-            ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DGPOS_DGMGW.dll")
+        'Try
+        '    Dim ins As System.Reflection.Assembly
+        '    ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DGPOS_DGMGW.dll")
 
 
-            Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath & ",from_reporting_date^" & S_Zreading & ",to_reporting_date^" & S_Zreading & ",show_dialog_box^Y"
+        '    Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",export_path^" & S_ExportPath & ",from_reporting_date^" & S_Zreading & ",to_reporting_date^" & S_Zreading & ",show_dialog_box^Y"
 
-            Dim obj As Object = ins.CreateInstance("DGPOS_DGMGW.DGPOS_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
-            Dim frm As Form = CType(obj, Form)
-            frm.ShowDialog()
-        Catch ex As Exception
-            MsgBox(ex.ToString)
-        End Try
+        '    Dim obj As Object = ins.CreateInstance("DGPOS_DGMGW.DGPOS_DGMGW", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
+        '    Dim frm As Form = CType(obj, Form)
+        '    frm.ShowDialog()
+        'Catch ex As Exception
+        '    MsgBox(ex.ToString)
+        'End Try
+        subreports.Show()
+
     End Sub
 
 

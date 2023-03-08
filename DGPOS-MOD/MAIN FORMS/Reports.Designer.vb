@@ -2290,7 +2290,7 @@ Partial Class Reports
         Me.ButtonMGW.Name = "ButtonMGW"
         Me.ButtonMGW.Size = New System.Drawing.Size(165, 42)
         Me.ButtonMGW.TabIndex = 13
-        Me.ButtonMGW.Text = "MEGA WORLD"
+        Me.ButtonMGW.Text = "OTHERS"
         Me.ButtonMGW.UseVisualStyleBackColor = False
         '
         'ButtonZReading

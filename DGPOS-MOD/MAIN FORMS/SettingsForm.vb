@@ -4151,21 +4151,6 @@ Public Class SettingsForm
         End Try
     End Sub
 
-    Private Sub btnSia_Click(sender As Object, e As EventArgs) Handles btnSia.Click
-        If Enable_SIA_Functionality Then
-            Try
-                Dim params As String = "user_type^" & ClientRole & ",connection^" & LocalConnectionString & ",base_date^" & S_Zreading & ",transaction_number^" & S_TRANSACTION_NUMBER & ",is_refund^N"
 
-                Dim ins As System.Reflection.Assembly
-                ins = System.Reflection.Assembly.LoadFile(Application.StartupPath & "\DG_SIASYS.dll")
-
-                Dim obj As Object = ins.CreateInstance("DG_SIASYS.DG_SIASYS", True, Nothing, Nothing, New String() {params}, Nothing, Nothing)
-                Dim frm As Form = CType(obj, Form)
-                frm.ShowDialog()
-
-            Catch ex As Exception
-            End Try
-        End If
-    End Sub
 #End Region
 End Class

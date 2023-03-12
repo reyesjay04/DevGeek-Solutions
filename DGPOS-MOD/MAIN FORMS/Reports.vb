@@ -3113,7 +3113,7 @@ Public Class Reports
         'Catch ex As Exception
         '    MsgBox(ex.ToString)
         'End Try
-        subreports.Show()
+        subreports.ShowDialog()
 
     End Sub
 

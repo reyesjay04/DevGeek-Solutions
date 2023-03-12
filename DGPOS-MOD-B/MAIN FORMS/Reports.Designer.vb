@@ -203,6 +203,12 @@ Partial Class Reports
         Me.TabPage7 = New System.Windows.Forms.TabPage()
         Me.Panel29 = New System.Windows.Forms.Panel()
         Me.DataGridViewCrewSales = New System.Windows.Forms.DataGridView()
+        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ToolStrip4 = New System.Windows.Forms.ToolStrip()
         Me.ToolStripLabel8 = New System.Windows.Forms.ToolStripLabel()
         Me.ComboBoxUserIDS = New System.Windows.Forms.ToolStripComboBox()
@@ -267,12 +273,6 @@ Partial Class Reports
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.BackgroundWorkerViewReport = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorkerEJournal = New System.ComponentModel.BackgroundWorker()
-        Me.Column28 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column46 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Panel6.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -404,7 +404,7 @@ Partial Class Reports
         Me.DataGridViewTransactionDetails.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 9.75!)
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Tahoma", 12.0!)
         DataGridViewCellStyle2.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -576,7 +576,7 @@ Partial Class Reports
         Me.DataGridViewDaily.BorderStyle = System.Windows.Forms.BorderStyle.None
         DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
         DataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(CType(CType(38, Byte), Integer), CType(CType(37, Byte), Integer), CType(CType(38, Byte), Integer))
-        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 9.75!)
+        DataGridViewCellStyle5.Font = New System.Drawing.Font("Tahoma", 12.0!)
         DataGridViewCellStyle5.ForeColor = System.Drawing.Color.White
         DataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight
         DataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText
@@ -1794,6 +1794,36 @@ Partial Class Reports
         Me.DataGridViewCrewSales.Size = New System.Drawing.Size(898, 392)
         Me.DataGridViewCrewSales.TabIndex = 8
         '
+        'Column28
+        '
+        Me.Column28.HeaderText = "Trx. no"
+        Me.Column28.Name = "Column28"
+        '
+        'Column29
+        '
+        Me.Column29.HeaderText = "Grosssales"
+        Me.Column29.Name = "Column29"
+        '
+        'Column30
+        '
+        Me.Column30.HeaderText = "Quantity"
+        Me.Column30.Name = "Column30"
+        '
+        'Column31
+        '
+        Me.Column31.HeaderText = "Crew ID"
+        Me.Column31.Name = "Column31"
+        '
+        'Column46
+        '
+        Me.Column46.HeaderText = "Status"
+        Me.Column46.Name = "Column46"
+        '
+        'Column32
+        '
+        Me.Column32.HeaderText = "Created At"
+        Me.Column32.Name = "Column32"
+        '
         'ToolStrip4
         '
         Me.ToolStrip4.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripLabel8, Me.ComboBoxUserIDS})
@@ -2298,7 +2328,7 @@ Partial Class Reports
         Me.ButtonMGW.Name = "ButtonMGW"
         Me.ButtonMGW.Size = New System.Drawing.Size(165, 42)
         Me.ButtonMGW.TabIndex = 13
-        Me.ButtonMGW.Text = "MEGA WORLD"
+        Me.ButtonMGW.Text = "OTHERS"
         Me.ButtonMGW.UseVisualStyleBackColor = False
         '
         'ButtonZReading
@@ -2443,36 +2473,6 @@ Partial Class Reports
         '
         'BackgroundWorkerEJournal
         '
-        '
-        'Column28
-        '
-        Me.Column28.HeaderText = "Trx. no"
-        Me.Column28.Name = "Column28"
-        '
-        'Column29
-        '
-        Me.Column29.HeaderText = "Grosssales"
-        Me.Column29.Name = "Column29"
-        '
-        'Column30
-        '
-        Me.Column30.HeaderText = "Quantity"
-        Me.Column30.Name = "Column30"
-        '
-        'Column31
-        '
-        Me.Column31.HeaderText = "Crew ID"
-        Me.Column31.Name = "Column31"
-        '
-        'Column46
-        '
-        Me.Column46.HeaderText = "Status"
-        Me.Column46.Name = "Column46"
-        '
-        'Column32
-        '
-        Me.Column32.HeaderText = "Created At"
-        Me.Column32.Name = "Column32"
         '
         'Reports
         '

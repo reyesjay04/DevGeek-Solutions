@@ -420,6 +420,8 @@ Partial Class SettingsForm
         Me.Label69 = New System.Windows.Forms.Label()
         Me.Label68 = New System.Windows.Forms.Label()
         Me.ComboBoxComPort = New System.Windows.Forms.ComboBox()
+        Me.GroupBox31 = New System.Windows.Forms.GroupBox()
+        Me.btnSia = New System.Windows.Forms.Button()
         Me.TableLayoutPanel3 = New System.Windows.Forms.TableLayoutPanel()
         Me.TableLayoutPanel13 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox30 = New System.Windows.Forms.GroupBox()
@@ -499,8 +501,6 @@ Partial Class SettingsForm
         Me.TableLayoutPanel16 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox22 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewHeader = New System.Windows.Forms.DataGridView()
-        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBoxHeaderDesc = New System.Windows.Forms.TextBox()
         Me.Label113 = New System.Windows.Forms.Label()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
@@ -510,8 +510,6 @@ Partial Class SettingsForm
         Me.ToolStripLabelHeaderStatus = New System.Windows.Forms.ToolStripLabel()
         Me.GroupBox23 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewFooter = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBoxFooterDesc = New System.Windows.Forms.TextBox()
         Me.Label114 = New System.Windows.Forms.Label()
         Me.ToolStrip3 = New System.Windows.Forms.ToolStrip()
@@ -522,8 +520,6 @@ Partial Class SettingsForm
         Me.TableLayoutPanel17 = New System.Windows.Forms.TableLayoutPanel()
         Me.GroupBox26 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewVALIDITY = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBoxValidity = New System.Windows.Forms.TextBox()
         Me.Label116 = New System.Windows.Forms.Label()
         Me.ToolStrip5 = New System.Windows.Forms.ToolStrip()
@@ -533,8 +529,6 @@ Partial Class SettingsForm
         Me.ToolStripLabelValidityStatus = New System.Windows.Forms.ToolStripLabel()
         Me.GroupBox27 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewRefundExchange = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TextBoxRefundFooter = New System.Windows.Forms.TextBox()
         Me.Label117 = New System.Windows.Forms.Label()
         Me.ToolStrip6 = New System.Windows.Forms.ToolStrip()
@@ -544,8 +538,14 @@ Partial Class SettingsForm
         Me.ToolStripLabelRFooterStatus = New System.Windows.Forms.ToolStripLabel()
         Me.BackgroundWorkerLocalConnection = New System.ComponentModel.BackgroundWorker()
         Me.BackgroundWorkerCloudConnection = New System.ComponentModel.BackgroundWorker()
-        Me.GroupBox31 = New System.Windows.Forms.GroupBox()
-        Me.btnSia = New System.Windows.Forms.Button()
+        Me.Column57 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column58 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn29 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TabPage6.SuspendLayout()
         CType(Me.DataGridViewReset, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel35.SuspendLayout()
@@ -645,6 +645,7 @@ Partial Class SettingsForm
         Me.Panel31.SuspendLayout()
         Me.Panel32.SuspendLayout()
         Me.GroupBox19.SuspendLayout()
+        Me.GroupBox31.SuspendLayout()
         Me.TableLayoutPanel3.SuspendLayout()
         Me.TableLayoutPanel13.SuspendLayout()
         Me.GroupBox30.SuspendLayout()
@@ -677,7 +678,6 @@ Partial Class SettingsForm
         Me.GroupBox27.SuspendLayout()
         CType(Me.DataGridViewRefundExchange, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip6.SuspendLayout()
-        Me.GroupBox31.SuspendLayout()
         Me.SuspendLayout()
         '
         'OpenFileDialog1
@@ -4811,6 +4811,31 @@ Partial Class SettingsForm
         Me.ComboBoxComPort.Size = New System.Drawing.Size(213, 24)
         Me.ComboBoxComPort.TabIndex = 0
         '
+        'GroupBox31
+        '
+        Me.GroupBox31.Controls.Add(Me.btnSia)
+        Me.GroupBox31.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.GroupBox31.Location = New System.Drawing.Point(3, 413)
+        Me.GroupBox31.Name = "GroupBox31"
+        Me.GroupBox31.Size = New System.Drawing.Size(320, 56)
+        Me.GroupBox31.TabIndex = 299
+        Me.GroupBox31.TabStop = False
+        Me.GroupBox31.Text = "Other Settings"
+        '
+        'btnSia
+        '
+        Me.btnSia.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(34, Byte), Integer))
+        Me.btnSia.FlatAppearance.BorderSize = 0
+        Me.btnSia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSia.Font = New System.Drawing.Font("Tahoma", 8.25!)
+        Me.btnSia.ForeColor = System.Drawing.Color.White
+        Me.btnSia.Location = New System.Drawing.Point(24, 25)
+        Me.btnSia.Name = "btnSia"
+        Me.btnSia.Size = New System.Drawing.Size(65, 23)
+        Me.btnSia.TabIndex = 294
+        Me.btnSia.Text = "SIA"
+        Me.btnSia.UseVisualStyleBackColor = False
+        '
         'TableLayoutPanel3
         '
         Me.TableLayoutPanel3.ColumnCount = 1
@@ -5646,6 +5671,7 @@ Partial Class SettingsForm
         Me.DataGridViewHeader.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewHeader.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewHeader.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewHeader.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewHeader.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewHeader.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column57, Me.Column58})
         Me.DataGridViewHeader.Dock = System.Windows.Forms.DockStyle.Fill
@@ -5655,20 +5681,10 @@ Partial Class SettingsForm
         Me.DataGridViewHeader.MultiSelect = False
         Me.DataGridViewHeader.Name = "DataGridViewHeader"
         Me.DataGridViewHeader.RowHeadersVisible = False
+        Me.DataGridViewHeader.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewHeader.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewHeader.Size = New System.Drawing.Size(313, 135)
         Me.DataGridViewHeader.TabIndex = 0
-        '
-        'Column57
-        '
-        Me.Column57.HeaderText = "Column57"
-        Me.Column57.Name = "Column57"
-        Me.Column57.Visible = False
-        '
-        'Column58
-        '
-        Me.Column58.HeaderText = "Description"
-        Me.Column58.Name = "Column58"
         '
         'TextBoxHeaderDesc
         '
@@ -5761,6 +5777,7 @@ Partial Class SettingsForm
         Me.DataGridViewFooter.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewFooter.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewFooter.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewFooter.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewFooter.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewFooter.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn29, Me.DataGridViewTextBoxColumn30})
         Me.DataGridViewFooter.Dock = System.Windows.Forms.DockStyle.Fill
@@ -5770,20 +5787,10 @@ Partial Class SettingsForm
         Me.DataGridViewFooter.MultiSelect = False
         Me.DataGridViewFooter.Name = "DataGridViewFooter"
         Me.DataGridViewFooter.RowHeadersVisible = False
+        Me.DataGridViewFooter.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewFooter.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewFooter.Size = New System.Drawing.Size(313, 135)
         Me.DataGridViewFooter.TabIndex = 0
-        '
-        'DataGridViewTextBoxColumn29
-        '
-        Me.DataGridViewTextBoxColumn29.HeaderText = "Column57"
-        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
-        Me.DataGridViewTextBoxColumn29.Visible = False
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
         '
         'TextBoxFooterDesc
         '
@@ -5891,6 +5898,7 @@ Partial Class SettingsForm
         Me.DataGridViewVALIDITY.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewVALIDITY.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewVALIDITY.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewVALIDITY.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewVALIDITY.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewVALIDITY.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32})
         Me.DataGridViewVALIDITY.Dock = System.Windows.Forms.DockStyle.Fill
@@ -5900,20 +5908,10 @@ Partial Class SettingsForm
         Me.DataGridViewVALIDITY.MultiSelect = False
         Me.DataGridViewVALIDITY.Name = "DataGridViewVALIDITY"
         Me.DataGridViewVALIDITY.RowHeadersVisible = False
+        Me.DataGridViewVALIDITY.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewVALIDITY.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewVALIDITY.Size = New System.Drawing.Size(313, 135)
         Me.DataGridViewVALIDITY.TabIndex = 6
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.HeaderText = "Column57"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        Me.DataGridViewTextBoxColumn31.Visible = False
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
         '
         'TextBoxValidity
         '
@@ -6006,6 +6004,7 @@ Partial Class SettingsForm
         Me.DataGridViewRefundExchange.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridViewRefundExchange.BackgroundColor = System.Drawing.Color.White
         Me.DataGridViewRefundExchange.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.DataGridViewRefundExchange.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridViewRefundExchange.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridViewRefundExchange.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34})
         Me.DataGridViewRefundExchange.Dock = System.Windows.Forms.DockStyle.Fill
@@ -6015,20 +6014,10 @@ Partial Class SettingsForm
         Me.DataGridViewRefundExchange.MultiSelect = False
         Me.DataGridViewRefundExchange.Name = "DataGridViewRefundExchange"
         Me.DataGridViewRefundExchange.RowHeadersVisible = False
+        Me.DataGridViewRefundExchange.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing
         Me.DataGridViewRefundExchange.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DataGridViewRefundExchange.Size = New System.Drawing.Size(313, 135)
         Me.DataGridViewRefundExchange.TabIndex = 12
-        '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.HeaderText = "Column57"
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        Me.DataGridViewTextBoxColumn33.Visible = False
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.HeaderText = "Description"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
         '
         'TextBoxRefundFooter
         '
@@ -6104,30 +6093,54 @@ Partial Class SettingsForm
         'BackgroundWorkerCloudConnection
         '
         '
-        'GroupBox31
+        'Column57
         '
-        Me.GroupBox31.Controls.Add(Me.btnSia)
-        Me.GroupBox31.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.GroupBox31.Location = New System.Drawing.Point(3, 413)
-        Me.GroupBox31.Name = "GroupBox31"
-        Me.GroupBox31.Size = New System.Drawing.Size(320, 56)
-        Me.GroupBox31.TabIndex = 299
-        Me.GroupBox31.TabStop = False
-        Me.GroupBox31.Text = "Other Settings"
+        Me.Column57.HeaderText = "Column57"
+        Me.Column57.Name = "Column57"
+        Me.Column57.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        Me.Column57.Visible = False
         '
-        'btnSia
+        'Column58
         '
-        Me.btnSia.BackColor = System.Drawing.Color.FromArgb(CType(CType(248, Byte), Integer), CType(CType(160, Byte), Integer), CType(CType(34, Byte), Integer))
-        Me.btnSia.FlatAppearance.BorderSize = 0
-        Me.btnSia.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSia.Font = New System.Drawing.Font("Tahoma", 8.25!)
-        Me.btnSia.ForeColor = System.Drawing.Color.White
-        Me.btnSia.Location = New System.Drawing.Point(24, 25)
-        Me.btnSia.Name = "btnSia"
-        Me.btnSia.Size = New System.Drawing.Size(65, 23)
-        Me.btnSia.TabIndex = 294
-        Me.btnSia.Text = "SIA"
-        Me.btnSia.UseVisualStyleBackColor = False
+        Me.Column58.HeaderText = "Description"
+        Me.Column58.Name = "Column58"
+        Me.Column58.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'DataGridViewTextBoxColumn29
+        '
+        Me.DataGridViewTextBoxColumn29.HeaderText = "Column57"
+        Me.DataGridViewTextBoxColumn29.Name = "DataGridViewTextBoxColumn29"
+        Me.DataGridViewTextBoxColumn29.Visible = False
+        '
+        'DataGridViewTextBoxColumn30
+        '
+        Me.DataGridViewTextBoxColumn30.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
+        Me.DataGridViewTextBoxColumn30.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'DataGridViewTextBoxColumn31
+        '
+        Me.DataGridViewTextBoxColumn31.HeaderText = "Column57"
+        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
+        Me.DataGridViewTextBoxColumn31.Visible = False
+        '
+        'DataGridViewTextBoxColumn32
+        '
+        Me.DataGridViewTextBoxColumn32.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
+        Me.DataGridViewTextBoxColumn32.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
+        '
+        'DataGridViewTextBoxColumn33
+        '
+        Me.DataGridViewTextBoxColumn33.HeaderText = "Column57"
+        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
+        Me.DataGridViewTextBoxColumn33.Visible = False
+        '
+        'DataGridViewTextBoxColumn34
+        '
+        Me.DataGridViewTextBoxColumn34.HeaderText = "Description"
+        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
+        Me.DataGridViewTextBoxColumn34.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         '
         'SettingsForm
         '
@@ -6272,6 +6285,7 @@ Partial Class SettingsForm
         Me.Panel32.PerformLayout()
         Me.GroupBox19.ResumeLayout(False)
         Me.GroupBox19.PerformLayout()
+        Me.GroupBox31.ResumeLayout(False)
         Me.TableLayoutPanel3.ResumeLayout(False)
         Me.TableLayoutPanel13.ResumeLayout(False)
         Me.GroupBox30.ResumeLayout(False)
@@ -6321,7 +6335,6 @@ Partial Class SettingsForm
         CType(Me.DataGridViewRefundExchange, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip6.ResumeLayout(False)
         Me.ToolStrip6.PerformLayout()
-        Me.GroupBox31.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -6752,8 +6765,6 @@ Partial Class SettingsForm
     Friend WithEvents ToolStripButtonUpdateFooter As ToolStripButton
     Friend WithEvents ToolStripButtonDeleteFooter As ToolStripButton
     Friend WithEvents ToolStripLabelHeaderStatus As ToolStripLabel
-    Friend WithEvents Column57 As DataGridViewTextBoxColumn
-    Friend WithEvents Column58 As DataGridViewTextBoxColumn
     Friend WithEvents ToolStripLabelFooterStatus As ToolStripLabel
     Friend WithEvents GroupBox24 As GroupBox
     Friend WithEvents TextBoxSIOthers As TextBox
@@ -6761,8 +6772,6 @@ Partial Class SettingsForm
     Friend WithEvents LabelRefundHeader As Label
     Friend WithEvents Label110 As Label
     Friend WithEvents Label113 As Label
-    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
     Friend WithEvents Label114 As Label
     Friend WithEvents ToolStrip4 As ToolStrip
     Friend WithEvents ToolStripButtonUpdateOthers As ToolStripButton
@@ -6794,11 +6803,7 @@ Partial Class SettingsForm
     Friend WithEvents ToolStripLabelValidityStatus As ToolStripLabel
     Friend WithEvents TableLayoutPanel16 As TableLayoutPanel
     Friend WithEvents DataGridViewVALIDITY As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewRefundExchange As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
     Friend WithEvents TableLayoutPanel17 As TableLayoutPanel
     Friend WithEvents GroupBox27 As GroupBox
     Friend WithEvents TextBoxRefundFooter As TextBox
@@ -6826,4 +6831,12 @@ Partial Class SettingsForm
     Friend WithEvents ButtonSaveZeroRated As Button
     Friend WithEvents GroupBox31 As GroupBox
     Friend WithEvents btnSia As Button
+    Friend WithEvents Column57 As DataGridViewTextBoxColumn
+    Friend WithEvents Column58 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn29 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
 End Class
